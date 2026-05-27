@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad   ....🖍</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%233b82f6' rx='14'/><text x='50' y='72' font-size='65' font-weight='700' font-family='system-ui,sans-serif' fill='white' text-anchor='middle'>N</text></svg>">
+    <style>
+        * { box-sizing: border-box; user-select: auto; }
+        :root, html.light {
+            --bg-body: #f1f5f9; --card-bg: #ffffff; --toolbar-bg: #f8fafc;
+            --border-color: #e2e8f0; --btn-bg: #ffffff; --btn-border: #cbd5e1;
+            --btn-text: #0f172a; --btn-hover-bg: #eef2ff; --btn-hover-border: #94a3b8;
+            --clear-btn-bg: #fff1f0; --clear-btn-border: #fecaca; --clear-btn-text: #b91c1c;
+            --clear-btn-hover-bg: #fee2e2; --status-bg: #f1f5f9; --status-text: #334155;
+            --info-text: #475569; --shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            --editor-bg: #ffffff; --editor-text: #0f172a;
+        }
+        html.dark {
+            --bg-body: #0f172a; --card-bg: #1e293b; --toolbar-bg: #0f172a;
+            --border-color: #334155; --btn-bg: #1e293b; --btn-border: #475569;
+            --btn-text: #e2e8f0; --btn-hover-bg: #334155; --btn-hover-border: #64748b;
+            --clear-btn-bg: #2d1a1a; --clear-btn-border: #7f2c2c; --clear-btn-text: #fecaca;
+            --clear-btn-hover-bg: #3f2020; --status-bg: #0f172a; --status-text: #cbd5e1;
+            --info-text: #94a3b8; --shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+            --editor-bg: #1e293b; --editor-text: #e2e8f0;
+        }
+        html.sepia {
+            --bg-body: #f4ecd8; --card-bg: #fef9e6; --toolbar-bg: #faf3e0;
+            --border-color: #e2dccd; --btn-bg: #fff8ed; --btn-border: #d4c9b2;
+            --btn-text: #5a4a2a; --btn-hover-bg: #fff0db; --btn-hover-border: #c2b39a;
+            --clear-btn-bg: #ffefdf; --clear-btn-text: #a1622b; --clear-btn-hover-bg: #ffe6d5;
+            --status-bg: #f9f2e2; --status-text: #5a4a2a; --info-text: #7e6b4a;
+            --shadow: 0 20px 35px -10px rgba(0,0,0,0.08);
+            --editor-bg: #fffdf5; --editor-text: #3e2723;
+        }
+        body {
+            margin: 0; min-height: 100vh; background: var(--bg-body);
+            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            padding: 1.5rem; transition: background 0.3s ease;
+        }
+        .notepad-card {
+            max-width: 1400px; width: 100%; background: var(--card-bg);
+            border-radius: 1.5rem; box-shadow: var(--shadow);
+            overflow: hidden; transition: background 0.3s ease, box-shadow 0.3s ease;
+            display: flex; flex-direction: column; height: 95vh;
+        }
+        .toolbar, .settings-panel {
+            background: var(--toolbar-bg); padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex; flex-wrap: wrap; gap: 0.6rem;
+            align-items: center; justify-content: space-between; flex-shrink: 0;
+            color: var(--info-text);
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .settings-panel { border-top: 1px solid var(--border-color); font-size: 0.8rem; border-bottom: none; }
+        .settings-panel label, .settings-panel span { color: var(--btn-text); transition: color 0.3s; }
+        .toolbar-group { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+        button, select, input {
+            background: var(--btn-bg); border: 1px solid var(--btn-border);
+            padding: 0.45rem 0.85rem; border-radius: 2rem; font-size: 0.8rem;
+            font-weight: 500; cursor: pointer; transition: all 0.15s ease;
+            color: var(--btn-text); font-family: inherit; outline: none;
+        }
+        button:hover, select:hover { background: var(--btn-hover-bg); border-color: var(--btn-hover-border); transform: translateY(-1px); }
+        button:active { transform: translateY(1px); }
+        input[type="color"] { padding: 0; width: 30px; height: 30px; border-radius: 50%; overflow: hidden; cursor: pointer; }
+        input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+        input[type="color"]::-webkit-color-swatch { border: none; border-radius: 50%; }
+        .clear-btn { background: var(--clear-btn-bg); border-color: var(--clear-btn-border); color: var(--clear-btn-text); }
+        .clear-btn:hover { background: var(--clear-btn-hover-bg); }
+        .editor-container { 
+            flex: 1; min-height: 0; display: flex; flex-direction: column; 
+            padding: 0.5rem 1rem; overflow: hidden; 
+            background: var(--card-bg); transition: background 0.3s;
+        }
+        .editor-wrapper { display: flex; gap: 1rem; height: 100%; overflow: hidden; }
+        .editor-pane {
+            flex: 1; display: flex; flex-direction: column; min-width: 0;
+            border: 1px solid var(--border-color); border-radius: 1rem;
+            overflow: hidden; background: var(--card-bg); transition: border-color 0.3s;
+        }
+        .editor-header {
+            padding: 0.4rem 1rem; font-size: 0.75rem; font-weight: 600;
+            color: var(--info-text); background: var(--toolbar-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .editor-content {
+            flex: 1; padding: 1.2rem 1.5rem; overflow-y: auto;
+            font-size: 16px; line-height: 1.6; outline: none;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            background: var(--editor-bg); color: var(--editor-text);
+            white-space: pre-wrap; word-wrap: break-word;
+            transition: background 0.3s, color 0.3s;
+        }
+        .editor-content:empty:before { content: attr(data-placeholder); color: var(--info-text); opacity: 0.6; }
+        .editor-content:focus { box-shadow: inset 0 0 0 2px var(--btn-hover-border); }
+        .editor-content b, .editor-content strong { font-weight: bold; }
+        .editor-content i, .editor-content em { font-style: italic; }
+        .editor-content u { text-decoration: underline; }
+        .editor-content s, .editor-content strike { text-decoration: line-through; }
+        .editor-content code { background: rgba(128,128,128,0.15); padding: 0.15em 0.4em; border-radius: 4px; font-family: monospace; font-size: 0.95em; }
+        .editor-content .hidden { background: var(--editor-text); color: var(--editor-text); padding: 0 3px; border-radius: 3px; cursor: help; user-select: none; }
+        .editor-content .hidden:hover { color: var(--btn-hover-border); background: transparent; }
+        .editor-content blockquote { border-left: 4px solid var(--btn-hover-border); margin: 0.5em 0; padding: 0.4em 1em; color: var(--info-text); background: rgba(128,128,128,0.05); border-radius: 0 0.4rem 0.4rem 0; }
+        .editor-content a { color: #3b82f6; text-decoration: none; }
+        .editor-content a:hover { text-decoration: underline; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; top: calc(100% + 5px); right: 0;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 0.75rem; padding: 0.7rem; min-width: 260px;
+            max-height: 220px; overflow-y: auto; box-shadow: var(--shadow);
+            z-index: 100; grid-template-columns: repeat(8, 1fr); gap: 0.3rem;
+        }
+        .dropdown-content.show { display: grid; animation: fadeIn 0.15s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown-item {
+            cursor: pointer; padding: 0.25rem; text-align: center;
+            border-radius: 4px; font-size: 1.2rem; transition: 0.1s; user-select: none; color: var(--btn-text);
+        }
+        .dropdown-item:hover { background: var(--btn-hover-bg); transform: scale(1.15); }
+        .status-bar {
+            background: var(--status-bg); padding: 0.5rem 1.5rem;
+            font-size: 0.7rem; color: var(--status-text);
+            border-top: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            gap: 0.5rem; flex-shrink: 0; transition: all 0.3s;
+        }
+        @media (max-width: 900px) {
+            .editor-wrapper { flex-direction: column; }
+            .toolbar, .settings-panel { flex-direction: column; align-items: stretch; }
+            .toolbar-group { justify-content: center; }
+            .dropdown-content { right: auto; left: 50%; transform: translateX(-50%); }
+            .dropdown-content.show { animation: fadeInCenter 0.15s ease-out; transform: translateX(-50%) translateY(0); }
+            @keyframes fadeInCenter { from { opacity: 0; transform: translateX(-50%) translateY(-5px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        }
+    </style>
+</head>
+<body>
+<div class="notepad-card">
+    <div class="toolbar">
+        <div class="toolbar-group">
+            <button id="copyBtn">📄 Copy</button>
+            <button id="clearBtn" class="clear-btn">❌ Clear Field</button>
+            <button id="splitBtn" title="Split/Merge fields">🔀 Split Fields</button>
+        </div>
+        <div class="toolbar-group">
+            <button data-fmt="bold" title="Bold">𝐁</button>
+            <button data-fmt="italic" title="Italic">𝐼</button>
+            <button data-fmt="bold-italic" title="Bold Italic">𝑩</button>
+            <button data-fmt="underline" title="Underline">U̲</button>
+            <button data-fmt="strikethrough" title="Strikethrough">S̶</button>
+            <button data-fmt="monospace" title="Monospace">`</button>
+            <button data-fmt="hidden" title="Hidden text">◐</button>
+            <button data-fmt="link" title="Link">🔗</button>
+            <button data-fmt="quote" title="Quote">❝</button>
+            <div class="dropdown">
+                <button id="specialCharsBtn" title="Special characters">★</button>
+                <div class="dropdown-content" id="specialCharsMenu"></div>
+            </div>
+            <div class="dropdown">
+                <button id="emojiBtn" title="Emojis">😀</button>
+                <div class="dropdown-content" id="emojiMenu"></div>
+            </div>
+        </div>
+        <div class="toolbar-group">
+            <select id="saveFormat" title="Save format">
+                <option value="txt">.txt</option>
+                <option value="md" selected>.md</option>
+                <option value="js">.js</option>
+                <option value="html">.html</option>
+                <option value="json">.json</option>
+            </select>
+            <button id="saveBtn">💾 Save</button>
+            <select id="interfaceLang" title="Interface language" style="margin-left:0.5rem;">
+                <option value="en">EN</option>
+                <option value="ru">RU</option>
+                <option value="uk">UA</option>
+            </select>
+            <label style="font-size:0.8rem; display:flex; align-items:center; gap:0.3rem; margin-left: 0.5rem; cursor: pointer;">
+                <span id="lblSpell">🌐 Spellcheck:</span>
+                <select id="spellcheckLang">
+                    <option value="en">EN</option>
+                    <option value="ru" selected>RU</option>
+                    <option value="uk">UA</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div class="settings-panel">
+        <label style="cursor: pointer;">
+            <span id="lblTheme">🌙 Theme:</span>
+            <select id="themeSelect">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="sepia">Sepia</option>
+                <option value="custom">Custom</option>
+            </select>
+        </label>
+        <label style="cursor: pointer; display:flex; align-items:center; gap: 0.3rem;" title="Background color">
+            <span id="lblBg">🎨 Background:</span>
+            <input type="color" id="themeColorPicker" value="#f1f5f9">
+        </label>
+        <label style="cursor: pointer; display:flex; align-items:center; gap: 0.3rem;" title="Editor fields color">
+            <span id="lblFields">☀️ Fields:</span>
+            <input type="color" id="dialogColorPicker" value="#ffffff">
+        </label>
+        <label style="display:flex; align-items:center; gap:0.3rem;">
+            <span id="lblFont">✏️ Font:</span>
+            <button id="fontMinus" title="Decrease">−</button>
+            <span id="fontSizeValue" style="min-width:40px; text-align:center; font-weight: bold;">16px</span>
+            <button id="fontPlus" title="Increase">+</button>
+            <button id="fontReset" title="Reset font">↺</button>
+        </label>
+        <button id="resetAllSettings" class="clear-btn" style="font-size:0.6rem; margin-left:auto;">⚙️ Reset Settings</button>
+    </div>
+    <div class="editor-container">
+        <div class="editor-wrapper" id="editorWrapper">
+            <div class="editor-pane">
+                <div class="editor-header">
+                    <span id="hdrDraft">📝 Draft</span>
+                    <span id="counter1" style="font-size:0.75rem;">0 symbols</span>
+                </div>
+                <div id="notesArea" class="editor-content" contenteditable="true" 
+                     spellcheck="true" lang="en" data-placeholder="Write here... Format with the buttons or insert symbols."></div>
+            </div>
+            <div class="editor-pane" id="secondPane" style="display:none;">
+                <div class="editor-header">
+                    <span id="hdrClean">📄 Cleanup</span>
+                    <span id="counter2" style="font-size:0.75rem;">0 symbols</span>
+                </div>
+                <div id="cleanArea" class="editor-content" contenteditable="true" 
+                     spellcheck="true" lang="en" data-placeholder="Final version..."></div>
+            </div>
+        </div>
+    </div>
+    <div class="status-bar">
+        <span id="footerText">📘 Notepad .....🖍 | 🔍 Ctrl+F | 💾 Autosave | ✒️ Spell check | 🌐 Offline</span> 
+        <span id="mainCounter" style="font-weight: bold;">0 total symbols</span>
+    </div>
+</div>
+
+<script>
+    const STORAGE_KEYS = { text1: 'pro_notes_main', text2: 'pro_notes_clean', settings: 'pro_notes_settings_v3' };
+    const DEFAULT_SETTINGS = { theme: 'light', dialogColor: '#ffffff', fontSize: 16, splitMode: false, customThemeColor: '#10b981', interfaceLang: 'en' };
+    
+    const I18N = {
+        en: { copy:'📄 Copy', clear:'❌ Clear Field', split:'🔀 Split Fields', merge:'🔗 Merge Fields', save:'💾 Save', theme:'🌙 Theme:', light:'Light', dark:'Dark', sepia:'Sepia', custom:'Custom', bg:'🎨 Background:', fields:'☀️ Fields:', font:'✏️ Font:', reset:'⚙️ Reset Settings', draft:'📝 Draft', clean:'📄 Cleanup', sym:'symbols', total:'total symbols', footer:'📘 Notepad .....🖍 | 🔍 Ctrl+F | 💾 Autosave | ✒️ Spell check | 🌐 Offline', ph1:'Write here... Format with the buttons or insert symbols.', ph2:'Final version...', fmt:{bold:'Bold',italic:'Italic',bi:'Bold Italic',ul:'Underline',st:'Strikethrough',mono:'Monospace',hid:'Hidden',link:'Link',quote:'Quote'}, chars:'Special characters', emojis:'Emojis', saveFmt:'Save format', spell:'🌐 Spellcheck:', msgClear:'Clear field?', msgReset:'Reset interface? Text will remain.' },
+        ru: { copy:'📋 Копировать', clear:'🧹 Очистить поле', split:'🔀 Разделить', merge:'🔗 Объединить', save:'💾 Сохранить', theme:'🌙 Тема:', light:'Светлая', dark:'Тёмная', sepia:'Сепия', custom:'Кастомная', bg:'🎨 Фон:', fields:'☀️ Поля:', font:'✏️ Шрифт:', reset:'⚙️ Сброс настроек', draft:'📝 Черновик', clean:'📄 Чистовик', sym:'симв.', total:'символов всего', footer:'📘 Notepad .....🖍 | 🔍 Ctrl+F | 💾 Автосохранение | ✒️ Проверка | 🌐 Офлайн', ph1:'Пиши здесь... Форматируй кнопками или вставляй символы.', ph2:'Чистовой вариант...', fmt:{bold:'Жирный',italic:'Курсив',bi:'Жирный курсив',ul:'Подчёркнутый',st:'Зачёркнутый',mono:'Моноширинный',hid:'Скрытый',link:'Ссылка',quote:'Цитата'}, chars:'Спецсимволы', emojis:'Смайлы', saveFmt:'Формат', spell:'🌐 Проверка:', msgClear:'Очистить текущее поле?', msgReset:'Сбросить настройки интерфейса? Текст будет сохранен.' },
+        uk: { copy:'📋 Копіювати', clear:'🧹 Очистити поле', split:'🔀 Розділити', merge:'🔗 Об\'єднати', save:'💾 Зберегти', theme:'🌙 Тема:', light:'Світла', dark:'Темна', sepia:'Сепія', custom:'Кастомна', bg:'🎨 Фон:', fields:'☀️ Поля:', font:'✏️ Шрифт:', reset:'⚙️ Скинути налаштування', draft:'📝 Чернетка', clean:'📄 Чистовик', sym:'симв.', total:'символів всього', footer:'📘 Notepad .....🖍 | 🔍 Ctrl+F | 💾 Автосохранення | ✒️ Перевірка | 🌐 Офлайн', ph1:'Пиши тут... Форматуй кнопками або вставляй символи.', ph2:'Чистовий варіант...', fmt:{bold:'Жирний',italic:'Курсив',bi:'Жирний курсив',ul:'Підкреслений',st:'Закреслений',mono:'Monospace',hid:'Прихований',link:'Посилання',quote:'Цитата'}, chars:'Спецсимволи', emojis:'Смайли', saveFmt:'Формат', spell:'🌐 Перевірка:', msgClear:'Очистити поточне поле?', msgReset:'Скинути налаштування інтерфейсу? Текст залишиться.' }
+    };
+
+    const els = { ed1: document.getElementById('notesArea'), ed2: document.getElementById('cleanArea'), pane2: document.getElementById('secondPane'), c1: document.getElementById('counter1'), c2: document.getElementById('counter2'), mainC: document.getElementById('mainCounter'), themeSelect: document.getElementById('themeSelect'), dialogColor: document.getElementById('dialogColorPicker'), themeColor: document.getElementById('themeColorPicker'), fontM: document.getElementById('fontMinus'), fontP: document.getElementById('fontPlus'), fontR: document.getElementById('fontReset'), fontVal: document.getElementById('fontSizeValue'), saveBtn: document.getElementById('saveBtn'), saveFormat: document.getElementById('saveFormat'), spellLang: document.getElementById('spellcheckLang'), splitBtn: document.getElementById('splitBtn'), copyBtn: document.getElementById('copyBtn'), clearBtn: document.getElementById('clearBtn'), resetAll: document.getElementById('resetAllSettings'), interfaceLang: document.getElementById('interfaceLang'), lblTheme: document.getElementById('lblTheme'), lblBg: document.getElementById('lblBg'), lblFields: document.getElementById('lblFields'), lblFont: document.getElementById('lblFont'), lblSpell: document.getElementById('lblSpell'), hdrDraft: document.getElementById('hdrDraft'), hdrClean: document.getElementById('hdrClean'), footer: document.getElementById('footerText'), spCharsBtn: document.getElementById('specialCharsBtn'), emojiBtn: document.getElementById('emojiBtn') };
+
+    let settings = { ...DEFAULT_SETTINGS }, activeEditor = els.ed1;
+    const SPECIAL_CHARS = ['©','®','™','°','±','§','¶','•','…','–','—','«','»','‹','›','{','}','[',']','(',')','<','>','|','\\','/','*','^','%','$','#','@','!','~','€','£','¥','¢','₴','₽','₿','∞','≠','≈','≤','≥','√','∫','∑','∏','π','Ω','Δ','λ','μ','σ','α','β','γ','δ','ε','θ','→','←','↑','↓','↔','⇒','⇐','∀','∃','∅','∈','∉','⊂','⊃','∪','∩','∧','∨','¬','⊕','⊗','⊥','∥','∠','∘','∙','√','∛','∜','∝','∟','∥','≡','≅','∼','≃','≄','≅','≇','≈','≉','≊','≋','≌','≍','≎','≏','≐','≑','≒','≓','≔','≕','≖','≗','≘','≙','≚','≛','≜','≝','≞','≟','≠','≡','≢','≣','≤','≥','≦','≧','≨','≩','≪','≫','≬','≭','≮','≯','≰','≱','≲','≳','≴','≵','≶','≷','≸','≹','≺','≻','≼','≽','≾','≿','⊀','⊁','⊂','⊃','⊄','⊅','⊆','⊇','⊈','⊉','⊊','⊋','⊌','⊍','⊎','⊏','⊐','⊑','⊒','⊓','⊔','⊕','⊖','⊗','⊘','⊙','⊚','⊛','⊜','⊝','⊞','⊟','⊠','⊡','⊢','⊣','⊤','⊥','⊦','⊧','⊨','⊩','⊪','⊫','⊬','⊭','⊮','⊯','⊰','⊱','⊲','⊳','⊴','⊵','⊶','⊷','⊸','⊹','⊺','⊻','⊼','⊽','⊾','⊿','⋀','⋁','⋂','⋃','⋄','⋅','⋆','⋇','⋈','⋉','⋊','⋋','⋌','⋍','⋎','⋏','⋐','⋑','⋒','⋓','⋔','⋕','⋖','⋗','⋘','⋙','⋚','⋛','⋜','⋝','⋞','⋟','⋠','⋡','⋢','⋣','⋤','⋥','⋦','⋧','⋨','⋩','⋪','⋫','⋬','⋭','⋮','⋯','⋰','⋱'];
+    const EMOJIS = ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','😚','😙','🥲','😋','😛','😜','🤪','😝','🤑','🤗','🤭','🤫','🤔','🤐','🤨','😐','😑','😶','😏','😒','🙄','😬','🤥','😌','😔','😪','🤤','😴','😷','🤒','🤕','🤢','🤮','🤧','🥵','🥶','🥴','😵','🤯','🤠','🥳','🥸','😎','🤓','🧐','😕','😟','🙁','☹️','😮','😯','😲','😳','🥺','🥹','😦','😧','😨','😰','😥','😢','😭','😱','😖','😣','😞','😓','😩','😫','🥱','😤','😡','😠','🤬','😈','👿','💀','☠️','💩','🤡','👹','👺','👻','👽','👾','🤖','😺','😸','😹','😻','😼','😽','🙀','😿','😾','🙈','🙉','🙊','💋','💌','💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔','❤️','🧡','💛','💚','💙','💜','🤎','🖤','🤍','💯','💢','💥','💫','💦','💨','🕳️','💣','💬','👁️‍🗨️','🗨️','🗯️','💭','💤','👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍','👎','✊','👊','🤛','🤜','👏','🙌','👐','🤲','🤝','🙏','✍️','💅','🤳','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🫀','🫁','🦷','🦴','👀','👁️','👅','👄','👶','🧒','👦','👧','🧑','👱','👨','🧔','👩','🧓','👴','👵','🙍','🙎','🙅','🙆','💁','🙋','🧏','🙇','🤦','🤷','👮','🕵️','💂','🥷','👷','🤴','👸','👳','👲','🧕','🤵','👰','🤰','🤱','👼','🎅','🤶','🦸','🦹','🧙','🧚','🧛','🧜','🧝','🧞','🧟','💆','💇','🚶','🧍','🧎','🏃','💃','🕺','👯','🧖','🧗','🤺','🏇','⛷️','🏂','🏌️','🏄','🚣','🏊','⛹️','🏋️','🚴','🚵','🤸','🤼','🤽','🤾','🤹','🧘','🛀','🛌','👭','👫','👬','💏','💑','👪','👨‍👩‍👧','👨‍👩‍👧‍👦','👨‍👩‍👦‍👦','👨‍👩‍👧‍👧','👩‍👩‍👦','👩‍👩‍👧','👨‍👨‍👦','👨‍👨‍👧','👚','👕','👖','🧣','🧤','🧥','🧦','👗','👘','🥻','🩱','🩲','🩳','👙','👛','👜','👝','🎒','👞','👟','🥾','🥿','👠','👡','🩴','👢','👑','👒','🎩','🎓','🧢','⛑️','📿','💄','💍','💎','🔇','🔈','🔉','🔊','📢','📣','📯','🔔','🔕','🎼','🎵','🎶','🎤','🎧','📻','🎷','🪗','🎸','🎹','🎺','🎻','🪕','🥁','🪘','📱','📲','☎️','📞','📟','📠','🔋','🔌','💻','🖥️','🖨️','⌨️','🖱️','🖲️','💽','💾','💿','📀','🧮','🎥','🎞️','📽️','🎬','📺','📷','📸','📹','📼','🔍','🔎','🕯️','💡','🔦','🏮','🪔','📔','📕','📖','📗','📘','📙','📚','📓','📒','📃','📜','📄','📰','🗞️','📑','🔖','💰','🪙','💴','💵','💶','💷','💸','💳','🧾','💹','✉️','📧','📨','📩','📤','📥','📦','📫','📪','📬','📭','📮','🗳️','✏️','✒️','🖋️','🖊️','🖌️','🖍️','📝','💼','📁','📂','🗂️','📅','📆','🗒️','🗓️','📇','📈','📉','📊','📋','📌','📍','📎','🖇️','📏','📐','✂️','🗃️','🗄️','🗑️','🔒','🔓','🔏','🔐','🔑','🗝️','🔨','🪓','⛏️','⚒️','🛠️','🗡️','⚔️','🔫','🪃','🏹','🛡️','🪚','🔧','🪛','🔩','⚙️','🗜️','⚖️','🦯','🔗','⛓️','🪝','🧰','🧲','🪜','⚗️','🧪','🧫','🧬','🔬','🔭','📡','💉','🩸','💊','🩹','🩺','🚪','🛗','🪞','🪟','🛏️','🛋️','🪑','🚽','🪠','🚿','🛁','🪤','🪒','🧴','🧷','🧹','🧺','🧻','🪣','🧼','🪥','🧽','🧯','🛒','🚬','⚰️','🪦','⚱️','🗿','🪧','🏧','🚮','🚰','♿','🚹','🚺','🚻','🚼','🚾','🛂','🛃','🛄','🛅','⚠️','🚸','⛔','🚫','🚳','🚭','🚯','🚱','🚷','📵','🔞','☢️','☣️','⬆️','↗️','➡️','↘️','⬇️','↙️','⬅️','↖️','↕️','↔️','↩️','↪️','⤴️','⤵️','🔃','🔄','🔙','🔚','🔛','🔜','🔝','🛐','⚛️','🕉️','✡️','☸️','☯️','✝️','☦️','☪️','☮️','🕎','🔯','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','⛎','🔀','🔁','🔂','▶️','⏩','⏭️','⏯️','◀️','⏪','⏮️','🔼','⏫','🔽','⏬','⏸️','⏹️','⏺️','⏏️','🎦','🔅','🔆','📶','📳','📴','♀️','♂️','⚧️','✖️','➕','➖','➗','♾️','‼️','⁉️','❓','❔','❕','❗','〰️','💱','💲','⚕️','♻️','⚜️','🔱','📛','🔰','⭕','✅','☑️','✔️','❌','❎','➰','➿','〽️','✳️','✴️','❇️','©️','®️','™️','🔠','🔡','🔢','🔣','🔤','🅰️','🆎','🅱️','🆑','🆒','🆓','ℹ️','🆔','Ⓜ️','🆕','🆖','🅾️','🆗','🅿️','🆘','🆙','🆚','🈁','🈂️','🈷️','🈶','🈯','🉐','🈹','🈚','🈲','🉑','🈸','🈴','🈳','㊗️','㊙️','🈺','🈵','🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪','🟥','🟧','🟨','🟩','🟦','🟪','🟫','⬛','⬜','◼️','◻️','◾','◽','▪️','▫️','🔶','🔷','🔸','🔹','🔺','🔻','💠','🔘','🔳','🔲'];
+
+    function getLuminance(hex) { if (!hex?.startsWith('#') || hex.length !== 7) return 0.5; const [r,g,b] = [1,3,5].map(i => parseInt(hex.slice(i,i+2),16)/255); const [rs,gs,bs] = [r,g,b].map(c => c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4)); return 0.2126*rs + 0.7152*gs + 0.0722*bs; }
+    function getContrastColor(hex) { return getLuminance(hex) > 0.5 ? '#0f172a' : '#e2e8f0'; }
+
+    function applyLanguage(lang) {
+        const t = I18N[lang] || I18N.en;
+        els.copyBtn.textContent = t.copy; els.clearBtn.textContent = t.clear; els.splitBtn.textContent = settings.splitMode ? t.merge : t.split; els.splitBtn.title = els.splitBtn.textContent; els.saveBtn.textContent = t.save;
+        els.lblTheme.textContent = t.theme; els.lblBg.textContent = t.bg; els.lblFields.textContent = t.fields; els.lblFont.textContent = t.font; els.lblSpell.textContent = t.spell; els.resetAll.textContent = t.reset;
+        els.hdrDraft.textContent = t.draft; els.hdrClean.textContent = t.clean; els.footer.textContent = t.footer;
+        els.ed1.dataset.placeholder = t.ph1; els.ed2.dataset.placeholder = t.ph2;
+        document.querySelector('[data-fmt="bold"]').title = t.fmt.bold; document.querySelector('[data-fmt="italic"]').title = t.fmt.italic; document.querySelector('[data-fmt="bold-italic"]').title = t.fmt.bi; document.querySelector('[data-fmt="underline"]').title = t.fmt.ul; document.querySelector('[data-fmt="strikethrough"]').title = t.fmt.st; document.querySelector('[data-fmt="monospace"]').title = t.fmt.mono; document.querySelector('[data-fmt="hidden"]').title = t.fmt.hid; document.querySelector('[data-fmt="link"]').title = t.fmt.link; document.querySelector('[data-fmt="quote"]').title = t.fmt.quote;
+        els.spCharsBtn.title = t.chars; els.emojiBtn.title = t.emojis; els.saveFormat.title = t.saveFmt;
+        const opts = els.themeSelect.querySelectorAll('option'); if (opts.length >= 4) { opts[0].textContent=t.light; opts[1].textContent=t.dark; opts[2].textContent=t.sepia; opts[3].textContent=t.custom; }
+        if (els.interfaceLang) els.interfaceLang.value = lang; settings.interfaceLang = lang; saveSettings(); updateCounters();
+    }
+
+    function applyTheme(theme, customColor = null) {
+        const root = document.documentElement; root.classList.remove('light','dark','sepia');
+        if (theme === 'custom' && customColor) {
+            const lum = getLuminance(customColor), isLight = lum > 0.5;
+            const cardBg = isLight ? `hsl(0,0%,${Math.min(98,100-(1-lum)*20)}%)` : `hsl(0,0%,${Math.max(12,20+lum*30)}%)`;
+            root.style.setProperty('--bg-body',customColor); root.style.setProperty('--card-bg',cardBg);
+            root.style.setProperty('--toolbar-bg',customColor); root.style.setProperty('--border-color',isLight?'#cbd5e1':'#475569');
+            root.style.setProperty('--status-bg', customColor);
+            const tc = isLight ? '#0f172a' : '#e2e8f0';
+            root.style.setProperty('--btn-text',tc); root.style.setProperty('--status-text',tc); root.style.setProperty('--info-text',isLight?'#475569':'#94a3b8');
+            root.style.setProperty('--btn-bg',isLight?'#ffffff':'#1e293b'); root.style.setProperty('--btn-border',isLight?'#cbd5e1':'#475569');
+            root.style.setProperty('--btn-hover-bg',isLight?'#eef2ff':'#334155'); root.style.setProperty('--btn-hover-border',isLight?'#94a3b8':'#64748b');
+            root.style.setProperty('--clear-btn-bg',isLight?'#fff1f0':'#2d1a1a'); root.style.setProperty('--clear-btn-text',isLight?'#b91c1c':'#fecaca');
+            root.style.setProperty('--clear-btn-border',isLight?'#fecaca':'#7f2c2c'); root.style.setProperty('--clear-btn-hover-bg',isLight?'#fee2e2':'#3f2020');
+            root.style.setProperty('--shadow',isLight?'0 20px 35px -10px rgba(0,0,0,0.1)':'0 20px 30px -10px rgba(0,0,0,0.6)');
+        } else { root.style.cssText=''; root.classList.add(theme); }
+        applyEditorStyles(els.ed1, settings.dialogColor); if (els.ed2) applyEditorStyles(els.ed2, settings.dialogColor);
+    }
+    function applyEditorStyles(ed, bg) { ed.style.backgroundColor = bg; ed.style.color = getContrastColor(bg); }
+
+    function applyFormat(type) { 
+        activeEditor.focus(); 
+        if (type==='link') { const u=prompt('Enter URL:','https://'); if(u) document.execCommand('createLink',false,u); return; } 
+        if (type==='hidden') { 
+            const sel = window.getSelection();
+            const txt = sel.toString() || 'text';
+            document.execCommand('insertHTML',false,`<span class="hidden">${txt}</span>`); 
+            return; 
+        } 
+        if (type==='quote') { document.execCommand('formatBlock',false,'blockquote'); return; } 
+        if (type==='monospace') { document.execCommand('fontName',false,'monospace'); return; } 
+        const cmd = { bold:'bold', italic:'italic', underline:'underline', strikethrough:'strikeThrough', 'bold-italic':()=>{document.execCommand('bold');document.execCommand('italic');} }[type]; 
+        if (typeof cmd==='function') cmd(); else if(cmd) document.execCommand(cmd,false,null); 
+        updateCounters(); autoSave(); 
+    }
+    
+    function insertAtCursor(txt) { 
+        activeEditor.focus(); 
+        const sel=window.getSelection(); 
+        if(!sel.rangeCount) return; 
+        let range = sel.getRangeAt(0); 
+        if (!activeEditor.contains(range.commonAncestorContainer)) {
+            range = document.createRange();
+            range.selectNodeContents(activeEditor);
+            range.collapse(false);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+        range.deleteContents(); 
+        const node = document.createTextNode(txt);
+        range.insertNode(node); 
+        range.collapse(false); 
+        sel.removeAllRanges(); 
+        sel.addRange(range); 
+        updateCounters(); 
+        autoSave(); 
+    }
+    
+    function updateCounters() { const c1=els.ed1.innerText.length, c2=els.ed2?els.ed2.innerText.length:0, lang=settings.interfaceLang||'en'; const sym=I18N[lang]?.sym||'symbols', tot=I18N[lang]?.total||'total symbols'; els.c1.textContent=`${c1} ${sym}`; if(els.c2) els.c2.textContent=`${c2} ${sym}`; els.mainC.textContent=`${c1+c2} ${tot}`; }
+
+    function loadSettings() { try { const s=localStorage.getItem(STORAGE_KEYS.settings); if(s) settings={...DEFAULT_SETTINGS,...JSON.parse(s)}; } catch(e){} els.themeSelect.value=settings.theme; els.dialogColor.value=settings.dialogColor; els.themeColor.value=settings.theme==='custom'?settings.customThemeColor:(settings.theme==='dark'?'#0f172a':(settings.theme==='sepia'?'#f4ecd8':'#f1f5f9')); applyTheme(settings.theme, settings.customThemeColor); setFontSize(settings.fontSize); if(settings.interfaceLang) { els.interfaceLang.value=settings.interfaceLang; applyLanguage(settings.interfaceLang); } if(settings.splitMode) toggleSplitView(true); else toggleSplitView(false); }
+    function saveSettings() { localStorage.setItem(STORAGE_KEYS.settings, JSON.stringify(settings)); }
+    function autoSave() { localStorage.setItem(STORAGE_KEYS.text1, els.ed1.innerHTML); if(els.ed2) localStorage.setItem(STORAGE_KEYS.text2, els.ed2.innerHTML); updateCounters(); }
+    function loadContent() { const lang=settings.interfaceLang||'en'; els.ed1.innerHTML = localStorage.getItem(STORAGE_KEYS.text1) || `## Hello, Amigo! 👋\n\nThis is a **smart notepad** with:\n- ✅ Visual formatting\n- 🎨 Custom background + auto-contrast\n- 💾 Export to .txt/.md/.js/.html/.json\n- 🔀 Split view (draft/cleanup)\n- 😊 Huge emoji & symbols library`; if(els.ed2) { els.ed2.innerHTML = localStorage.getItem(STORAGE_KEYS.text2)||''; els.ed2.dataset.placeholder = I18N[lang]?.ph2||'Final version...'; } els.ed1.dataset.placeholder = I18N[lang]?.ph1||'Write here...'; updateCounters(); }
+    function saveFile() { const content = settings.splitMode ? `=== DRAFT ===\n${els.ed1.innerText}\n\n=== CLEANUP ===\n${els.ed2.innerText}` : els.ed1.innerText; const fmt=els.saveFormat.value, fn=`note_${new Date().toISOString().slice(0,10)}`; const cfg = { md:{ext:'.md',mime:'text/markdown',wrap:c=>c}, txt:{ext:'.txt',mime:'text/plain',wrap:c=>c}, js:{ext:'.js',mime:'text/javascript',wrap:c=>`// ${fn}.js\n${c}`}, html:{ext:'.html',mime:'text/html',wrap:c=>`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Note</title></head><body><pre>${c.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</pre></body></html>`}, json:{ext:'.json',mime:'application/json',wrap:c=>JSON.stringify({content:c,date:new Date().toISOString()},null,2)} }[fmt] || {ext:'.txt',mime:'text/plain',wrap:c=>c}; const blob=new Blob([cfg.wrap(content)],{type:cfg.mime}), url=URL.createObjectURL(blob); const a=Object.assign(document.createElement('a'),{href:url,download:fn+cfg.ext}); document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); }
+
+    function initMenus() { 
+        const build=(id,items,sp)=>{ 
+            const c=document.getElementById(id); c.innerHTML=''; 
+            items.forEach(i=>{ 
+                const s=document.createElement('span'); 
+                s.className='dropdown-item'; s.textContent=i; s.title=i; 
+                s.addEventListener('mousedown', e => e.preventDefault());
+                s.onclick=e=>{ insertAtCursor(e.target.textContent+sp); c.classList.remove('show'); }; 
+                c.appendChild(s); 
+            }); 
+        }; 
+        build('specialCharsMenu',SPECIAL_CHARS,''); build('emojiMenu',EMOJIS,' '); 
+        const tgl=(btn,menu,alt)=>document.getElementById(btn).onclick=e=>{ e.stopPropagation(); document.getElementById(menu).classList.toggle('show'); document.getElementById(alt).classList.remove('show'); }; 
+        tgl('specialCharsBtn','specialCharsMenu','emojiMenu'); tgl('emojiBtn','emojiMenu','specialCharsMenu'); 
+        document.onclick=()=>document.querySelectorAll('.dropdown-content').forEach(m=>m.classList.remove('show')); 
+    }
+
+    const syncScroll = e => { 
+        const t = e.target === els.ed1 ? els.ed2 : els.ed1; 
+        if (t) t.scrollTop = e.target.scrollTop; 
+    };
+
+    function toggleSplitView(force) { 
+        settings.splitMode = force!==undefined?force:!settings.splitMode; 
+        els.pane2.style.display = settings.splitMode?'flex':'none'; 
+        const lang=settings.interfaceLang||'en'; 
+        els.splitBtn.textContent = settings.splitMode?I18N[lang].merge:I18N[lang].split; 
+        els.splitBtn.title = els.splitBtn.textContent; 
+        const m = settings.splitMode ? 'addEventListener' : 'removeEventListener'; 
+        els.ed1[m]('scroll', syncScroll); 
+        if(els.ed2) els.ed2[m]('scroll', syncScroll); 
+        saveSettings(); updateCounters(); 
+    }
+    
+    function setFontSize(v) { settings.fontSize=Math.max(10,Math.min(32,v)); [els.ed1,els.ed2].forEach(e=>{if(e)e.style.fontSize=`${settings.fontSize}px`}); els.fontVal.textContent=`${settings.fontSize}px`; saveSettings(); }
+
+    document.querySelectorAll('[data-fmt]').forEach(b => {
+        b.addEventListener('mousedown', e => e.preventDefault());
+        b.onclick=e=>applyFormat(e.currentTarget.dataset.fmt);
+    });
+    
+    [els.ed1,els.ed2].forEach(e=>{if(e){e.onfocus=()=>activeEditor=e; e.oninput=autoSave;}}); els.saveBtn.onclick=saveFile; els.spellLang.onchange=e=>{[els.ed1,els.ed2].forEach(ed=>ed.lang=e.target.value); activeEditor.blur();activeEditor.focus();}; els.splitBtn.onclick=()=>toggleSplitView(); els.themeSelect.onchange=e=>{settings.theme=e.target.value;if(settings.theme==='custom')els.themeColor.value=settings.customThemeColor||'#10b981';applyTheme(settings.theme,settings.customThemeColor);saveSettings();}; els.themeColor.oninput=e=>{settings.theme='custom';settings.customThemeColor=e.target.value;els.themeSelect.value='custom';applyTheme('custom',settings.customThemeColor);saveSettings();}; els.dialogColor.oninput=e=>{settings.dialogColor=e.target.value;applyTheme(settings.theme,settings.customThemeColor);saveSettings();}; els.fontP.onclick=()=>setFontSize(settings.fontSize+2); els.fontM.onclick=()=>setFontSize(settings.fontSize-2); els.fontR.onclick=()=>setFontSize(DEFAULT_SETTINGS.fontSize); 
+    
+    els.resetAll.onclick=()=>{
+        const lang = settings.interfaceLang || 'en';
+        if(confirm(I18N[lang].msgReset)){
+            settings={...DEFAULT_SETTINGS};
+            localStorage.setItem(STORAGE_KEYS.settings, JSON.stringify(settings));
+            document.documentElement.style.cssText='';
+            loadSettings();
+        }
+    }; 
+    
+    els.copyBtn.onclick=async()=>{try{await navigator.clipboard.writeText(settings.splitMode?`=== DRAFT ===\n${els.ed1.innerText}\n\n=== CLEANUP ===\n${els.ed2.innerText}`:els.ed1.innerText);const o=els.copyBtn.textContent;els.copyBtn.textContent='✅ Copied!';setTimeout(()=>els.copyBtn.textContent=o,1500);}catch{alert('❌ Copy failed');}}; 
+    
+    els.clearBtn.onclick=()=>{
+        const lang = settings.interfaceLang || 'en';
+        if(activeEditor.innerText.trim() && confirm(I18N[lang].msgClear)){
+            activeEditor.innerHTML='';
+            autoSave();
+            activeEditor.focus();
+        }
+    }; 
+    
+    els.interfaceLang.onchange=e=>applyLanguage(e.target.value);
+
+    initMenus(); loadSettings(); loadContent(); els.ed1.focus();
+</script>
+</body>
+</html>
