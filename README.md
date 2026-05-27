@@ -1,4 +1,4 @@
-# 📘 Notepad Pro • Offline-First Smart Editor
+# 📘 Notepad ....🖍
 
 A powerful, privacy-focused text editor that runs entirely in your browser — no server, no tracking, no installation required.
 
