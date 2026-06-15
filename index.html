@@ -1101,7 +1101,17 @@ function toggleSplitView(force) { settings.splitMode = force !== undefined ? for
 function setFontSize(v) { settings.fontSize = Math.max(10, Math.min(32, v)); [els.ed1, els.ed2].forEach(e => { if (e) e.style.fontSize = `${settings.fontSize}px`; }); els.fontVal.textContent = `${settings.fontSize}px`; saveSettings(); }
 function setFontFamily(family) { settings.fontFamily = family; [els.ed1, els.ed2].forEach(e => { if (!e) return; e.classList.remove('font-sans', 'font-serif', 'font-mono'); e.classList.add(`font-${family}`); }); els.fontFamilySelect.value = family; saveSettings(); }
 function setLineSpacing(v) { settings.lineSpacing = Math.round(Math.max(1.0, Math.min(3.0, v)) * 10) / 10; [els.ed1, els.ed2].forEach(e => { if (e) e.style.lineHeight = String(settings.lineSpacing); }); els.lineSpacingValue.textContent = settings.lineSpacing.toFixed(1); saveSettings(); }
-function toggleWordWrap(force) { settings.wordWrap = force !== undefined ? force : !settings.wordWrap; [els.ed1, els.ed2].forEach(e => { if (e) e.classList.toggle('nowrap', !settings.wordWrap); }); if (els.wordWrapBtn) els.wordWrapBtn.textContent = settings.wordWrap ? '↩️ ' + (I18N[settings.interfaceLang || 'en'].wrap || 'Wrap') : '➡️ No Wrap'; saveSettings(); }
+function toggleWordWrap(force) {
+    settings.wordWrap = force !== undefined ? force : !settings.wordWrap;
+    [els.ed1, els.ed2].forEach(e => {
+        if (e) e.classList.toggle('nowrap', !settings.wordWrap);
+    });
+    if (els.wordWrapBtn) {
+        const t = I18N[settings.interfaceLang || 'en'];
+        els.wordWrapBtn.textContent = settings.wordWrap ? t.wrap : t.noWrap;
+    }
+    saveSettings();
+}
 function toggleFocusMode(force) { settings.focusMode = force !== undefined ? force : !settings.focusMode; document.body.classList.toggle('focus-mode', settings.focusMode); if (els.focusBtn) els.focusBtn.textContent = settings.focusMode ? (I18N[settings.interfaceLang || 'en'].exitFocus || '✕ Exit Focus') : (I18N[settings.interfaceLang || 'en'].focusMode || '🎯 Focus'); saveSettings(); if (!settings.focusMode) els.ed1.focus(); }
 
 /* ============================================================
