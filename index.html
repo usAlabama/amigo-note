@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, interactive-widget=resizes-visual">
 <meta name="theme-color" content="#3b82f6">
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Smart notepad with formatting, tabs, themes, focus mode, and offline support.">
@@ -78,7 +78,9 @@ max-width: 1600px; width: 100%; background: var(--card-bg);
 border-radius: 1.25rem; box-shadow: var(--shadow);
 overflow: hidden; transition: background 0.3s ease, box-shadow 0.3s ease;
 display: flex; flex-direction: column;
-height: 98vh; height: 98dvh; position: relative;
+/* ⚡️ FIX: dynamic viewport-aware height */
+height: var(--app-height, 98dvh);
+position: relative;
 }
 
 /* ============================================
@@ -622,6 +624,18 @@ body.print-all #secondPane::before { content: "=== CLEANUP ==="; display: block;
 </div>
 <script>
 "use strict";
+
+/* ⚡️ FIX: dynamic viewport height using Visual Viewport API */
+function updateViewportHeight() {
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const targetHeight = vh * 0.98;
+    document.documentElement.style.setProperty('--app-height', Math.round(targetHeight) + 'px');
+}
+window.addEventListener('resize', updateViewportHeight);
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateViewportHeight);
+}
+updateViewportHeight();
 
 const STORAGE_KEYS = { pagesData: 'pro_notes_pages_ultimate', settings: 'pro_notes_settings_ultimate' };
 const DEFAULT_SETTINGS = {
