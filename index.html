@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, interactive-widget=resizes-visual">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <meta name="theme-color" content="#3b82f6">
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Smart notepad with formatting, tabs, themes, focus mode, and offline support.">
@@ -17,155 +17,159 @@ RESET & BASE VARIABLES
 ============================================ */
 *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 :root, html.light {
---bg-body: #f1f5f9; --card-bg: #ffffff; --toolbar-bg: #f8fafc;
---border-color: #e2e8f0; --btn-bg: #ffffff; --btn-border: #cbd5e1;
---btn-text: #0f172a; --btn-hover-bg: #eef2ff; --btn-hover-border: #94a3b8;
---clear-btn-bg: #fff1f0; --clear-btn-border: #fecaca; --clear-btn-text: #b91c1c;
---clear-btn-hover-bg: #fee2e2; --status-bg: #f1f5f9; --status-text: #334155; 
---info-text: #475569; --shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
---editor-bg: #ffffff; --editor-text: #0f172a;
---tab-active-bg: #3b82f6; --tab-active-text: #ffffff;
---find-bg: #fef3c7; --find-active: #f59e0b;
---accent: #3b82f6; --accent-hover: #2563eb;
---save-dot-color: #22c55e;
+    --bg-body: #f1f5f9; --card-bg: #ffffff; --toolbar-bg: #f8fafc;
+    --border-color: #e2e8f0; --btn-bg: #ffffff; --btn-border: #cbd5e1;
+    --btn-text: #0f172a; --btn-hover-bg: #eef2ff; --btn-hover-border: #94a3b8;
+    --clear-btn-bg: #fff1f0; --clear-btn-border: #fecaca; --clear-btn-text: #b91c1c;
+    --clear-btn-hover-bg: #fee2e2; --status-bg: #f1f5f9; --status-text: #334155;
+    --info-text: #475569; --shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+    --editor-bg: #ffffff; --editor-text: #0f172a;
+    --tab-active-bg: #3b82f6; --tab-active-text: #ffffff;
+    --find-bg: #fef3c7; --find-active: #f59e0b;
+    --accent: #3b82f6; --accent-hover: #2563eb;
+    --save-dot-color: #22c55e;
 }
 html.dark {
---bg-body: #0f172a; --card-bg: #1e293b; --toolbar-bg: #0f172a;
---border-color: #334155; --btn-bg: #1e293b; --btn-border: #475569;
---btn-text: #e2e8f0; --btn-hover-bg: #334155; --btn-hover-border: #64748b;
---clear-btn-bg: #2d1a1a; --clear-btn-border: #7f2c2c; --clear-btn-text: #fecaca;
---clear-btn-hover-bg: #3f2020; --status-bg: #0f172a; --status-text: #cbd5e1;
---info-text: #94a3b8; --shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
---editor-bg: #1e293b; --editor-text: #e2e8f0;
---tab-active-bg: #3b82f6; --tab-active-text: #ffffff;
---find-bg: #78350f; --find-active: #fbbf24;
---accent: #60a5fa; --accent-hover: #3b82f6;
---save-dot-color: #4ade80;
+    --bg-body: #0f172a; --card-bg: #1e293b; --toolbar-bg: #0f172a;
+    --border-color: #334155; --btn-bg: #1e293b; --btn-border: #475569;
+    --btn-text: #e2e8f0; --btn-hover-bg: #334155; --btn-hover-border: #64748b;
+    --clear-btn-bg: #2d1a1a; --clear-btn-border: #7f2c2c; --clear-btn-text: #fecaca;
+    --clear-btn-hover-bg: #3f2020; --status-bg: #0f172a; --status-text: #cbd5e1;
+    --info-text: #94a3b8; --shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+    --editor-bg: #1e293b; --editor-text: #e2e8f0;
+    --tab-active-bg: #3b82f6; --tab-active-text: #ffffff;
+    --find-bg: #78350f; --find-active: #fbbf24;
+    --accent: #60a5fa; --accent-hover: #3b82f6;
+    --save-dot-color: #4ade80;
 }
 html.sepia {
---bg-body: #f4ecd8; --card-bg: #fef9e6; --toolbar-bg: #faf3e0;
---border-color: #e2dccd; --btn-bg: #fff8ed; --btn-border: #d4c9b2;
---btn-text: #5a4a2a; --btn-hover-bg: #fff0db; --btn-hover-border: #c2b39a;
---clear-btn-bg: #ffefdf; --clear-btn-border: #e8c9a8; --clear-btn-text: #a1622b; --clear-btn-hover-bg: #ffe6d5;
---status-bg: #f9f2e2; --status-text: #5a4a2a; --info-text: #7e6b4a;
---shadow: 0 20px 35px -10px rgba(0,0,0,0.08);
---editor-bg: #fffdf5; --editor-text: #3e2723;
---tab-active-bg: #a1622b; --tab-active-text: #ffffff;
---find-bg: #fef3c7; --find-active: #d97706;
---accent: #a1622b; --accent-hover: #7c4e22;
---save-dot-color: #84cc16;
+    --bg-body: #f4ecd8; --card-bg: #fef9e6; --toolbar-bg: #faf3e0;
+    --border-color: #e2dccd; --btn-bg: #fff8ed; --btn-border: #d4c9b2;
+    --btn-text: #5a4a2a; --btn-hover-bg: #fff0db; --btn-hover-border: #c2b39a;
+    --clear-btn-bg: #ffefdf; --clear-btn-border: #e8c9a8; --clear-btn-text: #a1622b;
+    --clear-btn-hover-bg: #ffe6d5; --status-bg: #f9f2e2; --status-text: #5a4a2a;
+    --info-text: #7e6b4a; --shadow: 0 20px 35px -10px rgba(0,0,0,0.08);
+    --editor-bg: #fffdf5; --editor-text: #3e2723;
+    --tab-active-bg: #a1622b; --tab-active-text: #ffffff;
+    --find-bg: #fef3c7; --find-active: #d97706;
+    --accent: #a1622b; --accent-hover: #7c4e22;
+    --save-dot-color: #84cc16;
 }
+
 @media (prefers-reduced-motion: reduce) {
-*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-html { scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto !important; }
 }
+
 :focus-visible { outline: 2px solid var(--accent) !important; outline-offset: 2px !important; border-radius: 0.25rem; }
 .editor-content:focus-visible { outline: none !important; }
 
 /* ============================================
-LAYOUT
-============================================ */
+   LAYOUT
+   ============================================ */
 body {
-margin: 0; min-height: 100vh; min-height: 100dvh;
-background: var(--bg-body);
-font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
-display: flex; justify-content: center; align-items: center;
-padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-transition: background 0.3s ease;
+    margin: 0; min-height: 100vh; min-height: 100dvh;
+    background: var(--bg-body);
+    font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
+    display: flex; justify-content: center; align-items: center;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    transition: background 0.3s ease;
 }
 .notepad-card {
-max-width: 1600px; width: 100%; background: var(--card-bg);
-border-radius: 1.25rem; box-shadow: var(--shadow);
-overflow: hidden; transition: background 0.3s ease, box-shadow 0.3s ease;
-display: flex; flex-direction: column;
-/* ⚡️ FIX: dynamic viewport-aware height */
-height: var(--app-height, 98dvh);
-position: relative;
+    max-width: 1600px; width: 100%; background: var(--card-bg);
+    border-radius: 1.25rem; box-shadow: var(--shadow);
+    overflow: hidden; transition: background 0.3s ease, box-shadow 0.3s ease;
+    display: flex; flex-direction: column;
+    height: 98vh; height: 98dvh; position: relative;
 }
 
 /* ============================================
-TOOLBAR & SETTINGS
-============================================ */
+   TOOLBAR & SETTINGS
+   ============================================ */
 .toolbar, .settings-panel {
-background: var(--toolbar-bg); padding: 0.5rem 1rem;
-border-bottom: 1px solid var(--border-color);
-display: flex; flex-wrap: wrap; gap: 0.4rem;
-align-items: center; justify-content: space-between; flex-shrink: 0;
-color: var(--info-text);
-transition: background 0.3s, border-color 0.3s, color 0.3s;
+    background: var(--toolbar-bg); padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    align-items: center; justify-content: space-between; flex-shrink: 0;
+    color: var(--info-text);
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 .settings-panel { border-top: 1px solid var(--border-color); font-size: 0.8rem; border-bottom: none; }
 .settings-panel label, .settings-panel span { color: var(--btn-text); transition: color 0.3s; }
 .settings-panel-inner { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; flex: 1; }
 .settings-toggle-btn {
-background: none; border: 1px solid var(--btn-border); border-radius: 0.5rem;
-padding: 0.2rem 0.5rem; font-size: 0.85rem; cursor: pointer; color: var(--btn-text);
-display: none; min-height: 30px;
+    background: none; border: 1px solid var(--btn-border); border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem; font-size: 0.85rem; cursor: pointer; color: var(--btn-text);
+    display: none; min-height: 30px;
 }
 .toolbar-group { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
 .toolbar-separator { width: 1px; height: 24px; background: var(--border-color); margin: 0 0.2rem; flex-shrink: 0; }
 .toolbar-mobile-toggle {
-display: none; background: none; border: 1px solid var(--btn-border);
-border-radius: 0.5rem; padding: 0.4rem 0.7rem; font-size: 1.2rem;
-color: var(--btn-text); cursor: pointer; touch-action: manipulation;
+    display: none; background: none; border: 1px solid var(--btn-border);
+    border-radius: 0.5rem; padding: 0.4rem 0.7rem; font-size: 1.2rem;
+    color: var(--btn-text); cursor: pointer; touch-action: manipulation;
 }
 button, select, input[type="file"]::-webkit-file-upload-button {
-background: var(--btn-bg); border: 1px solid var(--btn-border);
-padding: 0.4rem 0.8rem; border-radius: 2rem; font-size: 0.8rem;
-font-weight: 500; cursor: pointer; transition: all 0.15s ease;
-color: var(--btn-text); font-family: inherit; outline: none;
-min-height: 34px; display: inline-flex; align-items: center; justify-content: center;
-touch-action: manipulation; user-select: none;
+    background: var(--btn-bg); border: 1px solid var(--btn-border);
+    padding: 0.4rem 0.8rem; border-radius: 2rem; font-size: 0.8rem;
+    font-weight: 500; cursor: pointer; transition: all 0.15s ease;
+    color: var(--btn-text); font-family: inherit; outline: none;
+    min-height: 34px; display: inline-flex; align-items: center; justify-content: center;
+    touch-action: manipulation; user-select: none;
 }
 @media (hover: hover) {
-button:hover, select:hover { background: var(--btn-hover-bg); border-color: var(--btn-hover-border); transform: translateY(-1px); }
-button:active { transform: translateY(1px); }
+    button:hover, select:hover { background: var(--btn-hover-bg); border-color: var(--btn-hover-border); transform: translateY(-1px); }
+    button:active { transform: translateY(1px); }
 }
 @media (pointer: coarse) {
-button, select, .tab-button, .dropdown-item, .context-menu-item { min-height: 44px; min-width: 44px; }
-.tab-close { min-width: 28px; min-height: 28px; }
+    button, select, .tab-button, .dropdown-item, .context-menu-item { min-height: 44px; min-width: 44px; }
+    .tab-close { min-width: 28px; min-height: 28px; }
 }
-input[type="color"] { padding: 0; width: 28px; height: 28px; border-radius: 50%; overflow: hidden; cursor: pointer; min-height: 28px; border: 1px solid var(--btn-border); }
+input[type="color"] {
+    padding: 0; width: 28px; height: 28px; border-radius: 50%;
+    overflow: hidden; cursor: pointer; min-height: 28px;
+    border: 1px solid var(--btn-border);
+}
 input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
 input[type="color"]::-webkit-color-swatch { border: none; border-radius: 50%; }
 .clear-btn { background: var(--clear-btn-bg); border-color: var(--clear-btn-border); color: var(--clear-btn-text); }
 .clear-btn:hover { background: var(--clear-btn-hover-bg); }
 .theme-quick-btn { font-size: 1.1rem; min-width: 34px; padding: 0.2rem 0.5rem; border-radius: 50%; }
 .save-indicator {
-width: 8px; height: 8px; border-radius: 50%; background: var(--save-dot-color);
-display: inline-block; margin-right: 6px; transition: transform 0.2s ease, opacity 0.2s ease;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--save-dot-color);
+    display: inline-block; margin-right: 6px; transition: transform 0.2s ease, opacity 0.2s ease;
 }
 .save-indicator.saving { transform: scale(1.8); opacity: 0.5; }
 .save-indicator.saved { transform: scale(1); opacity: 1; }
 
 /* ============================================
-EDITOR
-============================================ */
+   EDITOR
+   ============================================ */
 .editor-container {
-flex: 1; min-height: 0; display: flex; flex-direction: column;
-padding: 0.5rem 1rem 0.25rem 1rem; overflow: hidden;
-background: var(--card-bg); transition: background 0.3s;
+    flex: 1; min-height: 0; display: flex; flex-direction: column;
+    padding: 0.5rem 1rem 0.25rem 1rem; overflow: hidden;
+    background: var(--card-bg); transition: background 0.3s;
 }
 .editor-wrapper { display: flex; gap: 1rem; height: 100%; overflow: hidden; }
 .editor-pane {
-flex: 1; display: flex; flex-direction: column; min-width: 0;
-border: 1px solid var(--border-color); border-radius: 0.75rem;
-overflow: hidden; background: var(--card-bg); transition: border-color 0.3s;
+    flex: 1; display: flex; flex-direction: column; min-width: 0;
+    border: 1px solid var(--border-color); border-radius: 0.75rem;
+    overflow: hidden; background: var(--card-bg); transition: border-color 0.3s;
 }
 .editor-header {
-padding: 0.3rem 1rem; font-size: 0.75rem; font-weight: 600;
-color: var(--info-text); background: var(--toolbar-bg);
-border-bottom: 1px solid var(--border-color);
-display: flex; justify-content: space-between; align-items: center;
-transition: background 0.3s, border-color 0.3s, color 0.3s;
+    padding: 0.3rem 1rem; font-size: 0.75rem; font-weight: 600;
+    color: var(--info-text); background: var(--toolbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 .editor-content {
-flex: 1; padding: 1.5rem 2rem; overflow-y: auto;
-font-size: 16px; line-height: 1.6; outline: none;
-background: var(--editor-bg); color: var(--editor-text);
-white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;
-transition: background 0.3s, color 0.3s;
--webkit-overflow-scrolling: touch; caret-color: var(--accent);
+    flex: 1; padding: 1.5rem 2rem; overflow-y: auto;
+    font-size: 16px; line-height: 1.6; outline: none;
+    background: var(--editor-bg); color: var(--editor-text);
+    white-space: pre-wrap; word-wrap: break-word; overflow-wrap: anywhere;
+    transition: background 0.3s, color 0.3s;
+    -webkit-overflow-scrolling: touch; caret-color: var(--accent);
 }
 .editor-content.font-sans { font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif; }
 .editor-content.font-serif { font-family: 'Georgia', 'Times New Roman', 'Palatino', serif; }
@@ -187,37 +191,38 @@ transition: background 0.3s, color 0.3s;
 .editor-content *::selection { background: var(--accent); color: #fff; }
 
 /* ============================================
-TABS & CONTEXT MENU
-============================================ */
+   TABS & CONTEXT MENU
+   ============================================ */
 .tabs-container {
-display: flex; align-items: center; background: var(--toolbar-bg);
-border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
-padding: 0.2rem 1rem; gap: 0.25rem; flex-shrink: 0; min-height: 40px;
-transition: background 0.3s, border-color 0.3s; position: relative;
+    display: flex; align-items: center; background: var(--toolbar-bg);
+    border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+    padding: 0.2rem 1rem; gap: 0.25rem; flex-shrink: 0; min-height: 40px;
+    transition: background 0.3s, border-color 0.3s; position: relative;
 }
 .tabs-scroll-area {
-display: flex; gap: 0.4rem; flex: 1; overflow-x: auto;
-scrollbar-width: thin; padding-bottom: 2px; align-items: center;
+    display: flex; gap: 0.4rem; flex: 1; overflow-x: auto;
+    scrollbar-width: thin; padding-bottom: 2px; align-items: center;
 }
 .tabs-scroll-area::-webkit-scrollbar { height: 4px; }
 .tabs-scroll-area::-webkit-scrollbar-thumb { background: var(--btn-border); border-radius: 4px; }
 .tab-search-input {
-display: none; border: 1px solid var(--btn-border); border-radius: 1rem;
-padding: 0.2rem 0.5rem; font-size: 0.75rem; background: var(--card-bg);
-color: var(--btn-text); max-width: 120px; flex-shrink: 0; margin-right: 0.25rem;
-min-height: 28px; font-family: inherit;
+    display: none; border: 1px solid var(--btn-border); border-radius: 1rem;
+    padding: 0.2rem 0.5rem; font-size: 0.75rem; background: var(--card-bg);
+    color: var(--btn-text); max-width: 120px; flex-shrink: 0; margin-right: 0.25rem;
+    min-height: 28px; font-family: inherit;
 }
 .tab-search-input.visible { display: inline-block; }
 .tab-search-input:focus { border-color: var(--accent); outline: none; }
 .tab-button {
-display: inline-flex; align-items: center; gap: 0.4rem;
-padding: 0.3rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--btn-border);
-background: var(--btn-bg); color: var(--btn-text); font-size: 0.75rem;
-max-width: 180px; flex: 0 0 auto;
-white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-justify-content: space-between; transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-cursor: pointer; user-select: none; min-height: 32px; position: relative;
-animation: tabIn 0.2s ease-out;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--btn-border);
+    background: var(--btn-bg); color: var(--btn-text); font-size: 0.75rem;
+    max-width: 180px; flex: 0 0 auto;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    justify-content: space-between;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    cursor: pointer; user-select: none; min-height: 32px; position: relative;
+    animation: tabIn 0.2s ease-out;
 }
 @keyframes tabIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
 .tab-button.active { background: var(--tab-active-bg); color: var(--tab-active-text); border-color: var(--tab-active-bg); font-weight: bold; }
@@ -227,26 +232,26 @@ animation: tabIn 0.2s ease-out;
 .tab-button.drag-over { border: 2px dashed var(--accent); opacity: 0.7; }
 .tab-button.filtered-out { display: none !important; }
 .tab-close {
-display: inline-flex; align-items: center; justify-content: center;
-width: 18px; height: 18px; border-radius: 50%; font-size: 10px;
-cursor: pointer; opacity: 0.6; transition: opacity 0.15s, background 0.15s;
-flex-shrink: 0; color: inherit; font-weight: bold;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%; font-size: 10px;
+    cursor: pointer; opacity: 0.6; transition: opacity 0.15s, background 0.15s;
+    flex-shrink: 0; color: inherit; font-weight: bold;
 }
 .tab-close:hover { opacity: 1; background: rgba(255,0,0,0.2); }
 .add-tab-btn { padding: 0.25rem 0.7rem; border-radius: 0.5rem; font-weight: bold; font-size: 0.9rem; flex-shrink: 0; }
 .restore-tab-btn { margin-left: 0.25rem; font-size: 0.9rem; opacity: 0.5; cursor: not-allowed; }
 .restore-tab-btn.active { opacity: 1; cursor: pointer; color: var(--accent); border-color: var(--accent); }
 .context-menu {
-position: absolute; display: none; background: var(--card-bg);
-border: 1px solid var(--border-color); border-radius: 0.5rem;
-box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000;
-padding: 0.4rem; min-width: 180px; flex-direction: column; gap: 0.2rem;
+    position: fixed; display: none; background: var(--card-bg);
+    border: 1px solid var(--border-color); border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000;
+    padding: 0.4rem; min-width: 180px; flex-direction: column; gap: 0.2rem;
 }
 .context-menu.show { display: flex; animation: fadeIn 0.15s ease-out; }
 .context-menu-item {
-padding: 0.5rem 0.8rem; font-size: 0.8rem; color: var(--btn-text);
-cursor: pointer; border-radius: 0.3rem; transition: background 0.1s;
-display: flex; align-items: center; gap: 0.5rem; min-height: 36px;
+    padding: 0.5rem 0.8rem; font-size: 0.8rem; color: var(--btn-text);
+    cursor: pointer; border-radius: 0.3rem; transition: background 0.1s;
+    display: flex; align-items: center; gap: 0.5rem; min-height: 36px;
 }
 .context-menu-item:hover { background: var(--btn-hover-bg); }
 .context-menu-item.danger { color: var(--clear-btn-text); }
@@ -254,85 +259,84 @@ display: flex; align-items: center; gap: 0.5rem; min-height: 36px;
 .context-menu-divider { height: 1px; background: var(--border-color); margin: 2px 0; }
 
 /* ============================================
-DROPDOWN MENUS
-============================================ */
+   DROPDOWN MENUS
+   ============================================ */
 .dropdown { position: relative; display: inline-block; }
 .dropdown-content {
-display: none; position: absolute; top: calc(100% + 5px); right: 0;
-background: var(--card-bg); border: 1px solid var(--border-color);
-border-radius: 0.75rem; padding: 0.7rem; min-width: 280px;
-max-height: 260px; overflow-y: auto; box-shadow: var(--shadow);
-z-index: 100;
+    display: none; position: absolute; top: calc(100% + 5px); right: 0;
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 0.75rem; padding: 0.7rem; min-width: 280px;
+    max-height: 260px; overflow-y: auto; box-shadow: var(--shadow);
+    z-index: 100;
 }
 .dropdown-content.grid { display: none; grid-template-columns: repeat(8, 1fr); gap: 0.3rem; }
 .dropdown-content.show { display: block; animation: fadeIn 0.15s ease-out; }
 .dropdown-content.grid.show { display: grid; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 .dropdown-item {
-cursor: pointer; padding: 0.3rem; text-align: center;
-border-radius: 6px; font-size: 1.3rem; transition: 0.1s; user-select: none; color: var(--btn-text);
-min-height: 36px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; padding: 0.3rem; text-align: center;
+    border-radius: 6px; font-size: 1.3rem; transition: 0.1s; user-select: none; color: var(--btn-text);
+    min-height: 36px; display: flex; align-items: center; justify-content: center;
 }
 .dropdown-item.list-item { font-size: 0.85rem; justify-content: flex-start; padding: 0.5rem 1rem; }
 .dropdown-item:hover { background: var(--btn-hover-bg); transform: scale(1.1); }
 .dropdown-item.list-item:hover { transform: none; }
 
 /* ============================================
-FIND BAR & STATUS
-============================================ */
+   FIND BAR & STATUS
+   ============================================ */
 .find-bar {
-display: none; align-items: center; gap: 0.5rem;
-padding: 0.4rem 1rem; background: var(--toolbar-bg);
-border-bottom: 1px solid var(--border-color); flex-shrink: 0;
-animation: fadeIn 0.15s ease-out; flex-wrap: wrap;
+    display: none; align-items: center; gap: 0.5rem;
+    padding: 0.4rem 1rem; background: var(--toolbar-bg);
+    border-bottom: 1px solid var(--border-color); flex-shrink: 0;
+    animation: fadeIn 0.15s ease-out; flex-wrap: wrap;
 }
 .find-bar.visible { display: flex; }
 .find-bar input, .find-bar .find-replace-input {
-flex: 1; max-width: 280px; padding: 0.35rem 0.8rem;
-border: 1px solid var(--btn-border); border-radius: 2rem;
-background: var(--card-bg); color: var(--btn-text);
-font-family: inherit; font-size: 0.85rem;
+    flex: 1; max-width: 280px; padding: 0.35rem 0.8rem;
+    border: 1px solid var(--btn-border); border-radius: 2rem;
+    background: var(--card-bg); color: var(--btn-text);
+    font-family: inherit; font-size: 0.85rem;
 }
 .find-bar input:focus, .find-bar .find-replace-input:focus { border-color: var(--accent); outline: none; }
 .find-bar .find-stats { font-size: 0.75rem; color: var(--info-text); margin-left: auto; }
 .find-bar .find-nav { display: flex; gap: 0.2rem; }
 .status-bar {
-background: var(--status-bg); padding: 0.4rem 1.25rem;
-font-size: 0.72rem; color: var(--status-text);
-display: flex; justify-content: space-between; flex-wrap: wrap;
-gap: 0.4rem; flex-shrink: 0; transition: all 0.3s;
-align-items: center;
+    background: var(--status-bg); padding: 0.4rem 1.25rem;
+    font-size: 0.72rem; color: var(--status-text);
+    display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: 0.4rem; flex-shrink: 0; transition: all 0.3s; align-items: center;
 }
 .status-left, .status-right { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
 .status-badge { background: var(--btn-bg); border: 1px solid var(--btn-border); border-radius: 0.35rem; padding: 0.15rem 0.4rem; font-size: 0.7rem; }
 
 /* ============================================
-MODALS & TOASTS
-============================================ */
+   MODALS & TOASTS
+   ============================================ */
 .toast-container {
-position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-z-index: 4000; display: flex; flex-direction: column; gap: 0.4rem; pointer-events: none;
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    z-index: 4000; display: flex; flex-direction: column; gap: 0.4rem; pointer-events: none;
 }
 .toast {
-background: var(--card-bg); color: var(--btn-text);
-border: 1px solid var(--border-color); border-radius: 0.75rem;
-padding: 0.6rem 1.2rem; font-size: 0.85rem;
-box-shadow: var(--shadow); animation: toastIn 0.25s ease-out; pointer-events: auto; white-space: nowrap;
+    background: var(--card-bg); color: var(--btn-text);
+    border: 1px solid var(--border-color); border-radius: 0.75rem;
+    padding: 0.6rem 1.2rem; font-size: 0.85rem;
+    box-shadow: var(--shadow); animation: toastIn 0.25s ease-out; pointer-events: auto; white-space: nowrap;
 }
 @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .toast.out { animation: toastOut 0.25s ease-in forwards; }
 @keyframes toastOut { to { opacity: 0; transform: translateY(-10px); } }
 .modal-overlay {
-position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-display: none; align-items: center; justify-content: center;
-z-index: 2000; backdrop-filter: blur(4px); padding: 1rem;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    display: none; align-items: center; justify-content: center;
+    z-index: 2000; backdrop-filter: blur(4px); padding: 1rem;
 }
 .modal-overlay.show { display: flex; animation: fadeIn 0.2s ease-out; }
 .modal-content {
-background: var(--card-bg); color: var(--btn-text);
-border: 1px solid var(--border-color); border-radius: 1rem;
-box-shadow: var(--shadow); max-width: 520px; width: 100%;
-max-height: 80vh; overflow-y: auto; padding: 1.5rem;
+    background: var(--card-bg); color: var(--btn-text);
+    border: 1px solid var(--border-color); border-radius: 1rem;
+    box-shadow: var(--shadow); max-width: 520px; width: 100%;
+    max-height: 80vh; overflow-y: auto; padding: 1.5rem;
 }
 .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
 .modal-title { font-size: 1.1rem; font-weight: 700; margin: 0; }
@@ -342,14 +346,11 @@ max-height: 80vh; overflow-y: auto; padding: 1.5rem;
 .shortcuts-table td { padding: 0.5rem 0.3rem; border-bottom: 1px solid var(--border-color); }
 .shortcuts-table td:first-child { font-weight: 600; white-space: nowrap; color: var(--accent); }
 .shortcuts-table tr:last-child td { border-bottom: none; }
-kbd {
-background: var(--toolbar-bg); border: 1px solid var(--btn-border);
-border-radius: 4px; padding: 0.1rem 0.4rem; font-family: inherit; font-size: 0.8rem;
-}
+kbd { background: var(--toolbar-bg); border: 1px solid var(--btn-border); border-radius: 4px; padding: 0.1rem 0.4rem; font-family: inherit; font-size: 0.8rem; }
 
 /* ============================================
-FOCUS MODE
-============================================ */
+   FOCUS MODE
+   ============================================ */
 body.focus-mode .toolbar,
 body.focus-mode .settings-panel,
 body.focus-mode .tabs-container,
@@ -361,70 +362,70 @@ body.focus-mode .editor-container { padding: 0; }
 body.focus-mode .editor-pane { border: none; border-radius: 0; }
 body.focus-mode .editor-header { display: none; }
 .focus-exit-btn {
-position: fixed; top: 1rem; right: 1rem; z-index: 3000;
-background: var(--card-bg); border: 1px solid var(--border-color);
-border-radius: 2rem; padding: 0.5rem 1rem; font-size: 0.85rem;
-cursor: pointer; box-shadow: var(--shadow); display: none;
-color: var(--btn-text); opacity: 0.3; transition: opacity 0.3s;
+    position: fixed; top: 1rem; right: 1rem; z-index: 3000;
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 2rem; padding: 0.5rem 1rem; font-size: 0.85rem;
+    cursor: pointer; box-shadow: var(--shadow); display: none;
+    color: var(--btn-text); opacity: 0.3; transition: opacity 0.3s;
 }
 .focus-exit-btn:hover { opacity: 1; }
 body.focus-mode .focus-exit-btn { display: inline-flex; }
 
 /* ============================================
-MOBILE RESPONSIVE
-============================================ */
+   MOBILE RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
-body { padding: 0; }
-.notepad-card { height: 100vh; height: 100dvh; border-radius: 0; }
-.toolbar { padding: 0.4rem 0.6rem; gap: 0.3rem; position: relative; }
-.toolbar-mobile-toggle { display: inline-flex; }
-.toolbar-groups-wrapper {
-display: none; flex-direction: column; gap: 0.4rem;
-position: absolute; top: 100%; left: 0; right: 0;
-background: var(--toolbar-bg); border-bottom: 1px solid var(--border-color);
-padding: 0.6rem; z-index: 50; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-max-height: 60vh; overflow-y: auto;
-}
-.toolbar-groups-wrapper.open { display: flex; }
-.toolbar-group { justify-content: flex-start; flex-wrap: wrap; }
-.settings-panel { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
-.settings-toggle-btn { display: inline-flex; }
-.settings-panel-inner { display: none; }
-.settings-panel-inner.open { display: flex; flex-direction: column; width: 100%; align-items: flex-start; }
-.editor-container { padding: 0.3rem 0.5rem; }
-.editor-content { padding: 0.8rem 1rem; font-size: 15px; }
-.editor-wrapper { gap: 0.5rem; }
-.status-bar { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-.dropdown-content { right: auto; left: 50%; transform: translateX(-50%); min-width: 260px; }
-.dropdown-content.show { animation: fadeInCenter 0.15s ease-out; transform: translateX(-50%) translateY(0); }
-@keyframes fadeInCenter { from { opacity: 0; transform: translateX(-50%) translateY(-5px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-.find-bar input, .find-bar .find-replace-input { max-width: 100%; width: 100%; }
-.modal-content { padding: 1rem; }
-.tab-search-input { display: none !important; }
+    body { padding: 0; }
+    .notepad-card { height: 100vh; height: 100dvh; border-radius: 0; }
+    .toolbar { padding: 0.4rem 0.6rem; gap: 0.3rem; position: relative; }
+    .toolbar-mobile-toggle { display: inline-flex; }
+    .toolbar-groups-wrapper {
+        display: none; flex-direction: column; gap: 0.4rem;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--toolbar-bg); border-bottom: 1px solid var(--border-color);
+        padding: 0.6rem; z-index: 50; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        max-height: 60vh; overflow-y: auto;
+    }
+    .toolbar-groups-wrapper.open { display: flex; }
+    .toolbar-group { justify-content: flex-start; flex-wrap: wrap; }
+    .settings-panel { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
+    .settings-toggle-btn { display: inline-flex; }
+    .settings-panel-inner { display: none; }
+    .settings-panel-inner.open { display: flex; flex-direction: column; width: 100%; align-items: flex-start; }
+    .editor-container { padding: 0.3rem 0.5rem; }
+    .editor-content { padding: 0.8rem 1rem; font-size: 15px; }
+    .editor-wrapper { gap: 0.5rem; }
+    .status-bar { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
+    .dropdown-content { right: auto; left: 50%; transform: translateX(-50%); min-width: 260px; }
+    .dropdown-content.show { animation: fadeInCenter 0.15s ease-out; transform: translateX(-50%) translateY(0); }
+    @keyframes fadeInCenter { from { opacity: 0; transform: translateX(-50%) translateY(-5px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+    .find-bar input, .find-bar .find-replace-input { max-width: 100%; width: 100%; }
+    .modal-content { padding: 1rem; }
+    .tab-search-input { display: none !important; }
 }
 @media (max-width: 900px) {
-.editor-wrapper { flex-direction: column; }
-.editor-wrapper.split-active { flex-direction: column; }
+    .editor-wrapper { flex-direction: column; }
+    .editor-wrapper.split-active { flex-direction: column; }
 }
 @media (min-width: 901px) {
-.editor-wrapper.split-active { flex-direction: row; }
+    .editor-wrapper.split-active { flex-direction: row; }
 }
 
 /* ============================================
-PRINT STYLES
-============================================ */
+   PRINT STYLES
+   ============================================ */
 @media print {
-body { background: white; padding: 0; }
-.notepad-card { box-shadow: none; height: auto; border-radius: 0; display: block; }
-.toolbar, .settings-panel, .tabs-container, .status-bar, .find-bar, .toolbar-mobile-toggle, .context-menu, .focus-exit-btn, .modal-overlay, .tab-search-input { display: none !important; }
-.editor-container { padding: 0; display: block; overflow: visible; }
-.editor-wrapper { display: block; height: auto; overflow: visible; }
-.editor-pane { border: none; display: block; margin-bottom: 2rem; page-break-inside: avoid; }
-.editor-content { overflow: visible; white-space: pre-wrap; height: auto !important; padding: 0; color: #000 !important; background: #fff !important; }
-body.print-draft #secondPane { display: none !important; }
-body.print-clean .editor-pane:first-child { display: none !important; }
-body.print-all #secondPane { display: block !important; margin-top: 2rem; }
-body.print-all #secondPane::before { content: "=== CLEANUP ==="; display: block; font-weight: bold; margin-bottom: 1rem; font-family: system-ui, sans-serif; font-size: 1.2rem; border-bottom: 2px solid #333; padding-bottom: 0.3rem; }
+    body { background: white; padding: 0; }
+    .notepad-card { box-shadow: none; height: auto; border-radius: 0; display: block; }
+    .toolbar, .settings-panel, .tabs-container, .status-bar, .find-bar, .toolbar-mobile-toggle, .context-menu, .focus-exit-btn, .modal-overlay, .tab-search-input { display: none !important; }
+    .editor-container { padding: 0; display: block; overflow: visible; }
+    .editor-wrapper { display: block; height: auto; overflow: visible; }
+    .editor-pane { border: none; display: block; margin-bottom: 2rem; page-break-inside: avoid; }
+    .editor-content { overflow: visible; white-space: pre-wrap; height: auto !important; padding: 0; color: #000 !important; background: #fff !important; }
+    body.print-draft #secondPane { display: none !important; }
+    body.print-clean .editor-pane:first-child { display: none !important; }
+    body.print-all #secondPane { display: block !important; margin-top: 2rem; }
+    body.print-all #secondPane::before { content: "=== CLEANUP ==="; display: block; font-weight: bold; margin-bottom: 1rem; font-family: system-ui, sans-serif; font-size: 1.2rem; border-bottom: 2px solid #333; padding-bottom: 0.3rem; }
 }
 </style>
 </head>
@@ -442,12 +443,12 @@ body.print-all #secondPane::before { content: "=== CLEANUP ==="; display: block;
 <button id="findBtn" title="Find/Replace (Ctrl+F)" aria-label="Find and Replace">🔍 Find</button>
 <button id="focusBtn" title="Focus mode (Ctrl+Shift+F)" aria-label="Focus mode">🎯 Focus</button>
 <div class="dropdown">
-<button id="printBtnMain" title="Print Options" aria-label="Print options">🖨️ Print</button>
-<div class="dropdown-content" id="printMenu" style="min-width:180px; padding: 0.3rem;">
-<span class="dropdown-item list-item" data-print="all">📑 Print All</span>
-<span class="dropdown-item list-item" data-print="draft">📝 Print Draft Only</span>
-<span class="dropdown-item list-item" data-print="clean">✨ Print Cleanup Only</span>
-</div>
+    <button id="printBtnMain" title="Print Options" aria-label="Print options">🖨️ Print</button>
+    <div class="dropdown-content" id="printMenu" style="min-width:180px; padding: 0.3rem;">
+        <span class="dropdown-item list-item" data-print="all">📑 Print All</span>
+        <span class="dropdown-item list-item" data-print="draft">📝 Print Draft Only</span>
+        <span class="dropdown-item list-item" data-print="clean">✨ Print Cleanup Only</span>
+    </div>
 </div>
 </div>
 <div class="toolbar-separator" aria-hidden="true"></div>
@@ -466,140 +467,148 @@ body.print-all #secondPane::before { content: "=== CLEANUP ==="; display: block;
 <button id="insertDateBtn" title="Insert date/time">📅</button>
 <button id="pastePlainBtn" title="Paste as plain text (Ctrl+Shift+V)">📋</button>
 <div class="dropdown">
-<button id="specialCharsBtn" title="Special characters">★</button>
-<div class="dropdown-content grid" id="specialCharsMenu"></div>
+    <button id="specialCharsBtn" title="Special characters">★</button>
+    <div class="dropdown-content grid" id="specialCharsMenu"></div>
 </div>
 <div class="dropdown">
-<button id="emojiBtn" title="Emojis">😀</button>
-<div class="dropdown-content grid" id="emojiMenu"></div>
+    <button id="emojiBtn" title="Emojis">😀</button>
+    <div class="dropdown-content grid" id="emojiMenu"></div>
 </div>
 </div>
 <div class="toolbar-separator" aria-hidden="true"></div>
 <div class="toolbar-group">
 <select id="saveFormat" title="Save format">
-<option value="txt">.txt</option>
-<option value="md" selected>.md</option>
-<option value="html">.html</option>
-<option value="json">.json</option>
+    <option value="txt">.txt</option>
+    <option value="md" selected>.md</option>
+    <option value="html">.html</option>
+    <option value="json">.json</option>
 </select>
 <button id="saveBtn" aria-label="Save file">💾 Save</button>
 <select id="interfaceLang" title="Interface language" style="margin-left:0.5rem;">
-<option value="en">EN</option>
-<option value="ru">RU</option>
-<option value="uk">UA</option>
+    <option value="en">EN</option>
+    <option value="ru">RU</option>
+    <option value="uk">UA</option>
 </select>
 <label style="font-size:0.8rem; display:flex; align-items:center; gap:0.3rem; margin-left: 0.5rem; cursor: pointer;">
-<span id="lblSpell">🌐 Spellcheck:</span>
-<select id="spellcheckLang">
-<option value="en">EN</option>
-<option value="ru" selected>RU</option>
-<option value="uk">UA</option>
-</select>
+    <span id="lblSpell">🌐 Spellcheck:</span>
+    <select id="spellcheckLang">
+        <option value="en">EN</option>
+        <option value="ru" selected>RU</option>
+        <option value="uk">UA</option>
+    </select>
 </label>
 </div>
 </div>
 </div>
+
 <div class="find-bar" id="findBar">
 <input type="text" id="findInput" placeholder="Search..." autocomplete="off">
 <input type="text" id="replaceInput" class="find-replace-input" placeholder="Replace..." autocomplete="off">
 <div class="find-nav">
-<button id="findPrev" title="Previous">▲</button>
-<button id="findNext" title="Next">▼</button>
-<button id="replaceBtn" title="Replace">🔄</button>
-<button id="replaceAllBtn" title="Replace All">🔁</button>
+    <button id="findPrev" title="Previous">▲</button>
+    <button id="findNext" title="Next">▼</button>
+    <button id="replaceBtn" title="Replace">🔄</button>
+    <button id="replaceAllBtn" title="Replace All">🔁</button>
 </div>
 <button id="findClose" title="Close (Esc)">✕</button>
 <span class="find-stats" id="findStats"></span>
 </div>
+
 <div class="settings-panel" id="settingsPanel">
 <button class="settings-toggle-btn" id="settingsToggleBtn" title="Toggle settings">⚙️ Settings ▾</button>
 <div class="settings-panel-inner" id="settingsPanelInner">
-<label style="cursor: pointer; display:flex; align-items:center; gap:0.3rem;">
-<span id="lblTheme">🌙 Theme:</span>
-<select id="themeSelect">
-<option value="auto">Auto</option>
-<option value="light">Light</option>
-<option value="dark">Dark</option>
-<option value="sepia">Sepia</option>
-<option value="custom">Custom</option>
-</select>
-</label>
-<button class="theme-quick-btn" id="themeQuickBtn" title="Quick theme">🌓</button>
-<label style="cursor: pointer; display:flex; align-items:center; gap: 0.3rem;" title="Background color">
-<span id="lblBg">🎨 Background:</span>
-<input type="color" id="themeColorPicker" value="#f1f5f9">
-</label>
-<label style="cursor: pointer; display:flex; align-items:center; gap: 0.3rem;" title="Editor fields color">
-<span id="lblFields">☀️ Fields:</span>
-<input type="color" id="dialogColorPicker" value="#ffffff">
-</label>
-<label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
-<span id="lblFontFam">🔤 Font:</span>
-<select id="fontFamilySelect">
-<option value="sans">Sans-serif</option>
-<option value="serif">Serif</option>
-<option value="mono" selected>Monospace</option>
-</select>
-</label>
-<label style="display:flex; align-items:center; gap:0.3rem;">
-<button id="fontMinus" title="Decrease font size">−</button>
-<span id="fontSizeValue" style="min-width:35px; text-align:center; font-weight: bold;">16px</span>
-<button id="fontPlus" title="Increase font size">+</button>
-</label>
-<label style="display:flex; align-items:center; gap:0.3rem;">
-<span id="lblLineH">↕️ Line:</span>
-<button id="lineSpacingMinus" title="Decrease line spacing">−</button>
-<span id="lineSpacingValue" style="min-width:30px; text-align:center; font-weight: bold;">1.6</span>
-<button id="lineSpacingPlus" title="Increase line spacing">+</button>
-</label>
-<button id="wordWrapBtn" title="Toggle word wrap">↩️ Wrap</button>
-<button id="exportAllBtn" title="Export all pages">📦 Export Base</button>
-<button id="importAllBtn" title="Import all pages">📥 Import Base</button>
-<input type="file" id="importAllFile" accept=".json" style="display:none;">
-<button id="shortcutsBtn" title="Keyboard shortcuts (Ctrl+/)">⌨️</button>
-<button id="resetAllSettings" class="clear-btn" style="font-size:0.7rem; margin-left:auto;">⚙️ Reset</button>
+    <label style="cursor: pointer; display:flex; align-items:center; gap:0.3rem;">
+        <span id="lblTheme">🌙 Theme:</span>
+        <select id="themeSelect">
+            <option value="auto">Auto</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="sepia">Sepia</option>
+            <option value="custom">Custom</option>
+        </select>
+    </label>
+    <button class="theme-quick-btn" id="themeQuickBtn" title="Quick theme">🌓</button>
+    <label style="cursor: pointer; display:flex; align-items:center; gap: 0.3rem;" title="Background color">
+        <span id="lblBg">🎨 Background:</span>
+        <input type="color" id="themeColorPicker" value="#f1f5f9">
+    </label>
+    <label style="cursor: pointer; display:flex; align-items:center; gap: 0.3rem;" title="Editor fields color">
+        <span id="lblFields">☀️ Fields:</span>
+        <input type="color" id="dialogColorPicker" value="#ffffff">
+    </label>
+    <label style="cursor:pointer; display:flex; align-items:center; gap:0.3rem;">
+        <span id="lblFontFam">🔤 Font:</span>
+        <select id="fontFamilySelect">
+            <option value="sans">Sans-serif</option>
+            <option value="serif">Serif</option>
+            <option value="mono" selected>Monospace</option>
+        </select>
+    </label>
+    <label style="display:flex; align-items:center; gap:0.3rem;">
+        <button id="fontMinus" title="Decrease font size">−</button>
+        <span id="fontSizeValue" style="min-width:35px; text-align:center; font-weight: bold;">16px</span>
+        <button id="fontPlus" title="Increase font size">+</button>
+    </label>
+    <label style="display:flex; align-items:center; gap:0.3rem;">
+        <span id="lblLineH">↕️ Line:</span>
+        <button id="lineSpacingMinus" title="Decrease line spacing">−</button>
+        <span id="lineSpacingValue" style="min-width:30px; text-align:center; font-weight: bold;">1.6</span>
+        <button id="lineSpacingPlus" title="Increase line spacing">+</button>
+    </label>
+    <button id="wordWrapBtn" title="Toggle word wrap">↩️ Wrap</button>
+    <button id="exportAllBtn" title="Export all pages">📦 Export Base</button>
+    <button id="importAllBtn" title="Import all pages">📥 Import Base</button>
+    <input type="file" id="importAllFile" accept=".json" style="display:none;">
+    <button id="shortcutsBtn" title="Keyboard shortcuts (Ctrl+/)">⌨️</button>
+    <button id="resetAllSettings" class="clear-btn" style="font-size:0.7rem; margin-left:auto;">⚙️ Reset</button>
 </div>
 </div>
+
 <div class="editor-container" id="editorContainer">
 <div class="editor-wrapper" id="editorWrapper">
-<div class="editor-pane">
-<div class="editor-header">
-<span id="hdrDraft">📝 Draft</span>
-<span id="counter1" style="font-size:0.72rem;">0 chars · 0 words</span>
+    <div class="editor-pane">
+        <div class="editor-header">
+            <span id="hdrDraft">📝 Draft</span>
+            <span id="counter1" style="font-size:0.72rem;">0 chars · 0 words</span>
+        </div>
+        <div id="notesArea" class="editor-content font-mono" contenteditable="true"
+            spellcheck="true" lang="en" data-placeholder="Write here... Format with the buttons or insert symbols."></div>
+    </div>
+    <div class="editor-pane" id="secondPane" style="display:none;">
+        <div class="editor-header">
+            <span id="hdrClean">📄 Cleanup</span>
+            <span id="counter2" style="font-size:0.72rem;">0 chars · 0 words</span>
+        </div>
+        <div id="cleanArea" class="editor-content font-mono" contenteditable="true"
+            spellcheck="true" lang="en" data-placeholder="Final version..."></div>
+    </div>
 </div>
-<div id="notesArea" class="editor-content font-mono" contenteditable="true" spellcheck="true" lang="en" data-placeholder="Write here... Format with the buttons or insert symbols."></div>
 </div>
-<div class="editor-pane" id="secondPane" style="display:none;">
-<div class="editor-header">
-<span id="hdrClean">📄 Cleanup</span>
-<span id="counter2" style="font-size:0.72rem;">0 chars · 0 words</span>
-</div>
-<div id="cleanArea" class="editor-content font-mono" contenteditable="true" spellcheck="true" lang="en" data-placeholder="Final version..."></div>
-</div>
-</div>
-</div>
+
 <div class="tabs-container">
 <input type="text" class="tab-search-input" id="tabSearchInput" placeholder="Filter tabs..." autocomplete="off">
 <div class="tabs-scroll-area" id="tabsScrollArea"></div>
 <button id="addTabBtn" class="add-tab-btn" title="Add new sheet (Ctrl+T)">+</button>
 <button id="restoreTabBtn" class="add-tab-btn restore-tab-btn" title="Restore deleted tab (Ctrl+Shift+T)">🗑️</button>
 </div>
+
 <div class="status-bar">
 <div class="status-left">
-<span>
-<span class="save-indicator" id="saveIndicator" title="Auto-save status"></span>
-<span id="footerText">📘 Notepad 🖍 | 💾 Autosave | 🌐 Offline</span>
-</span>
-<span class="status-badge" id="lastSavedBadge" title="Last saved"></span>
+    <span>
+        <span class="save-indicator" id="saveIndicator" title="Auto-save status"></span>
+        <span id="footerText">📘 Notepad 🖍 | 💾 Autosave | 🌐 Offline</span>
+    </span>
+    <span class="status-badge" id="lastSavedBadge" title="Last saved"></span>
 </div>
 <div class="status-right">
-<span class="status-badge" id="readTimeBadge" title="Reading time">0 min read</span>
-<span class="status-badge" id="totalCharsBadge">0 chars</span>
-<span class="status-badge" id="totalWordsBadge">0 words</span>
-<span class="status-badge" id="totalLinesBadge">0 lines</span>
-<span class="status-badge" id="totalCharsNoSpacesBadge" title="Characters without spaces">0 chars (no spaces)</span>
+    <span class="status-badge" id="readTimeBadge" title="Reading time">0 min read</span>
+    <span class="status-badge" id="totalCharsBadge">0 chars</span>
+    <span class="status-badge" id="totalWordsBadge">0 words</span>
+    <span class="status-badge" id="totalLinesBadge">0 lines</span>
+    <span class="status-badge" id="totalCharsNoSpacesBadge" title="Characters without spaces">0 chars (no spaces)</span>
 </div>
 </div>
+
 <div id="tabContextMenu" class="context-menu">
 <div class="context-menu-item" id="ctxRename">✏️ Rename</div>
 <div class="context-menu-item" id="ctxDuplicate">📋 Duplicate</div>
@@ -611,44 +620,135 @@ body.print-all #secondPane::before { content: "=== CLEANUP ==="; display: block;
 <div class="context-menu-item danger" id="ctxDelete">🗑️ Delete</div>
 </div>
 </div>
+
 <div class="toast-container" id="toastContainer"></div>
 <button class="focus-exit-btn" id="focusExitBtn" title="Exit focus mode (Esc)">✕ Exit Focus</button>
 <div class="modal-overlay" id="shortcutsModal" role="dialog" aria-modal="true" aria-labelledby="shortcutsTitle">
 <div class="modal-content">
 <div class="modal-header">
-<h2 class="modal-title" id="shortcutsTitle">Keyboard Shortcuts</h2>
-<button class="modal-close" id="modalCloseBtn" aria-label="Close shortcuts">✕</button>
+    <h2 class="modal-title" id="shortcutsTitle">Keyboard Shortcuts</h2>
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close shortcuts">✕</button>
 </div>
 <table class="shortcuts-table" id="shortcutsTableBody"></table>
 </div>
 </div>
+
 <script>
 "use strict";
 
-/* ⚡️ FIX: dynamic viewport height using Visual Viewport API */
-function updateViewportHeight() {
-    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    const targetHeight = vh * 0.98;
-    document.documentElement.style.setProperty('--app-height', Math.round(targetHeight) + 'px');
-}
-window.addEventListener('resize', updateViewportHeight);
-if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateViewportHeight);
-}
-updateViewportHeight();
-
-const STORAGE_KEYS = { pagesData: 'pro_notes_pages_ultimate', settings: 'pro_notes_settings_ultimate' };
-const DEFAULT_SETTINGS = {
-    theme: 'auto', dialogColor: '#ffffff', dialogColorSet: false, fontSize: 16, splitMode: false, customThemeColor: '#10b981',
-    interfaceLang: 'en', activePageId: null, fontFamily: 'mono', lineSpacing: 1.6, wordWrap: true, focusMode: false
+const STORAGE_KEYS = {
+    pagesData: 'pro_notes_pages_ultimate',
+    settings:  'pro_notes_settings_ultimate'
 };
+const DEFAULT_SETTINGS = {
+    theme: 'auto', dialogColor: '#ffffff', dialogColorSet: false,
+    fontSize: 16, splitMode: false, customThemeColor: '#10b981',
+    interfaceLang: 'en', activePageId: null, fontFamily: 'mono',
+    lineSpacing: 1.6, wordWrap: true, focusMode: false
+};
+const TRASH_LIMIT = 15;
+const AUTO_SAVE_DEBOUNCE_MS = 400;
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const I18N = {
-    en: { copy:'📄 Copy', clear:'❌ Clear', split:'🔀 Split', merge:'🔗 Merge', save:'💾 Save', importBtn: '📂 Import', find:'🔍 Find', focusMode:'🎯 Focus', exitFocus:'✕ Exit Focus', undo:'↶ Undo', redo:'↷ Redo', insertDate:'📅 Date', pastePlain:'📋 Plain', exportAll:'📦 Export Base', importAll:'📥 Import Base', theme:'🌙 Theme:', light:'Light', dark:'Dark', sepia:'Sepia', custom:'Custom', auto:'Auto', bg:'🎨 Background:', fields:'☀️ Fields:', fontFam: '🔤 Font:', lineH: '↕️ Line:', reset:'⚙️ Reset', wrap:'↩️ Wrap', noWrap:'➡️ No Wrap', draft:'📝 Draft', clean:'📄 Cleanup', chars:'chars', words:'words', lines:'lines', totalChars:'chars', totalWords:'words', totalLines:'lines', charsNoSpaces:'chars (no spaces)', readTime:'min read', footer:'📘 Notepad 🖍 | 💾 Autosave | 🌐 Offline', lastSaved:'Saved', justNow:'just now', ph1:'Write here... Format with the buttons or insert symbols.', ph2:'Final version...', fmt:{bold:'Bold',italic:'Italic',bi:'Bold Italic',ul:'Underline',st:'Strikethrough',mono:'Monospace',hid:'Hidden',link:'Link',quote:'Quote'}, charsMenu:'Special characters', emojis:'Emojis', saveFmt:'Save format', spell:'🌐 Spellcheck:', msgClear:'Clear current field?', msgReset:'Reset settings? Text and sheets will remain.', msgImportAll: 'This will replace all current pages and settings. Continue?', enterUrl:'Enter URL:', renamePrompt:'New name:', defaultTabName:'New Page', copied:'✅ Copied!', copyFail:'❌ Copy failed', imported:'✅ Imported', importFail:'❌ Import failed', saved:'✅ Saved', clipboardFail:'❌ Clipboard access denied', findOf:'of', findNoResults:'No results', restored: '♻️ Tab restored', ctxRename: '✏️ Rename', ctxDuplicate: '📋 Duplicate', ctxPin: 'Toggle Pin', ctxUnpin:'Unpin', ctxPinAction:'Pin', ctxDelete: '🗑️ Delete', ctxCloseOthers: '❎ Close Others', ctxCloseRight: '➡️ Close to the Right', shortcutsTitle: 'Keyboard Shortcuts', close:'Close', printAll:'📑 Print All', newTab:'New Tab', restoreTab:'Restore Tab', switchTab:'Switch Tab', filterTabs: 'Filter tabs...' },
-    ru: { copy:'📋 Копировать', clear:'🧹 Очистить', split:'🔀 Разделить', merge:'🔗 Объединить', save:'💾 Сохранить', importBtn: '📂 Импорт', find:'🔍 Найти', focusMode:'🎯 Фокус', exitFocus:'✕ Выйти', undo:'↶ Отмена', redo:'↷ Вернуть', insertDate:'📅 Дата', pastePlain:'📋 Простой текст', exportAll:'📦 Экспорт БД', importAll:'📥 Импорт БД', theme:'🌙 Тема:', light:'Светлая', dark:'Тёмная', sepia:'Сепия', custom:'Кастомная', auto:'Авто', bg:'🎨 Фон:', fields:'☀️ Поля:', fontFam: '🔤 Шрифт:', lineH: '↕️ Строка:', reset:'⚙️ Сброс', wrap:'↩️ Перенос', noWrap:'➡️ Без переноса', draft:'📝 Черновик', clean:'📄 Чистовик', chars:'симв.', words:'слов', lines:'строк', totalChars:'симв.', totalWords:'слов', totalLines:'строк', charsNoSpaces:'симв. (без проб.)', readTime:'мин чтения', footer:'📘 Notepad 🖍 | 💾 Автосохранение | 🌐 Офлайн', lastSaved:'Сохранено', justNow:'только что', ph1:'Пиши здесь... Форматируй кнопками или вставляй символы.', ph2:'Чистовой вариант...', fmt:{bold:'Жирный',italic:'Курсив',bi:'Жирный курсив',ul:'Подчёркнутый',st:'Зачёркнутый',mono:'Моноширинный',hid:'Скрытый',link:'Ссылка',quote:'Цитата'}, charsMenu:'Спецсимволы', emojis:'Смайлы', saveFmt:'Формат', spell:'🌐 Проверка:', msgClear:'Очистить текущее поле?', msgReset:'Сбросить настройки? Текст и листы будут сохранены.', msgImportAll: 'Это заменит все текущие листы и настройки. Продолжить?', enterUrl:'Введите URL:', renamePrompt:'Новое имя:', defaultTabName:'Новый лист', copied:'✅ Скопировано!', copyFail:'❌ Ошибка копирования', imported:'✅ Импортировано', importFail:'❌ Ошибка импорта', saved:'✅ Сохранено', clipboardFail:'❌ Нет доступа к буферу', findOf:'из', findNoResults:'Нет результатов', restored: '♻️ Вкладка восстановлена', ctxRename: '✏️ Переименовать', ctxDuplicate: '📋 Дублировать', ctxPin: 'Закрепить/Открепить', ctxUnpin:'Открепить', ctxPinAction:'Закрепить', ctxDelete: '🗑️ Удалить', ctxCloseOthers: '❎ Закрыть другие', ctxCloseRight: '➡️ Закрыть справа', shortcutsTitle: 'Горячие клавиши', close:'Закрыть', printAll:'📑 Печать всего', newTab:'Новая вкладка', restoreTab:'Восстановить вкладку', switchTab:'Переключить вкладку', filterTabs: 'Фильтр вкладок...' },
-    uk: { copy:'📋 Копіювати', clear:'🧹 Очистити', split:'🔀 Розділити', merge:'🔗 Об\'єднати', save:'💾 Зберегти', importBtn: '📂 Імпорт', find:'🔍 Знайти', focusMode:'🎯 Фокус', exitFocus:'✕ Вийти', undo:'↶ Скасувати', redo:'↷ Повернути', insertDate:'📅 Дата', pastePlain:'📋 Простий текст', exportAll: '📦 Експорт БД', importAll:'📥 Імпорт БД', theme:'🌙 Тема:', light:'Світла', dark:'Темна', sepia:'Сепія', custom:'Кастомна', auto:'Авто', bg:'🎨 Фон:', fields:'☀️ Поля:', fontFam: '🔤 Шрифт:', lineH: '↕️ Рядок:', reset:'⚙️ Скинути', wrap:'↩️ Перенос', noWrap:'➡️ Без переносу', draft:'📝 Чернетка', clean:'📄 Чистовик', chars:'симв.', words:'слів', lines:'рядків', totalChars:'симв.', totalWords:'слів', totalLines:'рядків', charsNoSpaces:'симв. (без проп.)', readTime:'хв читання', footer:'📘 Notepad 🖍 | 💾 Автозбереження | 🌐 Офлайн', lastSaved:'Збережено', justNow:'щойно', ph1:'Пиши тут... Форматуй кнопками або вставляй символи.', ph2:'Чистовий варіант...', fmt:{bold:'Жирний',italic:'Курсив',bi:'Жирний курсив',ul:'Підкреслений',st:'Закреслений',mono:'Моноширинний',hid:'Прихований',link:'Посилання',quote:'Цитата'}, charsMenu:'Спецсимволи', emojis:'Смайли', saveFmt:'Формат', spell:'🌐 Перевірка:', msgClear:'Очистити поточне поле?', msgReset:'Скинути налаштування? Текст та листи залишаться.', msgImportAll: 'Це замінить усі поточні листи та налаштування. Продовжити?', enterUrl:'Введіть URL:', renamePrompt:'Нова назва:', defaultTabName:'Новий лист', copied:'✅ Скопійовано!', copyFail:'❌ Помилка копіювання', imported:'✅ Імпортовано', importFail:'❌ Помилка імпорту', saved:'✅ Збережено', clipboardFail:'❌ Немає доступу до буфера', findOf:'з', findNoResults:'Немає результатів', restored: '♻️ Вкладку відновлено', ctxRename: '✏️ Перейменувати', ctxDuplicate: '📋 Дублювати', ctxPin: 'Закріпити/Відкріпити', ctxUnpin:'Відкріпити', ctxPinAction:'Закріпити', ctxDelete: '🗑️ Видалити', ctxCloseOthers: '❎ Закрити інші', ctxCloseRight: '➡️ Закрити праворуч', shortcutsTitle: 'Гарячі клавіші', close:'Закрити', printAll:'📑 Друк всього', newTab:'Нова вкладка', restoreTab:'Відновити вкладку', switchTab:'Перемкнути вкладку', filterTabs: 'Фільтр вкладок...' }
+en: {
+    copy:'📄 Copy', clear:'❌ Clear', split:'🔀 Split', merge:'🔗 Merge', save:'💾 Save',
+    importBtn:'📂 Import', find:'🔍 Find', focusMode:'🎯 Focus', exitFocus:'✕ Exit Focus',
+    undo:'↶ Undo', redo:'↷ Redo', insertDate:'📅 Date', pastePlain:'📋 Plain',
+    exportAll:'📦 Export Base', importAll:'📥 Import Base',
+    theme:'🌙 Theme:', light:'Light', dark:'Dark', sepia:'Sepia', custom:'Custom', auto:'Auto',
+    bg:'🎨 Background:', fields:'☀️ Fields:', fontFam:'🔤 Font:', lineH:'↕️ Line:',
+    reset:'⚙️ Reset', wrap:'↩️ Wrap', noWrap:'➡️ No Wrap',
+    draft:'📝 Draft', clean:'📄 Cleanup',
+    chars:'chars', words:'words', lines:'lines',
+    totalChars:'chars', totalWords:'words', totalLines:'lines',
+    charsNoSpaces:'chars (no spaces)', readTime:'min read',
+    footer:'📘 Notepad 🖍 | 💾 Autosave | 🌐 Offline', lastSaved:'Saved', justNow:'just now',
+    ph1:'Write here... Format with the buttons or insert symbols.', ph2:'Final version...',
+    fmt:{bold:'Bold',italic:'Italic',bi:'Bold Italic',ul:'Underline',st:'Strikethrough',mono:'Monospace',hid:'Hidden',link:'Link',quote:'Quote'},
+    charsMenu:'Special characters', emojis:'Emojis', saveFmt:'Save format', spell:'🌐 Spellcheck:',
+    msgClear:'Clear current field?', msgReset:'Reset settings? Text and sheets will remain.',
+    msgImportAll:'This will replace all current pages and settings. Continue?',
+    enterUrl:'Enter URL:', renamePrompt:'New name:',
+    defaultTabName:'New Page', copied:'✅ Copied!', copyFail:'❌ Copy failed',
+    imported:'✅ Imported', importFail:'❌ Import failed', saved:'✅ Saved',
+    clipboardFail:'❌ Clipboard access denied',
+    findOf:'of', findNoResults:'No results',
+    restored:'♻️ Tab restored',
+    ctxRename:'✏️ Rename', ctxDuplicate:'📋 Duplicate',
+    ctxPin:'Toggle Pin', ctxPinAction:'📍 Pin', ctxUnpin:'📌 Unpin',
+    ctxDelete:'🗑️ Delete', ctxCloseOthers:'❎ Close Others', ctxCloseRight:'➡️ Close to the Right',
+    shortcutsTitle:'Keyboard Shortcuts', close:'Close',
+    printAll:'📑 Print All', newTab:'New Tab', restoreTab:'Restore Tab', switchTab:'Switch Tab',
+    filterTabs:'Filter tabs...'
+},
+ru: {
+    copy:'📋 Копировать', clear:'🧹 Очистить', split:'🔀 Разделить', merge:'🔗 Объединить', save:'💾 Сохранить',
+    importBtn:'📂 Импорт', find:'🔍 Найти', focusMode:'🎯 Фокус', exitFocus:'✕ Выйти',
+    undo:'↶ Отмена', redo:'↷ Вернуть', insertDate:'📅 Дата', pastePlain:'📋 Простой текст',
+    exportAll:'📦 Экспорт БД', importAll:'📥 Импорт БД',
+    theme:'🌙 Тема:', light:'Светлая', dark:'Тёмная', sepia:'Сепия', custom:'Кастомная', auto:'Авто',
+    bg:'🎨 Фон:', fields:'☀️ Поля:', fontFam:'🔤 Шрифт:', lineH:'↕️ Строка:',
+    reset:'⚙️ Сброс', wrap:'↩️ Перенос', noWrap:'➡️ Без переноса',
+    draft:'📝 Черновик', clean:'📄 Чистовик',
+    chars:'симв.', words:'слов', lines:'строк',
+    totalChars:'симв.', totalWords:'слов', totalLines:'строк',
+    charsNoSpaces:'симв. (без проб.)', readTime:'мин чтения',
+    footer:'📘 Notepad 🖍 | 💾 Автосохранение | 🌐 Офлайн', lastSaved:'Сохранено', justNow:'только что',
+    ph1:'Пиши здесь... Форматируй кнопками или вставляй символы.', ph2:'Чистовой вариант...',
+    fmt:{bold:'Жирный',italic:'Курсив',bi:'Жирный курсив',ul:'Подчёркнутый',st:'Зачёркнутый',mono:'Моноширинный',hid:'Скрытый',link:'Ссылка',quote:'Цитата'},
+    charsMenu:'Спецсимволы', emojis:'Смайлы', saveFmt:'Формат', spell:'🌐 Проверка:',
+    msgClear:'Очистить текущее поле?', msgReset:'Сбросить настройки? Текст и листы будут сохранены.',
+    msgImportAll:'Это заменит все текущие листы и настройки. Продолжить?',
+    enterUrl:'Введите URL:', renamePrompt:'Новое имя:',
+    defaultTabName:'Новый лист', copied:'✅ Скопировано!', copyFail:'❌ Ошибка копирования',
+    imported:'✅ Импортировано', importFail:'❌ Ошибка импорта', saved:'✅ Сохранено',
+    clipboardFail:'❌ Нет доступа к буферу',
+    findOf:'из', findNoResults:'Нет результатов',
+    restored:'♻️ Вкладка восстановлена',
+    ctxRename:'✏️ Переименовать', ctxDuplicate:'📋 Дублировать',
+    ctxPin:'Закрепить/Открепить', ctxPinAction:'📍 Закрепить', ctxUnpin:'📌 Открепить',
+    ctxDelete:'🗑️ Удалить', ctxCloseOthers:'❎ Закрыть другие', ctxCloseRight:'➡️ Закрыть справа',
+    shortcutsTitle:'Горячие клавиши', close:'Закрыть',
+    printAll:'📑 Печать всего', newTab:'Новая вкладка', restoreTab:'Восстановить вкладку', switchTab:'Переключить вкладку',
+    filterTabs:'Фильтр вкладок...'
+},
+uk: {
+    copy:'📋 Копіювати', clear:'🧹 Очистити', split:'🔀 Розділити', merge:'🔗 Об\'єднати', save:'💾 Зберегти',
+    importBtn:'📂 Імпорт', find:'🔍 Знайти', focusMode:'🎯 Фокус', exitFocus:'✕ Вийти',
+    undo:'↶ Скасувати', redo:'↷ Повернути', insertDate:'📅 Дата', pastePlain:'📋 Простий текст',
+    exportAll:'📦 Експорт БД', importAll:'📥 Імпорт БД',
+    theme:'🌙 Тема:', light:'Світла', dark:'Темна', sepia:'Сепія', custom:'Кастомна', auto:'Авто',
+    bg:'🎨 Фон:', fields:'☀️ Поля:', fontFam:'🔤 Шрифт:', lineH:'↕️ Рядок:',
+    reset:'⚙️ Скинути', wrap:'↩️ Перенос', noWrap:'➡️ Без переносу',
+    draft:'📝 Чернетка', clean:'📄 Чистовик',
+    chars:'симв.', words:'слів', lines:'рядків',
+    totalChars:'симв.', totalWords:'слів', totalLines:'рядків',
+    charsNoSpaces:'симв. (без проп.)', readTime:'хв читання',
+    footer:'📘 Notepad 🖍 | 💾 Автозбереження | 🌐 Офлайн', lastSaved:'Збережено', justNow:'щойно',
+    ph1:'Пиши тут... Форматуй кнопками або вставляй символи.', ph2:'Чистовий варіант...',
+    fmt:{bold:'Жирний',italic:'Курсив',bi:'Жирний курсив',ul:'Підкреслений',st:'Закреслений',mono:'Моноширинний',hid:'Прихований',link:'Посилання',quote:'Цитата'},
+    charsMenu:'Спецсимволи', emojis:'Смайли', saveFmt:'Формат', spell:'🌐 Перевірка:',
+    msgClear:'Очистити поточне поле?', msgReset:'Скинути налаштування? Текст та листи залишаться.',
+    msgImportAll:'Це замінить усі поточні листи та налаштування. Продовжити?',
+    enterUrl:'Введіть URL:', renamePrompt:'Нова назва:',
+    defaultTabName:'Новий лист', copied:'✅ Скопійовано!', copyFail:'❌ Помилка копіювання',
+    imported:'✅ Імпортовано', importFail:'❌ Помилка імпорту', saved:'✅ Збережено',
+    clipboardFail:'❌ Немає доступу до буфера',
+    findOf:'з', findNoResults:'Немає результатів',
+    restored:'♻️ Вкладку відновлено',
+    ctxRename:'✏️ Перейменувати', ctxDuplicate:'📋 Дублювати',
+    ctxPin:'Закріпити/Відкріпити', ctxPinAction:'📍 Закріпити', ctxUnpin:'📌 Відкріпити',
+    ctxDelete:'🗑️ Видалити', ctxCloseOthers:'❎ Закрити інші', ctxCloseRight:'➡️ Закрити праворуч',
+    shortcutsTitle:'Гарячі клавіші', close:'Закрити',
+    printAll:'📑 Друк всього', newTab:'Нова вкладка', restoreTab:'Відновити вкладку', switchTab:'Перемкнути вкладку',
+    filterTabs:'Фільтр вкладок...'
+}
 };
 
+/* ============================================================
+DOM HELPERS
+============================================================ */
 const $ = (id) => document.getElementById(id);
 const els = {
     ed1: $('notesArea'), ed2: $('cleanArea'), pane2: $('secondPane'),
@@ -659,57 +759,61 @@ const els = {
     fontVal: $('fontSizeValue'), saveBtn: $('saveBtn'), saveFormat: $('saveFormat'), spellLang: $('spellcheckLang'),
     splitBtn: $('splitBtn'), copyBtn: $('copyBtn'), clearBtn: $('clearBtn'), resetAll: $('resetAllSettings'),
     interfaceLang: $('interfaceLang'),
-    lblTheme: $('lblTheme'), lblBg: $('lblBg'), lblFields: $('lblFields'), lblFontFam: $('lblFontFam'), lblLineH: $('lblLineH'), lblSpell: $('lblSpell'),
+    lblTheme: $('lblTheme'), lblBg: $('lblBg'), lblFields: $('lblFields'),
+    lblFontFam: $('lblFontFam'), lblLineH: $('lblLineH'), lblSpell: $('lblSpell'),
     hdrDraft: $('hdrDraft'), hdrClean: $('hdrClean'), footer: $('footerText'),
     spCharsBtn: $('specialCharsBtn'), emojiBtn: $('emojiBtn'),
-    tabsContainer: $('tabsScrollArea'), addTabBtn: $('addTabBtn'), restoreTabBtn: $('restoreTabBtn'), tabSearchInput: $('tabSearchInput'),
+    tabsContainer: $('tabsScrollArea'), addTabBtn: $('addTabBtn'),
+    restoreTabBtn: $('restoreTabBtn'), tabSearchInput: $('tabSearchInput'),
     totalChars: $('totalCharsBadge'), totalWords: $('totalWordsBadge'), totalLines: $('totalLinesBadge'),
     totalCharsNoSpaces: $('totalCharsNoSpacesBadge'), readTime: $('readTimeBadge'), lastSaved: $('lastSavedBadge'),
-    findBar: $('findBar'), findInput: $('findInput'), replaceInput: $('replaceInput'), replaceBtn: $('replaceBtn'),
-    replaceAllBtn: $('replaceAllBtn'), findPrev: $('findPrev'), findNext: $('findNext'), findClose: $('findClose'), findStats: $('findStats'),
+    findBar: $('findBar'), findInput: $('findInput'), replaceInput: $('replaceInput'),
+    replaceBtn: $('replaceBtn'), replaceAllBtn: $('replaceAllBtn'),
+    findPrev: $('findPrev'), findNext: $('findNext'), findClose: $('findClose'), findStats: $('findStats'),
     toolbarToggle: $('toolbarToggle'), toolbarGroups: $('toolbarGroups'),
     importBtn: $('importBtn'), importFile: $('importFile'), findBtn: $('findBtn'),
     focusBtn: $('focusBtn'), focusExitBtn: $('focusExitBtn'), undoBtn: $('undoBtn'), redoBtn: $('redoBtn'),
-    editorWrapper: $('editorWrapper'), printBtnMain: $('printBtnMain'),
+    editorWrapper: $('editorWrapper'), printBtnMain: $('printBtnMain'), printMenu: $('printMenu'),
     ctxMenu: $('tabContextMenu'), ctxRename: $('ctxRename'), ctxDuplicate: $('ctxDuplicate'), ctxPin: $('ctxPin'),
     ctxDelete: $('ctxDelete'), ctxCloseOthers: $('ctxCloseOthers'), ctxCloseRight: $('ctxCloseRight'),
-    shortcutsModal: $('shortcutsModal'), shortcutsBtn: $('shortcutsBtn'), modalCloseBtn: $('modalCloseBtn'), shortcutsTableBody: $('shortcutsTableBody'),
+    shortcutsModal: $('shortcutsModal'), shortcutsBtn: $('shortcutsBtn'),
+    modalCloseBtn: $('modalCloseBtn'), shortcutsTableBody: $('shortcutsTableBody'),
     wordWrapBtn: $('wordWrapBtn'), insertDateBtn: $('insertDateBtn'), pastePlainBtn: $('pastePlainBtn'),
     exportAllBtn: $('exportAllBtn'), importAllBtn: $('importAllBtn'), importAllFile: $('importAllFile'),
     settingsToggleBtn: $('settingsToggleBtn'), settingsPanelInner: $('settingsPanelInner'),
-    themeQuickBtn: $('themeQuickBtn'), saveIndicator: $('saveIndicator'), printMenu: $('printMenu')
+    themeQuickBtn: $('themeQuickBtn'), saveIndicator: $('saveIndicator')
 };
-
-let settings = { ...DEFAULT_SETTINGS }, activeEditor = els.ed1;
-let pages = [], trashBin = [], findMatches = [], findCurrent = -1, contextMenuPageId = null;
-let isDirty = false, lastSavedAt = null, autoSaveTimer = null, updateNameTimer = null;
-const AUTO_SAVE_DEBOUNCE_MS = 400;
-const TRASH_LIMIT = 15;
-const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const SPECIAL_CHARS = ['©','®','™','°','±','§','¶','•','…','–','—','«','»','‹','›','{','}','[',']','(',')','<','>','|','\\','/','*','^','%','$','#','@','!','~','€','£','¥','¢','₴','₽','₿','∞','≠','≈','≤','≥','√','∫','∑','∏','π','Ω','Δ','λ','μ','σ','α','β','γ','δ','ε','θ','→','←','↑','↓','↔','⇒','⇐','∀','∃','∅','∈','∉','⊂','⊃','∪','∩','∧','∨','¬','⊕','⊥','∠','∘','∙','≡','≅','∼','≃','≐','≔','≕','≦','≧','≪','≫','≶','≷','⊆','⊇','⊈','⊉','⊊','⊋','⊢','⊣','⊤','⊨','⊩','⋀','⋁','⋂','⋃','⋅','⋆','⌘','⌥','⌫','⏎','⇧','⇪','⎋','⇥','✓','✗','★','☆','♠','♥','♦','♣','♪','♫','☀','☁','☂','☃'];
 const EMOJIS = ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','😚','😙','🥲','😋','😛','😜','🤪','😝','🤑','🤗','🤭','🤫','🤔','🤐','🤨','😐','😑','😶','😏','😒','🙄','😬','🤥','😌','😔','😪','🤤','😴','😷','🤒','🤕','🤢','🤮','🤧','🥵','🥶','🥴','😵','🤯','🤠','🥳','🥸','😎','🤓','🧐','😕','😟','🙁','☹️','😮','😯','😲','😳','🥺','🥹','😦','😧','😨','😰','😥','😢','😭','😱','😖','😣','😞','😓','😩','😫','🥱','😤','😡','😠','🤬','😈','👿','💀','☠️','💩','🤡','👹','👺','👻','👽','👾','🤖','😺','😸','😹','😻','😼','😽','🙀','😿','😾','🙈','🙉','🙊','💋','💌','💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔','❤️','🧡','💛','💚','💙','💜','🤎','🖤','🤍','💯','💢','💥','💫','💦','💨','🕳️','💣','💬','🗨️','🗯️','💭','💤','👋','🤚','🖐️','✋','🖖','👌','🤌','🤏','✌️','🤞','🤟','🤘','🤙','👈','👉','👆','🖕','👇','☝️','👍','👎','✊','👊','🤛','🤜','👏','🙌','👐','🤲','🤝','🙏','✍️','💅','🤳','💪','🦾','🦿','🦵','🦶','👂','🦻','👃','🧠','🫀','🫁','🦷','🦴','👀','👁️','👅','👄','🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪'];
 
-const t = () => I18N[settings.interfaceLang] || I18N.en;
+/* ============================================================
+STATE
+============================================================ */
+let settings = { ...DEFAULT_SETTINGS }, activeEditor = els.ed1;
+let pages = [], trashBin = [], findMatches = [], findCurrent = -1, contextMenuPageId = null;
+let isDirty = false, lastSavedAt = null, autoSaveTimer = null, updateNameTimer = null, lastSavedIntervalId = null;
 
 /* ============================================================
 UTILITY
 ============================================================ */
+const tr = () => I18N[settings.interfaceLang] || I18N.en;
+
 function getLuminance(hex) {
     if (!hex || hex[0] !== '#' || hex.length !== 7) return 0.5;
     const [r,g,b] = [1,3,5].map(i => parseInt(hex.slice(i,i+2),16)/255);
     const [rs,gs,bs] = [r,g,b].map(c => c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4));
-    return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+    return 0.2126*rs + 0.7152*gs + 0.0722*bs;
 }
 function getContrastColor(hex) { return getLuminance(hex) > 0.5 ? '#0f172a' : '#e2e8f0'; }
 function countWords(text) { return text && text.trim() ? text.trim().split(/\s+/).filter(w => w.length > 0).length : 0; }
 function countLines(text) { return text ? text.split('\n').length : 0; }
-function countCharsNoSpaces(text) { return text ? text.replace(/\s/g, '').length : 0; }
-function readingTime(text, lang) { const wpm = (lang === 'ru' || lang === 'uk') ? 180 : 200; return Math.max(1, Math.ceil(countWords(text) / wpm)); }
-function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function countCharsNoSpaces(text) { return text ? text.replace(/\s/g,'').length : 0; }
+function readingTime(text, lang) { const wpm = (lang==='ru'||lang==='uk') ? 180 : 200; return Math.max(1, Math.ceil(countWords(text)/wpm)); }
+function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
 function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function uniqueId() { return 'page_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7); }
-function cssEscape(s) { return String(s).replace(/(["\\])/g, '\\$1'); }
+function uniqueId() { return 'page_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,7); }
+function cssEscape(s) { return String(s).replace(/(["\\])/g,'\\$1'); }
 
 function showToast(message, duration) {
     duration = duration || (REDUCED_MOTION ? 1500 : 2000);
@@ -724,20 +828,49 @@ function formatTimeAgo(date, lang) {
     if (!date) return '';
     const tt = I18N[lang] || I18N.en;
     const sec = Math.floor((Date.now() - date) / 1000);
-    const prefix = (tt.lastSaved || 'Saved') + ': ';
-    if (sec < 5) return prefix + (tt.justNow || 'just now');
+    const prefix = tt.lastSaved + ': ';
+    if (sec < 5) return prefix + tt.justNow;
     if (sec < 60) return prefix + sec + 's';
     const min = Math.floor(sec / 60);
     if (min < 60) return prefix + min + 'm';
-    return prefix + Math.floor(min / 60) + 'h';
+    return prefix + Math.floor(min/60) + 'h';
 }
+
+/* ============================================================
+VISIBILITY API — пауза интервала когда вкладка скрыта
+============================================================ */
+function startLastSavedInterval() {
+    if (lastSavedIntervalId) return;
+    lastSavedIntervalId = setInterval(updateLastSaved, 30000);
+}
+function stopLastSavedInterval() {
+    if (lastSavedIntervalId) { clearInterval(lastSavedIntervalId); lastSavedIntervalId = null; }
+}
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        stopLastSavedInterval();
+        if (autoSaveTimer) {
+            clearTimeout(autoSaveTimer); autoSaveTimer = null;
+            syncCurrentPage(); savePagesData();
+            els.saveIndicator.classList.remove('saving');
+            els.saveIndicator.classList.add('saved');
+        }
+    } else {
+        updateLastSaved();
+        startLastSavedInterval();
+    }
+});
 
 /* ============================================================
 SELECTION & SCROLL PERSISTENCE
 ============================================================ */
 function getNodePath(root, node) {
     const path = []; let cur = node;
-    while (cur && cur !== root) { let idx = 0, sib = cur; while ((sib = sib.previousSibling)) idx++; path.unshift(idx); cur = cur.parentNode; }
+    while (cur && cur !== root) {
+        let idx = 0, sib = cur;
+        while ((sib = sib.previousSibling)) idx++;
+        path.unshift(idx); cur = cur.parentNode;
+    }
     return path;
 }
 function getNodeByPath(root, path) {
@@ -746,27 +879,32 @@ function getNodeByPath(root, path) {
     return node;
 }
 function saveEditorState() {
-    const cur = pages.find(p => p.id === settings.activePageId);
-    if (!cur) return;
+    const cur = pages.find(p => p.id === settings.activePageId); if (!cur) return;
     cur.scroll1 = els.ed1.scrollTop; cur.scroll2 = els.ed2 ? els.ed2.scrollTop : 0;
     cur.activeEditorId = activeEditor === els.ed2 ? 'ed2' : 'ed1';
     const sel = window.getSelection();
     if (sel.rangeCount && activeEditor) {
         const range = sel.getRangeAt(0);
         if (activeEditor.contains(range.commonAncestorContainer))
-            cur.selection = { startContainerPath: getNodePath(activeEditor, range.startContainer), startOffset: range.startOffset, endContainerPath: getNodePath(activeEditor, range.endContainer), endOffset: range.endOffset };
+            cur.selection = {
+                startContainerPath: getNodePath(activeEditor, range.startContainer),
+                startOffset: range.startOffset,
+                endContainerPath: getNodePath(activeEditor, range.endContainer),
+                endOffset: range.endOffset
+            };
     }
 }
 function restoreEditorState() {
-    const cur = pages.find(p => p.id === settings.activePageId);
-    if (!cur) return;
+    const cur = pages.find(p => p.id === settings.activePageId); if (!cur) return;
     requestAnimationFrame(() => {
         if (cur.scroll1 != null) els.ed1.scrollTop = cur.scroll1;
         if (els.ed2 && cur.scroll2 != null) els.ed2.scrollTop = cur.scroll2;
+        // Если split выключен — всегда ed1
         const targetEd = cur.activeEditorId === 'ed2' && els.ed2 && els.pane2.style.display !== 'none' ? els.ed2 : els.ed1;
         if (cur.selection) {
             try {
-                const startNode = getNodeByPath(targetEd, cur.selection.startContainerPath), endNode = getNodeByPath(targetEd, cur.selection.endContainerPath);
+                const startNode = getNodeByPath(targetEd, cur.selection.startContainerPath);
+                const endNode = getNodeByPath(targetEd, cur.selection.endContainerPath);
                 if (startNode && endNode) {
                     const range = document.createRange();
                     range.setStart(startNode, Math.min(cur.selection.startOffset, startNode.textContent ? startNode.textContent.length : 0));
@@ -784,38 +922,41 @@ LANGUAGE
 ============================================================ */
 function applyLanguage(lang) {
     lang = lang || settings.interfaceLang || 'en';
+    settings.interfaceLang = lang;
     const tt = I18N[lang] || I18N.en;
     els.copyBtn.textContent = tt.copy; els.clearBtn.textContent = tt.clear;
     els.splitBtn.textContent = settings.splitMode ? tt.merge : tt.split; els.splitBtn.title = els.splitBtn.textContent;
-    els.saveBtn.textContent = tt.save; els.importBtn.textContent = tt.importBtn; els.findBtn.textContent = tt.find;
+    els.saveBtn.textContent = tt.save; els.importBtn.textContent = tt.importBtn;
+    els.findBtn.textContent = tt.find;
     els.focusBtn.textContent = settings.focusMode ? tt.exitFocus : tt.focusMode;
-    els.undoBtn.title = tt.undo; els.redoBtn.title = tt.redo; els.insertDateBtn.title = tt.insertDate; els.pastePlainBtn.title = tt.pastePlain;
+    els.undoBtn.title = tt.undo; els.redoBtn.title = tt.redo;
+    els.insertDateBtn.title = tt.insertDate; els.pastePlainBtn.title = tt.pastePlain;
     els.exportAllBtn.textContent = tt.exportAll; els.importAllBtn.textContent = tt.importAll;
     els.lblTheme.textContent = tt.theme; els.lblBg.textContent = tt.bg; els.lblFields.textContent = tt.fields;
     els.lblFontFam.textContent = tt.fontFam; els.lblLineH.textContent = tt.lineH; els.lblSpell.textContent = tt.spell;
     els.resetAll.textContent = tt.reset;
-    if(els.wordWrapBtn) els.wordWrapBtn.textContent = settings.wordWrap ? tt.wrap : tt.noWrap;
+    if (els.wordWrapBtn) els.wordWrapBtn.textContent = settings.wordWrap ? tt.wrap : tt.noWrap;
     els.hdrDraft.textContent = tt.draft; els.hdrClean.textContent = tt.clean; els.footer.textContent = tt.footer;
     els.ed1.dataset.placeholder = tt.ph1; els.ed2.dataset.placeholder = tt.ph2;
-    els.findInput.placeholder = (lang==='ru'?'Поиск...':lang==='uk'?'Пошук...':'Search...');
-    els.replaceInput.placeholder = (lang==='ru'?'Замена...':lang==='uk'?'Заміна...':'Replace...');
+    els.findInput.placeholder = tt.findOf === 'из' ? 'Поиск...' : tt.findOf === 'з' ? 'Пошук...' : 'Search...';
+    els.replaceInput.placeholder = tt.findOf === 'из' ? 'Замена...' : tt.findOf === 'з' ? 'Заміна...' : 'Replace...';
     els.tabSearchInput.placeholder = tt.filterTabs;
     document.querySelectorAll('[data-fmt]').forEach(b => {
-        const map = { 'bold-italic':'bi', 'strikethrough':'st', 'underline':'ul', 'monospace':'mono', 'hidden':'hid' };
+        const map = {'bold-italic':'bi','strikethrough':'st','underline':'ul','monospace':'mono','hidden':'hid'};
         const key = map[b.dataset.fmt] || b.dataset.fmt;
         if (tt.fmt[key]) {
-            const suffix = key==='bold'?' (Ctrl+B)':key==='italic'?' (Ctrl+I)':key==='ul'?' (Ctrl+U)':key==='link'?' (Ctrl+K)':'';
+            const suffix = {bold:' (Ctrl+B)',italic:' (Ctrl+I)',ul:' (Ctrl+U)',link:' (Ctrl+K)'}[b.dataset.fmt==='underline'?'ul':b.dataset.fmt] || '';
             b.title = tt.fmt[key] + suffix;
         }
     });
     els.spCharsBtn.title = tt.charsMenu; els.emojiBtn.title = tt.emojis; els.saveFormat.title = tt.saveFmt;
     els.ctxRename.textContent = tt.ctxRename; els.ctxDuplicate.textContent = tt.ctxDuplicate;
-    els.ctxPin.textContent = '📌 ' + tt.ctxPin; els.ctxDelete.textContent = tt.ctxDelete;
+    els.ctxPin.textContent = '📌 ' + tt.ctxPin;
+    els.ctxDelete.textContent = tt.ctxDelete;
     els.ctxCloseOthers.textContent = tt.ctxCloseOthers; els.ctxCloseRight.textContent = tt.ctxCloseRight;
     const opts = els.themeSelect.querySelectorAll('option');
     if (opts.length >= 5) { opts[0].textContent=tt.auto; opts[1].textContent=tt.light; opts[2].textContent=tt.dark; opts[3].textContent=tt.sepia; opts[4].textContent=tt.custom; }
     els.interfaceLang.value = lang;
-    settings.interfaceLang = lang;
     saveSettings(); updateCounters(); renderTabs(); updateLastSaved();
 }
 
@@ -823,24 +964,33 @@ function applyLanguage(lang) {
 THEME
 ============================================================ */
 function getSystemTheme() { return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+
 function hexToHsl(hex) {
     const r = parseInt(hex.slice(1,3),16)/255, g = parseInt(hex.slice(3,5),16)/255, b = parseInt(hex.slice(5,7),16)/255;
-    const max = Math.max(r,g,b), min = Math.min(r,g,b); let h, s; const l = (max+min)/2;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b); let h=0,s=0; const l=(max+min)/2;
     if (max !== min) {
-        const d = max-min;
-        s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+        const d = max-min; s = l > 0.5 ? d/(2-max-min) : d/(max+min);
         switch(max){ case r: h=(g-b)/d+(g<b?6:0); break; case g: h=(b-r)/d+2; break; default: h=(r-g)/d+4; }
         h *= 60;
-    } else { h = 0; s = 0; }
-    return { h, s: s * 100, l: l * 100 };
+    }
+    return { h, s: s*100, l: l*100 };
 }
+
+// Применяет цвет полей редактора: только если пользователь явно его задал (dialogColorSet),
+// иначе поля наследуют цвет от CSS-переменных темы (темное поле в тёмной теме и т.д.)
 function applyEditorFieldColor() {
     [els.ed1, els.ed2].forEach(ed => {
         if (!ed) return;
-        if (settings.dialogColorSet) { ed.style.backgroundColor = settings.dialogColor; ed.style.color = getContrastColor(settings.dialogColor); }
-        else { ed.style.backgroundColor = ''; ed.style.color = ''; }
+        if (settings.dialogColorSet) {
+            ed.style.backgroundColor = settings.dialogColor;
+            ed.style.color = getContrastColor(settings.dialogColor);
+        } else {
+            ed.style.backgroundColor = '';
+            ed.style.color = '';
+        }
     });
 }
+
 function applyTheme(theme, customColor) {
     const root = document.documentElement;
     root.classList.remove('light','dark','sepia'); root.removeAttribute('style');
@@ -849,29 +999,31 @@ function applyTheme(theme, customColor) {
     if (theme === 'custom' && customColor) {
         const lum = getLuminance(customColor), isLight = lum > 0.5;
         const { h, s } = hexToHsl(customColor);
-        const targetL = isLight ? 85 : 17;
-        root.style.setProperty('--bg-body', customColor);
-        root.style.setProperty('--card-bg', `hsl(${h}, ${s}%, ${targetL}%)`);
-        root.style.setProperty('--toolbar-bg', customColor);
-        root.style.setProperty('--border-color', isLight ? '#cbd5e1' : '#475569');
-        root.style.setProperty('--status-bg', customColor);
-        const tc = isLight ? '#0f172a' : '#e2e8f0';
-        root.style.setProperty('--btn-text', tc); root.style.setProperty('--status-text', tc);
-        root.style.setProperty('--info-text', isLight ? '#475569' : '#94a3b8');
-        root.style.setProperty('--btn-bg', isLight ? '#ffffff' : '#1e293b');
-        root.style.setProperty('--btn-border', isLight ? '#cbd5e1' : '#475569');
-        root.style.setProperty('--btn-hover-bg', isLight ? '#eef2ff' : '#334155');
-        root.style.setProperty('--btn-hover-border', isLight ? '#94a3b8' : '#64748b');
-        root.style.setProperty('--clear-btn-bg', isLight ? '#fff1f0' : '#2d1a1a');
-        root.style.setProperty('--clear-btn-text', isLight ? '#b91c1c' : '#fecaca');
-        root.style.setProperty('--clear-btn-border', isLight ? '#fecaca' : '#7f2c2c');
-        root.style.setProperty('--clear-btn-hover-bg', isLight ? '#fee2e2' : '#3f2020');
-        root.style.setProperty('--shadow', isLight ? '0 20px 35px -10px rgba(0,0,0,0.1)' : '0 20px 30px -10px rgba(0,0,0,0.6)');
-        root.style.setProperty('--tab-active-bg', isLight ? '#3b82f6' : '#60a5fa');
-        root.style.setProperty('--accent', isLight ? '#3b82f6' : '#60a5fa');
-        root.style.setProperty('--editor-bg', isLight ? '#ffffff' : '#1e293b');
-        root.style.setProperty('--editor-text', isLight ? '#0f172a' : '#e2e8f0');
-        root.style.setProperty('--save-dot-color', isLight ? '#22c55e' : '#4ade80');
+        const vars = {
+            '--bg-body': customColor,
+            '--card-bg': `hsl(${h}, ${s}%, ${isLight ? 85 : 17}%)`,
+            '--toolbar-bg': customColor,
+            '--border-color': isLight ? '#cbd5e1' : '#475569',
+            '--status-bg': customColor,
+            '--btn-text': isLight ? '#0f172a' : '#e2e8f0',
+            '--status-text': isLight ? '#0f172a' : '#e2e8f0',
+            '--info-text': isLight ? '#475569' : '#94a3b8',
+            '--btn-bg': isLight ? '#ffffff' : '#1e293b',
+            '--btn-border': isLight ? '#cbd5e1' : '#475569',
+            '--btn-hover-bg': isLight ? '#eef2ff' : '#334155',
+            '--btn-hover-border': isLight ? '#94a3b8' : '#64748b',
+            '--clear-btn-bg': isLight ? '#fff1f0' : '#2d1a1a',
+            '--clear-btn-text': isLight ? '#b91c1c' : '#fecaca',
+            '--clear-btn-border': isLight ? '#fecaca' : '#7f2c2c',
+            '--clear-btn-hover-bg': isLight ? '#fee2e2' : '#3f2020',
+            '--shadow': isLight ? '0 20px 35px -10px rgba(0,0,0,0.1)' : '0 20px 30px -10px rgba(0,0,0,0.6)',
+            '--tab-active-bg': isLight ? '#3b82f6' : '#60a5fa',
+            '--accent': isLight ? '#3b82f6' : '#60a5fa',
+            '--editor-bg': isLight ? '#ffffff' : '#1e293b',
+            '--editor-text': isLight ? '#0f172a' : '#e2e8f0',
+            '--save-dot-color': isLight ? '#22c55e' : '#4ade80'
+        };
+        for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v);
     } else {
         root.classList.add(resolved);
     }
@@ -880,15 +1032,14 @@ function applyTheme(theme, customColor) {
     const metaEl = document.querySelector('meta[name="theme-color"]');
     if (metaEl) metaEl.setAttribute('content', metaColor || '#3b82f6');
 }
+
 function cycleTheme() {
-    const cycle = ['light', 'dark', 'sepia', 'auto'];
+    const cycle = ['light','dark','sepia','auto'];
     const idx = cycle.indexOf(settings.theme);
-    const next = (idx >= 0 && idx < cycle.length - 1) ? cycle[idx + 1] : 'light';
-    settings.theme = next;
-    els.themeSelect.value = next;
-    applyTheme(next, settings.customThemeColor);
-    saveSettings();
-    showToast(t()[next] || next);
+    const next = (idx >= 0 && idx < cycle.length - 1) ? cycle[idx+1] : 'light';
+    settings.theme = next; els.themeSelect.value = next;
+    applyTheme(next, settings.customThemeColor); saveSettings();
+    showToast((I18N[settings.interfaceLang]||I18N.en)[next] || next);
 }
 
 /* ============================================================
@@ -897,18 +1048,19 @@ FORMATTING & COUNTERS
 function applyFormat(type) {
     activeEditor.focus();
     try {
-        if (type === 'link') { const u = prompt(t().enterUrl, 'https://'); if (u) document.execCommand('createLink', false, u); }
+        if (type === 'link') { const u = prompt(tr().enterUrl, 'https://'); if (u) document.execCommand('createLink', false, u); }
         else if (type === 'hidden') { const sel = window.getSelection(); const txt = sel.toString() || 'text'; document.execCommand('insertHTML', false, '<span class="hidden">' + escapeHtml(txt) + '</span>'); }
         else if (type === 'quote') { document.execCommand('formatBlock', false, 'blockquote'); }
         else if (type === 'monospace') { document.execCommand('fontName', false, 'monospace'); }
         else if (type === 'bold-italic') { document.execCommand('bold'); document.execCommand('italic'); }
         else {
-            const cmd = { bold:'bold', italic:'italic', underline:'underline', strikethrough:'strikeThrough' }[type];
+            const cmd = {bold:'bold',italic:'italic',underline:'underline',strikethrough:'strikeThrough'}[type];
             if (cmd) document.execCommand(cmd, false, null);
         }
     } catch(e) {}
     updateCounters(); debouncedAutoSave();
 }
+
 function insertAtCursor(txt) {
     activeEditor.focus();
     const sel = window.getSelection();
@@ -924,198 +1076,229 @@ function insertAtCursor(txt) {
     sel.removeAllRanges(); sel.addRange(range);
     updateCounters(); debouncedAutoSave(); updateCurrentPageName();
 }
+
 function insertDateTime() {
-    const map = { en: 'en-US', ru: 'ru-RU', uk: 'uk-UA' };
-    insertAtCursor(new Date().toLocaleString(map[settings.interfaceLang] || 'en-US', { hour12: false }));
+    const map = {en:'en-US', ru:'ru-RU', uk:'uk-UA'};
+    insertAtCursor(new Date().toLocaleString(map[settings.interfaceLang]||'en-US', {hour12:false}));
 }
+
 function pastePlainText() {
     activeEditor.focus();
-    if (!navigator.clipboard || !navigator.clipboard.readText) { showToast(t().clipboardFail); return; }
-    navigator.clipboard.readText().then(text => { if (text) insertAtCursor(text); }).catch(() => showToast(t().clipboardFail));
+    if (!navigator.clipboard || !navigator.clipboard.readText) { showToast(tr().clipboardFail); return; }
+    navigator.clipboard.readText().then(text => { if (text) insertAtCursor(text); }).catch(() => showToast(tr().clipboardFail));
 }
+
 function updateCounters() {
-    const tt = t();
-    const text1 = els.ed1.innerText || '', text2 = els.ed2 ? (els.ed2.innerText || '') : '';
-    const c1 = text1.length, c2 = text2.length, w1 = countWords(text1), w2 = countWords(text2), l1 = countLines(text1), l2 = countLines(text2);
+    const tt = tr();
+    const text1 = els.ed1.innerText || '', text2 = els.ed2 ? (els.ed2.innerText||'') : '';
+    const c1=text1.length, c2=text2.length, w1=countWords(text1), w2=countWords(text2), l1=countLines(text1), l2=countLines(text2);
     const totalText = text1 + '\n' + text2;
-    els.c1.textContent = c1 + ' ' + tt.chars + ' · ' + w1 + ' ' + tt.words;
-    if (els.c2) els.c2.textContent = c2 + ' ' + tt.chars + ' · ' + w2 + ' ' + tt.words;
-    els.totalChars.textContent = (c1 + c2) + ' ' + tt.totalChars;
-    els.totalWords.textContent = (w1 + w2) + ' ' + tt.totalWords;
-    els.totalLines.textContent = (l1 + l2) + ' ' + tt.totalLines;
-    els.totalCharsNoSpaces.textContent = countCharsNoSpaces(totalText) + ' ' + tt.charsNoSpaces;
-    els.readTime.textContent = readingTime(totalText, settings.interfaceLang) + ' ' + tt.readTime;
+    els.c1.textContent = c1+' '+tt.chars+' · '+w1+' '+tt.words;
+    if (els.c2) els.c2.textContent = c2+' '+tt.chars+' · '+w2+' '+tt.words;
+    els.totalChars.textContent = (c1+c2)+' '+tt.totalChars;
+    els.totalWords.textContent = (w1+w2)+' '+tt.totalWords;
+    els.totalLines.textContent = (l1+l2)+' '+tt.totalLines;
+    els.totalCharsNoSpaces.textContent = countCharsNoSpaces(totalText)+' '+tt.charsNoSpaces;
+    els.readTime.textContent = readingTime(totalText, settings.interfaceLang)+' '+tt.readTime;
 }
 
 /* ============================================================
 PAGE / TAB SYSTEM
 ============================================================ */
 function initPagesSystem() {
-    try { const stored = localStorage.getItem(STORAGE_KEYS.pagesData); if (stored) pages = JSON.parse(stored); } catch(e) { pages = []; }
+    try { const stored = localStorage.getItem(STORAGE_KEYS.pagesData); if (stored) pages = JSON.parse(stored); } catch(e) { pages=[]; }
     if (!Array.isArray(pages) || pages.length === 0) {
         const firstId = uniqueId();
-        pages = [{ id: firstId, name: 'Draft', manualName: true, html1: '<b>Hello, Amigo! 👋</b><br><br>Welcome to your enhanced Notepad.', html2: '', pinned: false, scroll1:0, scroll2:0 }];
+        pages = [{id:firstId, name:'Draft', manualName:true, html1:'<b>Hello, Amigo! 👋</b><br><br>Welcome to your enhanced Notepad.', html2:'', pinned:false, scroll1:0, scroll2:0}];
         settings.activePageId = firstId;
     }
     pages.forEach(p => {
-        if (typeof p.pinned === 'undefined') p.pinned = false;
-        if (typeof p.scroll1 === 'undefined') p.scroll1 = 0;
-        if (typeof p.scroll2 === 'undefined') p.scroll2 = 0;
-        if (typeof p.manualName === 'undefined') p.manualName = false;
-        if (typeof p.html2 === 'undefined') p.html2 = '';
+        if (typeof p.pinned==='undefined') p.pinned=false;
+        if (typeof p.scroll1==='undefined') p.scroll1=0;
+        if (typeof p.scroll2==='undefined') p.scroll2=0;
+        if (typeof p.manualName==='undefined') p.manualName=false;
+        if (typeof p.html2==='undefined') p.html2='';
     });
-    if (!settings.activePageId || !pages.find(p => p.id === settings.activePageId)) settings.activePageId = pages[0].id;
+    if (!settings.activePageId || !pages.find(p => p.id===settings.activePageId)) settings.activePageId=pages[0].id;
     updateRestoreBtn(); updateTabSearchVisibility();
 }
+
 function createNewPage() {
     syncCurrentPage();
     const newId = uniqueId();
-    pages.push({ id: newId, name: t().defaultTabName, manualName: false, html1: '', html2: '', pinned: false, scroll1:0, scroll2:0 });
+    pages.push({id:newId, name:tr().defaultTabName, manualName:false, html1:'', html2:'', pinned:false, scroll1:0, scroll2:0});
     savePagesData(); switchPage(newId); updateTabSearchVisibility();
 }
+
 function switchPage(id) {
     saveEditorState(); syncCurrentPage(); closeFind();
     settings.activePageId = id; saveSettings();
-    const target = pages.find(p => p.id === id);
-    if (target) { els.ed1.innerHTML = target.html1 || ''; if (els.ed2) els.ed2.innerHTML = target.html2 || ''; }
+    const target = pages.find(p => p.id===id);
+    if (target) { els.ed1.innerHTML = target.html1||''; if (els.ed2) els.ed2.innerHTML = target.html2||''; }
     renderTabs(); updateCounters();
     requestAnimationFrame(() => restoreEditorState());
 }
+
 function deletePage(id, event) {
     if (event) event.stopPropagation();
     if (pages.length <= 1) return;
     if (id === settings.activePageId) { saveEditorState(); syncCurrentPage(); }
-    const index = pages.findIndex(p => p.id === id);
+    const index = pages.findIndex(p => p.id===id);
     const deleted = pages.splice(index, 1)[0];
     trashBin.push(deleted); if (trashBin.length > TRASH_LIMIT) trashBin.shift();
     updateRestoreBtn();
-    const targetId = settings.activePageId === id ? pages[index > 0 ? index - 1 : 0].id : settings.activePageId;
+    const targetId = settings.activePageId===id ? pages[Math.max(0,index-1)].id : settings.activePageId;
     savePagesData(); saveSettings(); switchPage(targetId); updateTabSearchVisibility();
 }
+
 function restoreDeletedPage() {
     if (!trashBin.length) return;
     syncCurrentPage();
     const restored = trashBin.pop();
-    if (pages.find(p => p.id === restored.id)) restored.id = uniqueId();
+    if (pages.find(p => p.id===restored.id)) restored.id = uniqueId();
     pages.push(restored); updateRestoreBtn(); savePagesData(); switchPage(restored.id); updateTabSearchVisibility();
-    showToast(t().restored);
+    showToast(tr().restored);
 }
-function updateRestoreBtn() { els.restoreTabBtn.classList.toggle('active', trashBin.length > 0); }
+
+function updateRestoreBtn() { els.restoreTabBtn.classList.toggle('active', trashBin.length>0); }
+
 function updateTabSearchVisibility() {
     if (pages.length > 5) els.tabSearchInput.classList.add('visible');
-    else { els.tabSearchInput.classList.remove('visible'); els.tabSearchInput.value = ''; els.tabsContainer.querySelectorAll('.tab-button').forEach(b => b.classList.remove('filtered-out')); }
+    else { els.tabSearchInput.classList.remove('visible'); els.tabSearchInput.value=''; els.tabsContainer.querySelectorAll('.tab-button').forEach(b=>b.classList.remove('filtered-out')); }
 }
+
 function filterTabs(query) {
     const q = query.toLowerCase().trim();
     els.tabsContainer.querySelectorAll('.tab-button').forEach(btn => {
-        const name = (btn.querySelector('.tab-text') ? btn.querySelector('.tab-text').textContent : '').toLowerCase();
+        const name = (btn.querySelector('.tab-text')||{textContent:''}).textContent.toLowerCase();
         btn.classList.toggle('filtered-out', !!q && !name.includes(q));
     });
 }
+
 function renamePage(id) {
-    const page = pages.find(p => p.id === id);
-    if (!page) return;
-    const newName = prompt(t().renamePrompt, page.name);
-    if (newName && newName.trim()) { page.name = newName.trim().substring(0, 25); page.manualName = true; savePagesData(); renderTabs(); }
+    const page = pages.find(p => p.id===id); if (!page) return;
+    const newName = prompt(tr().renamePrompt, page.name);
+    if (newName && newName.trim()) { page.name=newName.trim().substring(0,25); page.manualName=true; savePagesData(); renderTabs(); }
 }
+
 function duplicatePage(id) {
-    const page = pages.find(p => p.id === id);
-    if (!page) return;
-    if (id === settings.activePageId) syncCurrentPage();
+    const page = pages.find(p => p.id===id); if (!page) return;
+    if (id===settings.activePageId) syncCurrentPage();
     const newId = uniqueId();
-    pages.splice(pages.findIndex(p => p.id === id) + 1, 0, { ...page, id: newId, name: page.name + ' (Copy)', manualName: true });
+    pages.splice(pages.findIndex(p=>p.id===id)+1, 0, {...page, id:newId, name:page.name+' (Copy)', manualName:true});
     savePagesData(); renderTabs(); updateTabSearchVisibility();
 }
+
 function togglePinPage(id) {
-    const page = pages.find(p => p.id === id);
-    if (!page) return;
+    const page = pages.find(p => p.id===id); if (!page) return;
     page.pinned = !page.pinned;
     stableSortByPin(); savePagesData(); renderTabs();
 }
+
+// Стабильная сортировка — закреплённые вверху, внутренний порядок сохраняется
 function stableSortByPin() {
-    const withIdx = pages.map((p, i) => [p, i]);
-    withIdx.sort((a, b) => (a[0].pinned === b[0].pinned) ? a[1] - b[1] : (a[0].pinned ? -1 : 1));
-    pages = withIdx.map(x => x[0]);
+    const withIdx = pages.map((p,i) => [p,i]);
+    withIdx.sort((a,b) => a[0].pinned===b[0].pinned ? a[1]-b[1] : a[0].pinned ? -1 : 1);
+    pages = withIdx.map(x=>x[0]);
 }
+
 function closeOtherPages(id) {
-    const keep = pages.find(p => p.id === id);
-    if (!keep) return;
-    if (settings.activePageId !== id) { saveEditorState(); }
+    const keep = pages.find(p => p.id===id); if (!keep) return;
     syncCurrentPage();
-    trashBin.push(...pages.filter(p => p.id !== id));
-    if (trashBin.length > TRASH_LIMIT) trashBin.splice(0, trashBin.length - TRASH_LIMIT);
+    trashBin.push(...pages.filter(p=>p.id!==id));
+    if (trashBin.length > TRASH_LIMIT) trashBin.splice(0, trashBin.length-TRASH_LIMIT);
     pages = [keep]; updateRestoreBtn(); savePagesData(); switchPage(id); updateTabSearchVisibility();
 }
+
 function closeRightPages(id) {
-    const idx = pages.findIndex(p => p.id === id);
-    if (idx === -1 || idx === pages.length - 1) return;
+    const idx = pages.findIndex(p=>p.id===id); if (idx===-1||idx===pages.length-1) return;
     syncCurrentPage();
-    const removed = pages.splice(idx + 1);
-    trashBin.push(...removed); if (trashBin.length > TRASH_LIMIT) trashBin.splice(0, trashBin.length - TRASH_LIMIT);
+    const removed = pages.splice(idx+1);
+    trashBin.push(...removed); if (trashBin.length > TRASH_LIMIT) trashBin.splice(0, trashBin.length-TRASH_LIMIT);
     updateRestoreBtn();
-    if (!pages.find(p => p.id === settings.activePageId)) { settings.activePageId = id; saveSettings(); switchPage(id); }
+    if (!pages.find(p=>p.id===settings.activePageId)) { settings.activePageId=id; saveSettings(); switchPage(id); }
     else { savePagesData(); renderTabs(); }
     updateTabSearchVisibility();
 }
+
+// manualName: если пользователь вручную переименовал — авто-обновление не трогает имя
 function updateCurrentPageName() {
     if (updateNameTimer) clearTimeout(updateNameTimer);
     updateNameTimer = setTimeout(() => {
-        const cur = pages.find(p => p.id === settings.activePageId);
+        const cur = pages.find(p=>p.id===settings.activePageId);
         if (!cur || cur.manualName) return;
         const plainText = els.ed1.innerText.trim();
-        if (!plainText) cur.name = t().defaultTabName;
+        if (!plainText) cur.name = tr().defaultTabName;
         else {
-            let words = plainText.split(/\s+/).slice(0, 3).join(' ');
-            if (words.length > 15) words = words.substring(0, 15) + '…';
-            cur.name = words || t().defaultTabName;
+            let words = plainText.split(/\s+/).slice(0,3).join(' ');
+            if (words.length > 15) words = words.substring(0,15)+'…';
+            cur.name = words || tr().defaultTabName;
         }
-        const activeTabEl = els.tabsContainer.querySelector('.tab-button[data-id="' + cssEscape(settings.activePageId) + '"] .tab-text');
-        if (activeTabEl) activeTabEl.textContent = cur.name;
+        const tabEl = els.tabsContainer.querySelector('.tab-button[data-id="'+cssEscape(settings.activePageId)+'"] .tab-text');
+        if (tabEl) tabEl.textContent = cur.name;
     }, 600);
 }
+
 function syncCurrentPage() {
-    const cur = pages.find(p => p.id === settings.activePageId);
-    if (cur) { clearFindHighlights(); cur.html1 = els.ed1.innerHTML; cur.html2 = els.ed2 ? els.ed2.innerHTML : ''; }
+    const cur = pages.find(p=>p.id===settings.activePageId);
+    if (cur) { clearFindHighlights(); cur.html1=els.ed1.innerHTML; cur.html2=els.ed2?els.ed2.innerHTML:''; }
 }
+
+// Throttled scroll handler — RAF, не нагружает батарею
+function makeScrollHandler(editor) {
+    let raf = null;
+    return () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+            raf = null;
+            const cur = pages.find(p=>p.id===settings.activePageId); if (!cur) return;
+            if (editor===els.ed1) cur.scroll1=editor.scrollTop;
+            if (editor===els.ed2) cur.scroll2=editor.scrollTop;
+        });
+    };
+}
+
 let draggedTabId = null;
 function renderTabs() {
     els.tabsContainer.innerHTML = '';
+    const frag = document.createDocumentFragment();
     pages.forEach(p => {
         const btn = document.createElement('div');
-        btn.className = 'tab-button' + (p.id === settings.activePageId ? ' active' : '') + (p.pinned ? ' pinned' : '');
+        btn.className = 'tab-button'+(p.id===settings.activePageId?' active':'')+(p.pinned?' pinned':'');
         btn.setAttribute('data-id', p.id);
-        btn.oncontextmenu = (e) => { e.preventDefault(); openContextMenu(e, p.id); };
-        btn.ondblclick = (e) => { e.preventDefault(); openContextMenu(e, p.id); };
+        const onCtx = (e) => { e.preventDefault(); openContextMenu(e, p.id); };
+        btn.oncontextmenu = onCtx; btn.ondblclick = onCtx;
         btn.onclick = () => switchPage(p.id);
         btn.draggable = true;
-        btn.ondragstart = (e) => { draggedTabId = p.id; e.dataTransfer.effectAllowed = 'move'; setTimeout(() => { btn.style.opacity = '0.5'; }, 0); };
-        btn.ondragend = () => { btn.style.opacity = '1'; els.tabsContainer.querySelectorAll('.tab-button').forEach(el => el.classList.remove('drag-over')); };
+        btn.ondragstart = (e) => { draggedTabId=p.id; e.dataTransfer.effectAllowed='move'; setTimeout(()=>{btn.style.opacity='0.5';},0); };
+        btn.ondragend = () => { btn.style.opacity='1'; els.tabsContainer.querySelectorAll('.tab-button').forEach(el=>el.classList.remove('drag-over')); };
         btn.ondragover = (e) => { e.preventDefault(); e.currentTarget.classList.add('drag-over'); };
         btn.ondragleave = (e) => e.currentTarget.classList.remove('drag-over');
         btn.ondrop = (e) => {
             e.preventDefault(); e.currentTarget.classList.remove('drag-over');
-            if (!draggedTabId || draggedTabId === p.id) return;
-            const fromIdx = pages.findIndex(x => x.id === draggedTabId);
-            const moved = pages.splice(fromIdx, 1)[0];
-            pages.splice(pages.findIndex(x => x.id === p.id), 0, moved);
+            if (!draggedTabId||draggedTabId===p.id) return;
+            const moved = pages.splice(pages.findIndex(x=>x.id===draggedTabId),1)[0];
+            pages.splice(pages.findIndex(x=>x.id===p.id),0,moved);
             stableSortByPin(); savePagesData(); renderTabs();
         };
-        const txtSpan = document.createElement('span'); txtSpan.className = 'tab-text'; txtSpan.textContent = p.name; btn.appendChild(txtSpan);
+        const txtSpan = document.createElement('span'); txtSpan.className='tab-text'; txtSpan.textContent=p.name; btn.appendChild(txtSpan);
         if (pages.length > 1) {
-            const closeSpan = document.createElement('span'); closeSpan.className = 'tab-close'; closeSpan.textContent = '✕';
-            closeSpan.title = t().ctxDelete; closeSpan.onclick = (e) => deletePage(p.id, e); btn.appendChild(closeSpan);
+            const closeSpan = document.createElement('span'); closeSpan.className='tab-close'; closeSpan.textContent='✕';
+            closeSpan.title=tr().ctxDelete; closeSpan.onclick=(e)=>deletePage(p.id,e); btn.appendChild(closeSpan);
         }
-        els.tabsContainer.appendChild(btn);
+        frag.appendChild(btn);
     });
+    els.tabsContainer.appendChild(frag);
     if (els.tabSearchInput.value.trim()) filterTabs(els.tabSearchInput.value);
     const activeTab = els.tabsContainer.querySelector('.tab-button.active');
-    if (activeTab) activeTab.scrollIntoView({ behavior: REDUCED_MOTION ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+    if (activeTab) activeTab.scrollIntoView({behavior:REDUCED_MOTION?'auto':'smooth', block:'nearest', inline:'center'});
 }
+
 function savePagesData() {
     try { localStorage.setItem(STORAGE_KEYS.pagesData, JSON.stringify(pages)); } catch(e) {}
-    isDirty = true; lastSavedAt = Date.now(); updateLastSaved();
+    isDirty=true; lastSavedAt=Date.now(); updateLastSaved();
 }
-function updateLastSaved() { if (els.lastSaved) els.lastSaved.textContent = formatTimeAgo(lastSavedAt, settings.interfaceLang); }
+function updateLastSaved() { if (els.lastSaved) els.lastSaved.textContent=formatTimeAgo(lastSavedAt, settings.interfaceLang); }
 
 /* ============================================================
 CONTEXT MENU
@@ -1123,59 +1306,69 @@ CONTEXT MENU
 function openContextMenu(e, id) {
     contextMenuPageId = id;
     const menu = els.ctxMenu;
-    const page = pages.find(p => p.id === id);
-    const tt = t();
-    if (page) els.ctxPin.textContent = page.pinned ? ('📌 ' + tt.ctxUnpin) : ('📍 ' + tt.ctxPinAction);
+    const page = pages.find(p=>p.id===id);
+    const tt = tr();
+    // Показываем правильный текст для пин/анпин
+    if (page) els.ctxPin.textContent = page.pinned ? tt.ctxUnpin : tt.ctxPinAction;
     menu.classList.add('show');
-    let x = e.pageX, y = e.pageY;
-    const rect = menu.getBoundingClientRect();
-    if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 10;
-    if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 10;
-    menu.style.left = Math.max(5, x) + 'px';
-    menu.style.top = Math.max(5, y) + 'px';
+    // Позиционируем после рендера чтобы знать реальные размеры
+    requestAnimationFrame(() => {
+        let x = e.clientX, y = e.clientY;
+        const rect = menu.getBoundingClientRect();
+        if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width - 8;
+        if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height - 8;
+        menu.style.left = Math.max(4, x)+'px';
+        menu.style.top = Math.max(4, y)+'px';
+    });
 }
 
 /* ============================================================
 SETTINGS & AUTOSAVE
 ============================================================ */
 function loadSettings() {
-    try { const s = localStorage.getItem(STORAGE_KEYS.settings); if (s) settings = { ...DEFAULT_SETTINGS, ...JSON.parse(s) }; } catch(e) {}
+    try { const s=localStorage.getItem(STORAGE_KEYS.settings); if (s) settings={...DEFAULT_SETTINGS,...JSON.parse(s)}; } catch(e) {}
     if (!localStorage.getItem(STORAGE_KEYS.settings)) {
         settings.theme = getSystemTheme();
-        settings.customThemeColor = settings.theme === 'dark' ? '#0f172a' : '#f1f5f9';
+        settings.customThemeColor = settings.theme==='dark' ? '#0f172a' : '#f1f5f9';
     }
+    // Миграция: старые сохранения без dialogColorSet
+    if (typeof settings.dialogColorSet === 'undefined') settings.dialogColorSet = false;
     initPagesSystem();
     els.themeSelect.value = settings.theme;
     els.dialogColor.value = settings.dialogColor;
-    els.themeColor.value = settings.theme === 'custom' ? settings.customThemeColor : (settings.theme === 'dark' ? '#0f172a' : (settings.theme === 'sepia' ? '#f4ecd8' : '#f1f5f9'));
+    els.themeColor.value = settings.theme==='custom' ? settings.customThemeColor : (settings.theme==='dark'?'#0f172a':(settings.theme==='sepia'?'#f4ecd8':'#f1f5f9'));
     els.fontFamilySelect.value = settings.fontFamily;
     applyTheme(settings.theme, settings.customThemeColor);
-    setFontSize(settings.fontSize);
-    setFontFamily(settings.fontFamily);
-    setLineSpacing(settings.lineSpacing);
+    setFontSize(settings.fontSize); setFontFamily(settings.fontFamily); setLineSpacing(settings.lineSpacing);
     els.interfaceLang.value = settings.interfaceLang;
     applyLanguage(settings.interfaceLang);
     toggleSplitView(!!settings.splitMode);
-    toggleWordWrap(settings.wordWrap !== false);
-    toggleFocusMode(!!settings.focusMode);
+    toggleWordWrap(settings.wordWrap!==false);
+    if (settings.focusMode) toggleFocusMode(true);
+    if (window.matchMedia)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (settings.theme==='auto') applyTheme('auto'); });
 }
+
 function saveSettings() { try { localStorage.setItem(STORAGE_KEYS.settings, JSON.stringify(settings)); } catch(e) {} }
+
 function debouncedAutoSave() {
     els.saveIndicator.classList.add('saving'); els.saveIndicator.classList.remove('saved');
     if (autoSaveTimer) clearTimeout(autoSaveTimer);
     autoSaveTimer = setTimeout(() => {
+        autoSaveTimer = null;
         syncCurrentPage(); savePagesData(); updateCounters();
         els.saveIndicator.classList.remove('saving'); els.saveIndicator.classList.add('saved');
-        setTimeout(() => els.saveIndicator.classList.remove('saved'), REDUCED_MOTION ? 300 : 800);
+        setTimeout(()=>els.saveIndicator.classList.remove('saved'), REDUCED_MOTION?300:800);
     }, AUTO_SAVE_DEBOUNCE_MS);
 }
+
 function loadContent() {
-    const cur = pages.find(p => p.id === settings.activePageId);
+    const cur = pages.find(p=>p.id===settings.activePageId);
     if (cur) {
-        els.ed1.innerHTML = cur.html1 || ''; if (els.ed2) els.ed2.innerHTML = cur.html2 || '';
-        requestAnimationFrame(() => { if (cur.scroll1) els.ed1.scrollTop = cur.scroll1; if (els.ed2 && cur.scroll2) els.ed2.scrollTop = cur.scroll2; });
+        els.ed1.innerHTML=cur.html1||''; if (els.ed2) els.ed2.innerHTML=cur.html2||'';
+        requestAnimationFrame(()=>{ if(cur.scroll1) els.ed1.scrollTop=cur.scroll1; if(els.ed2&&cur.scroll2) els.ed2.scrollTop=cur.scroll2; });
     }
-    els.ed1.dataset.placeholder = t().ph1; els.ed2.dataset.placeholder = t().ph2;
+    els.ed1.dataset.placeholder=tr().ph1; els.ed2.dataset.placeholder=tr().ph2;
     renderTabs(); updateCounters(); updateLastSaved();
 }
 
@@ -1184,134 +1377,119 @@ FILE OPERATIONS & PRINT
 ============================================================ */
 function buildExportText() {
     return settings.splitMode
-    ? '=== DRAFT ===\n' + els.ed1.innerText + '\n\n=== CLEANUP ===\n' + (els.ed2 ? els.ed2.innerText : '')
-    : els.ed1.innerText;
+        ? '=== DRAFT ===\n'+els.ed1.innerText+'\n\n=== CLEANUP ===\n'+(els.ed2?els.ed2.innerText:'')
+        : els.ed1.innerText;
 }
 function saveFile() {
-    const content = buildExportText();
-    const fmt = els.saveFormat.value;
-    const fn = 'note_' + new Date().toISOString().slice(0,10);
+    const content = buildExportText(), fmt = els.saveFormat.value;
+    const fn = 'note_'+new Date().toISOString().slice(0,10);
     const cfg = {
-        md: { ext:'.md', mime:'text/markdown', wrap: c => c },
-        txt: { ext:'.txt', mime:'text/plain', wrap: c => c },
-        html: { ext:'.html', mime:'text/html', wrap: c => `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Note</title><style>body{font-family:system-ui,sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#333}</style></head><body><pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(c)}</pre></body></html>` },
-        json: { ext:'.json', mime:'application/json', wrap: c => JSON.stringify({content:c, date:new Date().toISOString(), pages:pages.length}, null, 2) }
-    }[fmt] || { ext:'.txt', mime:'text/plain', wrap: c => c };
-
-    const blob = new Blob([cfg.wrap(content)], {type: cfg.mime});
+        md:   {ext:'.md',   mime:'text/markdown',    wrap:c=>c},
+        txt:  {ext:'.txt',  mime:'text/plain',       wrap:c=>c},
+        html: {ext:'.html', mime:'text/html',        wrap:c=>`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Note</title><style>body{font-family:system-ui,sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#333}</style></head><body><pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(c)}</pre></body></html>`},
+        json: {ext:'.json', mime:'application/json', wrap:c=>JSON.stringify({content:c,date:new Date().toISOString(),pages:pages.length},null,2)}
+    }[fmt]||{ext:'.txt',mime:'text/plain',wrap:c=>c};
+    const blob = new Blob([cfg.wrap(content)],{type:cfg.mime});
     const url = URL.createObjectURL(blob);
-    const a = Object.assign(document.createElement('a'), {href: url, download: fn + cfg.ext});
+    const a = Object.assign(document.createElement('a'),{href:url,download:fn+cfg.ext});
     document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    showToast(t().saved);
+    showToast(tr().saved);
 }
+
 function exportAllPages() {
     syncCurrentPage();
-    const payload = { version: 3, exportDate: new Date().toISOString(), settings, pages };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+    const payload = {version:3, exportDate:new Date().toISOString(), settings, pages};
+    const blob = new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
     const url = URL.createObjectURL(blob);
-    const a = Object.assign(document.createElement('a'), {href: url, download: `notepad_backup_${new Date().toISOString().slice(0,10)}.json`});
+    const a = Object.assign(document.createElement('a'),{href:url,download:`notepad_backup_${new Date().toISOString().slice(0,10)}.json`});
     document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    showToast(t().saved);
+    showToast(tr().saved);
 }
+
 function importAllPages(file) {
     if (!file) return;
     const reader = new FileReader();
-    const tt = t();
     reader.onload = (e) => {
         try {
             const data = JSON.parse(e.target.result);
             if (data.pages && Array.isArray(data.pages)) {
-                if (confirm(tt.msgImportAll)) {
-                    pages = data.pages;
-                    if (data.settings) settings = { ...DEFAULT_SETTINGS, ...data.settings };
-                    if (!settings.activePageId || !pages.find(p => p.id === settings.activePageId)) settings.activePageId = pages[0]?.id;
-                    savePagesData(); saveSettings();
-                    document.documentElement.style.cssText = '';
-                    loadSettings(); loadContent();
-                    showToast(tt.imported);
+                if (confirm(tr().msgImportAll)) {
+                    pages=data.pages;
+                    if (data.settings) settings={...DEFAULT_SETTINGS,...data.settings};
+                    if (!settings.activePageId||!pages.find(p=>p.id===settings.activePageId)) settings.activePageId=pages[0]?.id;
+                    savePagesData(); saveSettings(); document.documentElement.style.cssText='';
+                    loadSettings(); loadContent(); showToast(tr().imported);
                 }
-            } else showToast(tt.importFail);
-        } catch(err) { showToast(tt.importFail); }
+            } else showToast(tr().importFail);
+        } catch(err) { showToast(tr().importFail); }
     };
-    reader.onerror = () => showToast(tt.importFail);
+    reader.onerror = () => showToast(tr().importFail);
     reader.readAsText(file);
 }
+
 function importFile(file) {
     if (!file) return;
     const reader = new FileReader();
-    const tt = t();
     reader.onload = (e) => {
         try {
             let text = e.target.result;
-            if (file.name.endsWith('.html')) {
-                const doc = new DOMParser().parseFromString(text, 'text/html');
-                text = doc.body.innerText || text;
-            }
-            const cur = pages.find(p => p.id === settings.activePageId);
+            if (file.name.endsWith('.html')) { const doc=new DOMParser().parseFromString(text,'text/html'); text=doc.body.innerText||text; }
+            const cur = pages.find(p=>p.id===settings.activePageId);
             if (cur) {
-                cur.html1 = text.replace(/\n/g, '<br>');
-                els.ed1.innerHTML = cur.html1;
+                cur.html1=text.replace(/\n/g,'<br>'); els.ed1.innerHTML=cur.html1;
                 debouncedAutoSave(); updateCounters(); updateCurrentPageName();
-                showToast(tt.imported);
+                showToast(tr().imported);
             }
-        } catch(err) { showToast(tt.importFail); }
+        } catch(err) { showToast(tr().importFail); }
     };
-    reader.onerror = () => showToast(tt.importFail);
+    reader.onerror = () => showToast(tr().importFail);
     reader.readAsText(file);
 }
+
 function printDoc(mode) {
     if (els.printMenu) els.printMenu.classList.remove('show');
-    document.body.classList.remove('print-all', 'print-draft', 'print-clean');
-    document.body.classList.add(`print-${mode}`);
-    window.print();
-    setTimeout(() => document.body.classList.remove('print-all', 'print-draft', 'print-clean'), 500);
+    document.body.classList.remove('print-all','print-draft','print-clean');
+    document.body.classList.add(`print-${mode}`); window.print();
+    setTimeout(()=>document.body.classList.remove('print-all','print-draft','print-clean'),500);
 }
 
 /* ============================================================
 VIEW OPTIONS
 ============================================================ */
 function toggleSplitView(force) {
-    settings.splitMode = force !== undefined ? force : !settings.splitMode;
+    settings.splitMode = force!==undefined ? force : !settings.splitMode;
     els.pane2.style.display = settings.splitMode ? 'flex' : 'none';
     els.editorWrapper.classList.toggle('split-active', settings.splitMode);
-    els.splitBtn.textContent = settings.splitMode ? t().merge : t().split;
+    els.splitBtn.textContent = settings.splitMode ? tr().merge : tr().split;
     els.splitBtn.title = els.splitBtn.textContent;
     saveSettings(); updateCounters();
 }
 function setFontSize(v) {
-    settings.fontSize = Math.max(10, Math.min(32, v));
-    [els.ed1, els.ed2].forEach(e => { if (e) e.style.fontSize = `${settings.fontSize}px`; });
-    els.fontVal.textContent = `${settings.fontSize}px`;
-    saveSettings();
+    settings.fontSize = Math.max(10,Math.min(32,v));
+    [els.ed1,els.ed2].forEach(e=>{if(e) e.style.fontSize=`${settings.fontSize}px`;});
+    els.fontVal.textContent = `${settings.fontSize}px`; saveSettings();
 }
 function setFontFamily(family) {
-    settings.fontFamily = family;
-    [els.ed1, els.ed2].forEach(e => {
-        if (!e) return;
-        e.classList.remove('font-sans', 'font-serif', 'font-mono');
-        e.classList.add(`font-${family}`);
-    });
-    els.fontFamilySelect.value = family;
-    saveSettings();
+    settings.fontFamily=family;
+    [els.ed1,els.ed2].forEach(e=>{if(!e)return; e.classList.remove('font-sans','font-serif','font-mono'); e.classList.add(`font-${family}`);});
+    els.fontFamilySelect.value=family; saveSettings();
 }
 function setLineSpacing(v) {
-    settings.lineSpacing = Math.round(Math.max(1.0, Math.min(3.0, v)) * 10) / 10;
-    [els.ed1, els.ed2].forEach(e => { if (e) e.style.lineHeight = String(settings.lineSpacing); });
-    els.lineSpacingValue.textContent = settings.lineSpacing.toFixed(1);
-    saveSettings();
+    settings.lineSpacing=Math.round(Math.max(1.0,Math.min(3.0,v))*10)/10;
+    [els.ed1,els.ed2].forEach(e=>{if(e) e.style.lineHeight=String(settings.lineSpacing);});
+    els.lineSpacingValue.textContent=settings.lineSpacing.toFixed(1); saveSettings();
 }
 function toggleWordWrap(force) {
-    settings.wordWrap = force !== undefined ? force : !settings.wordWrap;
-    [els.ed1, els.ed2].forEach(e => { if (e) e.classList.toggle('nowrap', !settings.wordWrap); });
-    if (els.wordWrapBtn) els.wordWrapBtn.textContent = settings.wordWrap ? t().wrap : t().noWrap;
+    settings.wordWrap = force!==undefined ? force : !settings.wordWrap;
+    [els.ed1,els.ed2].forEach(e=>{if(e) e.classList.toggle('nowrap',!settings.wordWrap);});
+    if (els.wordWrapBtn) els.wordWrapBtn.textContent=settings.wordWrap?tr().wrap:tr().noWrap;
     saveSettings();
 }
 function toggleFocusMode(force) {
-    settings.focusMode = force !== undefined ? force : !settings.focusMode;
+    settings.focusMode = force!==undefined ? force : !settings.focusMode;
     document.body.classList.toggle('focus-mode', settings.focusMode);
-    if (els.focusBtn) els.focusBtn.textContent = settings.focusMode ? (t().exitFocus || '✕ Exit Focus') : (t().focusMode || '🎯 Focus');
-    saveSettings();
-    if (!settings.focusMode) els.ed1.focus();
+    if (els.focusBtn) els.focusBtn.textContent=settings.focusMode?(tr().exitFocus||'✕ Exit Focus'):(tr().focusMode||'🎯 Focus');
+    saveSettings(); if (!settings.focusMode) els.ed1.focus();
 }
 
 /* ============================================================
@@ -1320,171 +1498,126 @@ MENUS
 function initMenus() {
     const build = (id, items, sp) => {
         const c = document.getElementById(id);
-        c.innerHTML = '';
+        c.innerHTML='';
+        const frag = document.createDocumentFragment();
         items.forEach(i => {
-            const s = document.createElement('span');
-            s.className = 'dropdown-item'; s.textContent = i; s.title = i;
-            s.addEventListener('mousedown', e => e.preventDefault());
-            s.onclick = e => { insertAtCursor(e.target.textContent + sp); c.classList.remove('show'); };
-            c.appendChild(s);
+            const s=document.createElement('span'); s.className='dropdown-item'; s.textContent=i; s.title=i;
+            s.addEventListener('mousedown',e=>e.preventDefault());
+            s.onclick=e=>{insertAtCursor(e.target.textContent+sp); c.classList.remove('show');};
+            frag.appendChild(s);
         });
+        c.appendChild(frag);
     };
-    build('specialCharsMenu', SPECIAL_CHARS, '');
-    build('emojiMenu', EMOJIS, ' ');
-
-    const tgl = (btn, menu, alt) => {
-        document.getElementById(btn).onclick = e => {
-            e.stopPropagation();
-            document.getElementById(menu).classList.toggle('show');
+    build('specialCharsMenu', SPECIAL_CHARS,'');
+    build('emojiMenu', EMOJIS,' ');
+    const tgl = (btn,menu,alt) => {
+        document.getElementById(btn).onclick=e=>{
+            e.stopPropagation(); document.getElementById(menu).classList.toggle('show');
             if(alt) document.getElementById(alt).classList.remove('show');
         };
     };
-    tgl('specialCharsBtn', 'specialCharsMenu', 'emojiMenu');
-    tgl('emojiBtn', 'emojiMenu', 'specialCharsMenu');
-    tgl('printBtnMain', 'printMenu', null);
-    
-    document.querySelectorAll('[data-print]').forEach(el => {
-        el.onclick = () => printDoc(el.dataset.print);
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown-content').forEach(m => m.classList.remove('show'));
-    });
+    tgl('specialCharsBtn','specialCharsMenu','emojiMenu');
+    tgl('emojiBtn','emojiMenu','specialCharsMenu');
+    tgl('printBtnMain','printMenu',null);
+    document.querySelectorAll('[data-print]').forEach(el=>{ el.onclick=()=>printDoc(el.dataset.print); });
+    document.addEventListener('click',(e)=>{ if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown-content').forEach(m=>m.classList.remove('show')); });
 }
 
 /* ============================================================
 FIND & REPLACE
 ============================================================ */
-function openFind() { els.findBar.classList.add('visible'); setTimeout(() => els.findInput.focus(), 50); }
-function closeFind() { els.findBar.classList.remove('visible'); clearFindHighlights(); els.findInput.value = ''; if(els.replaceInput) els.replaceInput.value = ''; els.findStats.textContent = ''; }
+function openFind() { els.findBar.classList.add('visible'); setTimeout(()=>els.findInput.focus(),50); }
+function closeFind() { els.findBar.classList.remove('visible'); clearFindHighlights(); els.findInput.value=''; if(els.replaceInput) els.replaceInput.value=''; els.findStats.textContent=''; }
 function clearFindHighlights() {
-    [els.ed1, els.ed2].forEach(ed => {
+    [els.ed1,els.ed2].forEach(ed=>{
         if (!ed) return;
-        ed.querySelectorAll('span.find-highlight').forEach(h => {
-            const p = h.parentNode; p.replaceChild(document.createTextNode(h.textContent), h); p.normalize();
-        });
+        ed.querySelectorAll('span.find-highlight').forEach(h=>{const p=h.parentNode; p.replaceChild(document.createTextNode(h.textContent),h); p.normalize();});
     });
-    findMatches = []; findCurrent = -1;
+    findMatches=[]; findCurrent=-1;
 }
 function performFind() {
     clearFindHighlights();
-    const query = els.findInput.value.trim();
-    const tt = t();
-    if (!query) { els.findStats.textContent = ''; return; }
-    findMatches = [];
-    const regex = new RegExp('(' + escapeRegex(query) + ')', 'gi');
-    [els.ed1, els.ed2].forEach((ed) => {
-        if (!ed) return;
-        regex.lastIndex = 0;
-        if (!regex.test(ed.innerText)) return;
-        regex.lastIndex = 0;
-        const walker = document.createTreeWalker(ed, NodeFilter.SHOW_TEXT, null, false);
-        const nodesToReplace = [];
-        while (walker.nextNode()) {
-            regex.lastIndex = 0;
-            const node = walker.currentNode;
-            if (regex.test(node.textContent)) nodesToReplace.push(node);
-        }
-        nodesToReplace.forEach(node => {
-            regex.lastIndex = 0;
-            const parts = node.textContent.split(regex);
-            const fragment = document.createDocumentFragment();
-            parts.forEach(part => {
-                regex.lastIndex = 0;
-                if (regex.test(part)) {
-                    const span = document.createElement('span');
-                    span.className = 'find-highlight';
-                    span.style.background = 'var(--find-bg)';
-                    span.style.color = 'var(--editor-text)';
-                    span.style.borderRadius = '2px';
-                    span.textContent = part;
-                    fragment.appendChild(span);
-                    findMatches.push(span);
+    const query=els.findInput.value.trim(), tt=tr();
+    if (!query) { els.findStats.textContent=''; return; }
+    findMatches=[];
+    const regex=new RegExp('('+escapeRegex(query)+')','gi');
+    [els.ed1,els.ed2].forEach(ed=>{
+        if (!ed) return; regex.lastIndex=0; if (!regex.test(ed.innerText)) return;
+        const walker=document.createTreeWalker(ed,NodeFilter.SHOW_TEXT,null,false); const nodesToReplace=[];
+        while(walker.nextNode()){regex.lastIndex=0; const node=walker.currentNode; if(regex.test(node.textContent)) nodesToReplace.push(node);}
+        nodesToReplace.forEach(node=>{
+            regex.lastIndex=0;
+            const parts=node.textContent.split(regex), fragment=document.createDocumentFragment();
+            parts.forEach(part=>{
+                regex.lastIndex=0;
+                if(regex.test(part)){
+                    const span=document.createElement('span'); span.className='find-highlight';
+                    span.style.cssText='background:var(--find-bg);color:var(--editor-text);border-radius:2px;';
+                    span.textContent=part; fragment.appendChild(span); findMatches.push(span);
                 } else fragment.appendChild(document.createTextNode(part));
             });
-            node.parentNode.replaceChild(fragment, node);
+            node.parentNode.replaceChild(fragment,node);
         });
     });
-    if (findMatches.length > 0) {
-        findCurrent = 0; highlightCurrentMatch();
-        els.findStats.textContent = `1 ${tt.findOf} ${findMatches.length}`;
-    } else {
-        els.findStats.textContent = tt.findNoResults;
-        findCurrent = -1;
-    }
+    if (findMatches.length>0) { findCurrent=0; highlightCurrentMatch(); els.findStats.textContent=`1 ${tt.findOf} ${findMatches.length}`; }
+    else { els.findStats.textContent=tt.findNoResults; findCurrent=-1; }
 }
 function highlightCurrentMatch() {
-    findMatches.forEach((m, i) => {
-        m.style.background = i === findCurrent ? 'var(--find-active)' : 'var(--find-bg)';
-        m.style.color = 'var(--editor-text)';
-    });
-    if (findMatches[findCurrent]) findMatches[findCurrent].scrollIntoView({ behavior: REDUCED_MOTION ? 'auto' : 'smooth', block: 'center' });
+    findMatches.forEach((m,i)=>{ m.style.background=i===findCurrent?'var(--find-active)':'var(--find-bg)'; m.style.color='var(--editor-text)'; });
+    if (findMatches[findCurrent]) findMatches[findCurrent].scrollIntoView({behavior:REDUCED_MOTION?'auto':'smooth',block:'center'});
 }
 function findNavigate(dir) {
-    if (findMatches.length === 0) return;
-    const tt = t();
-    findCurrent = dir === 1 ? (findCurrent + 1) % findMatches.length : (findCurrent - 1 + findMatches.length) % findMatches.length;
-    highlightCurrentMatch();
-    els.findStats.textContent = `${findCurrent + 1} ${tt.findOf} ${findMatches.length}`;
+    if (!findMatches.length) return;
+    const tt=tr();
+    findCurrent=dir===1?(findCurrent+1)%findMatches.length:(findCurrent-1+findMatches.length)%findMatches.length;
+    highlightCurrentMatch(); els.findStats.textContent=`${findCurrent+1} ${tt.findOf} ${findMatches.length}`;
 }
 function replaceCurrent() {
-    if (findCurrent < 0 || findCurrent >= findMatches.length) return;
+    if (findCurrent<0||findCurrent>=findMatches.length) return;
     findMatches[findCurrent].replaceWith(document.createTextNode(els.replaceInput.value));
-    findMatches.splice(findCurrent, 1);
-    if (findMatches.length === 0) closeFind();
-    else {
-        if (findCurrent >= findMatches.length) findCurrent = 0;
-        highlightCurrentMatch();
-    }
+    findMatches.splice(findCurrent,1);
+    if (!findMatches.length) closeFind();
+    else { if(findCurrent>=findMatches.length) findCurrent=0; highlightCurrentMatch(); }
     debouncedAutoSave(); updateCounters();
 }
 function replaceAll() {
-    const query = els.findInput.value.trim();
-    const replacement = els.replaceInput.value;
-    if (!query) return;
-    const regex = new RegExp(escapeRegex(query), 'gi');
-    [els.ed1, els.ed2].forEach(ed => {
+    const query=els.findInput.value.trim(), replacement=els.replaceInput.value; if(!query) return;
+    const regex=new RegExp(escapeRegex(query),'gi');
+    [els.ed1,els.ed2].forEach(ed=>{
         if (!ed) return;
-        const walker = document.createTreeWalker(ed, NodeFilter.SHOW_TEXT, null, false);
-        const nodes = [];
-        while (walker.nextNode()) if (regex.test(walker.currentNode.textContent)) nodes.push(walker.currentNode);
-        nodes.forEach(node => {
-            const span = document.createElement('span');
-            span.textContent = node.textContent.replace(regex, replacement);
-            node.parentNode.replaceChild(span, node);
-        });
+        const walker=document.createTreeWalker(ed,NodeFilter.SHOW_TEXT,null,false); const nodes=[];
+        while(walker.nextNode()) if(regex.test(walker.currentNode.textContent)) nodes.push(walker.currentNode);
+        nodes.forEach(node=>{ const span=document.createElement('span'); span.textContent=node.textContent.replace(regex,replacement); node.parentNode.replaceChild(span,node); });
         ed.normalize();
     });
     closeFind(); debouncedAutoSave(); updateCounters();
 }
 function navigateTab(direction) {
-    const currentIdx = pages.findIndex(p => p.id === settings.activePageId);
-    if (currentIdx < 0) return;
-    const visiblePages = pages.filter((p) => {
-        const btn = els.tabsContainer.querySelector(`.tab-button[data-id="${p.id}"]`);
-        return !btn || !btn.classList.contains('filtered-out');
+    const pageIds = pages.map(p=>p.id);
+    const visibleIds = pageIds.filter(id=>{
+        const btn=els.tabsContainer.querySelector(`.tab-button[data-id="${cssEscape(id)}"]`);
+        return !btn||!btn.classList.contains('filtered-out');
     });
-    if (visiblePages.length === 0) return;
-    const visibleIds = visiblePages.map(p => p.id);
-    const currentVisibleIdx = visibleIds.indexOf(settings.activePageId);
-    if (currentVisibleIdx < 0) { switchPage(visibleIds[0]); return; }
-    switchPage(visibleIds[(currentVisibleIdx + direction + visibleIds.length) % visibleIds.length]);
+    if (!visibleIds.length) return;
+    const ci=visibleIds.indexOf(settings.activePageId);
+    if (ci<0){switchPage(visibleIds[0]);return;}
+    switchPage(visibleIds[(ci+direction+visibleIds.length)%visibleIds.length]);
 }
 
 /* ============================================================
 SHORTCUTS MODAL
 ============================================================ */
 function populateShortcuts() {
-    const tt = t(), isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0, mod = isMac ? '⌘' : 'Ctrl';
-    const rows = [
-        [`${mod} + B`, tt.fmt.bold], [`${mod} + I`, tt.fmt.italic], [`${mod} + U`, tt.fmt.ul], [`${mod} + K`, tt.fmt.link],
-        [`${mod} + F`, tt.find], [`${mod} + S`, tt.save], [`${mod} + P`, tt.printAll], [`${mod} + Z`, tt.undo],
-        [`${mod} + Y / ${mod} + Shift + Z`, tt.redo], [`${mod} + Shift + F`, tt.focusMode || 'Focus Mode'],
-        [`${mod} + Shift + V`, tt.pastePlain || 'Paste Plain'], [`${mod} + T`, tt.newTab || 'New Tab'],
-        [`${mod} + Shift + T`, tt.restoreTab || 'Restore Tab'], [`${mod} + Tab`, tt.switchTab || 'Switch Tab'], [`Esc`, tt.close || 'Close']
+    const tt=tr(), isMac=navigator.platform.toUpperCase().indexOf('MAC')>=0, mod=isMac?'⌘':'Ctrl';
+    const rows=[
+        [`${mod}+B`,tt.fmt.bold],[`${mod}+I`,tt.fmt.italic],[`${mod}+U`,tt.fmt.ul],[`${mod}+K`,tt.fmt.link],
+        [`${mod}+F`,tt.find],[`${mod}+S`,tt.save],[`${mod}+P`,tt.printAll],[`${mod}+Z`,tt.undo],
+        [`${mod}+Y / ${mod}+Shift+Z`,tt.redo],[`${mod}+Shift+F`,tt.focusMode],
+        [`${mod}+Shift+V`,tt.pastePlain],[`${mod}+T`,tt.newTab],[`${mod}+Shift+T`,tt.restoreTab],
+        [`${mod}+Tab`,tt.switchTab],['Esc',tt.close]
     ];
-    els.shortcutsTableBody.innerHTML = rows.map(([k, v]) => `<tr><td><kbd>${k}</kbd></td><td>${v}</td></tr>`).join('');
-    document.getElementById('shortcutsTitle').textContent = tt.shortcutsTitle;
+    els.shortcutsTableBody.innerHTML=rows.map(([k,v])=>`<tr><td><kbd>${k}</kbd></td><td>${v}</td></tr>`).join('');
+    $('shortcutsTitle').textContent=tt.shortcutsTitle;
 }
 function showShortcutsModal() { populateShortcuts(); els.shortcutsModal.classList.add('show'); }
 function hideShortcutsModal() { els.shortcutsModal.classList.remove('show'); }
@@ -1492,160 +1625,160 @@ function hideShortcutsModal() { els.shortcutsModal.classList.remove('show'); }
 /* ============================================================
 EVENT LISTENERS
 ============================================================ */
-document.querySelectorAll('[data-fmt]').forEach(b => { b.addEventListener('mousedown', e => e.preventDefault()); b.onclick = e => applyFormat(e.currentTarget.dataset.fmt); });
-[els.ed1, els.ed2].forEach(e => {
-    if (!e) return;
-    e.onfocus = () => activeEditor = e;
-    e.oninput = () => { isDirty = true; debouncedAutoSave(); clearFindHighlights(); updateCurrentPageName(); };
-    e.onscroll = () => {
-        const cur = pages.find(p => p.id === settings.activePageId);
-        if (cur) { if (e === els.ed1) cur.scroll1 = e.scrollTop; if (e === els.ed2) cur.scroll2 = e.scrollTop; }
-    };
-    e.ondragover = (ev) => { ev.preventDefault(); ev.dataTransfer.dropEffect = 'copy'; e.style.boxShadow = 'inset 0 0 0 3px var(--accent)'; };
-    e.ondragleave = () => { e.style.boxShadow = ''; };
-    e.ondrop = (ev) => { ev.preventDefault(); e.style.boxShadow = ''; const file = ev.dataTransfer.files[0]; if (file) importFile(file); };
+document.querySelectorAll('[data-fmt]').forEach(b=>{ b.addEventListener('mousedown',e=>e.preventDefault()); b.onclick=e=>applyFormat(e.currentTarget.dataset.fmt); });
+
+[els.ed1, els.ed2].forEach(editor=>{
+    if (!editor) return;
+    editor.onfocus = () => { activeEditor=editor; };
+    editor.oninput = () => { isDirty=true; debouncedAutoSave(); updateCurrentPageName(); };
+    editor.addEventListener('scroll', makeScrollHandler(editor), {passive:true});
+    editor.ondragover = (ev)=>{ ev.preventDefault(); ev.dataTransfer.dropEffect='copy'; editor.style.boxShadow='inset 0 0 0 3px var(--accent)'; };
+    editor.ondragleave = ()=>{ editor.style.boxShadow=''; };
+    editor.ondrop = (ev)=>{ ev.preventDefault(); editor.style.boxShadow=''; const file=ev.dataTransfer.files[0]; if(file) importFile(file); };
 });
+
 els.saveBtn.onclick = saveFile;
-els.importBtn.onclick = () => els.importFile.click();
-els.importFile.onchange = e => { if (e.target.files[0]) importFile(e.target.files[0]); e.target.value = ''; };
+els.importBtn.onclick = ()=>els.importFile.click();
+els.importFile.onchange = e=>{ if(e.target.files[0]) importFile(e.target.files[0]); e.target.value=''; };
 els.findBtn.onclick = openFind;
 els.findClose.onclick = closeFind;
-els.findPrev.onclick = () => findNavigate(-1);
-els.findNext.onclick = () => findNavigate(1);
+els.findPrev.onclick = ()=>findNavigate(-1);
+els.findNext.onclick = ()=>findNavigate(1);
 els.findInput.oninput = performFind;
-els.findInput.onkeydown = e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); findNavigate(1); }
-    if (e.key === 'Enter' && e.shiftKey) { e.preventDefault(); findNavigate(-1); }
-    if (e.key === 'Escape') closeFind();
+els.findInput.onkeydown = e=>{
+    if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();findNavigate(1);}
+    if(e.key==='Enter'&&e.shiftKey){e.preventDefault();findNavigate(-1);}
+    if(e.key==='Escape') closeFind();
 };
-if (els.replaceBtn) els.replaceBtn.onclick = replaceCurrent;
-if (els.replaceAllBtn) els.replaceAllBtn.onclick = replaceAll;
-if (els.replaceInput) els.replaceInput.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); replaceCurrent(); } };
-els.spellLang.onchange = e => { [els.ed1, els.ed2].forEach(ed => { if (ed) ed.lang = e.target.value; }); activeEditor.blur(); activeEditor.focus(); };
-els.splitBtn.onclick = () => toggleSplitView();
-els.themeSelect.onchange = e => {
-    settings.theme = e.target.value;
-    if (settings.theme === 'custom') els.themeColor.value = settings.customThemeColor || '#10b981';
-    applyTheme(settings.theme, settings.customThemeColor); saveSettings();
+if(els.replaceBtn) els.replaceBtn.onclick=replaceCurrent;
+if(els.replaceAllBtn) els.replaceAllBtn.onclick=replaceAll;
+if(els.replaceInput) els.replaceInput.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();replaceCurrent();}};
+els.spellLang.onchange = e=>{ [els.ed1,els.ed2].forEach(ed=>{if(ed) ed.lang=e.target.value;}); activeEditor.blur(); activeEditor.focus(); };
+els.splitBtn.onclick = ()=>toggleSplitView();
+els.themeSelect.onchange = e=>{
+    settings.theme=e.target.value;
+    if(settings.theme==='custom') els.themeColor.value=settings.customThemeColor||'#10b981';
+    applyTheme(settings.theme,settings.customThemeColor); saveSettings();
 };
-els.themeColor.oninput = e => {
-    settings.theme = 'custom'; settings.customThemeColor = e.target.value;
-    els.themeSelect.value = 'custom'; applyTheme('custom', settings.customThemeColor); saveSettings();
-};
+els.themeColor.oninput = e=>{ settings.theme='custom'; settings.customThemeColor=e.target.value; els.themeSelect.value='custom'; applyTheme('custom',settings.customThemeColor); saveSettings(); };
 els.themeQuickBtn.onclick = cycleTheme;
-els.dialogColor.oninput = e => { settings.dialogColor = e.target.value; settings.dialogColorSet = true; applyTheme(settings.theme, settings.customThemeColor); saveSettings(); };
-els.fontP.onclick = () => setFontSize(settings.fontSize + 2);
-els.fontM.onclick = () => setFontSize(settings.fontSize - 2);
-els.fontFamilySelect.onchange = e => setFontFamily(e.target.value);
-els.lineSpacingPlus.onclick = () => setLineSpacing(settings.lineSpacing + 0.1);
-els.lineSpacingMinus.onclick = () => setLineSpacing(settings.lineSpacing - 0.1);
+// dialogColorPicker: отмечаем что пользователь явно задал цвет полей
+els.dialogColor.oninput = e=>{ settings.dialogColor=e.target.value; settings.dialogColorSet=true; applyTheme(settings.theme,settings.customThemeColor); saveSettings(); };
+els.fontP.onclick = ()=>setFontSize(settings.fontSize+2);
+els.fontM.onclick = ()=>setFontSize(settings.fontSize-2);
+els.fontFamilySelect.onchange = e=>setFontFamily(e.target.value);
+els.lineSpacingPlus.onclick = ()=>setLineSpacing(settings.lineSpacing+0.1);
+els.lineSpacingMinus.onclick = ()=>setLineSpacing(settings.lineSpacing-0.1);
 els.addTabBtn.onclick = createNewPage;
-if (els.wordWrapBtn) els.wordWrapBtn.onclick = () => toggleWordWrap();
-if (els.focusBtn) els.focusBtn.onclick = () => toggleFocusMode();
-if (els.focusExitBtn) els.focusExitBtn.onclick = () => toggleFocusMode(false);
-if (els.insertDateBtn) els.insertDateBtn.onclick = insertDateTime;
-if (els.pastePlainBtn) els.pastePlainBtn.onclick = pastePlainText;
-if (els.exportAllBtn) els.exportAllBtn.onclick = exportAllPages;
-if (els.importAllBtn) els.importAllBtn.onclick = () => els.importAllFile.click();
-if (els.importAllFile) els.importAllFile.onchange = e => { if (e.target.files[0]) importAllPages(e.target.files[0]); e.target.value = ''; };
-els.resetAll.onclick = () => {
-    if (confirm(t().msgReset)) {
-        settings = { ...DEFAULT_SETTINGS };
-        try { localStorage.setItem(STORAGE_KEYS.settings, JSON.stringify(settings)); } catch(e) {}
-        document.documentElement.style.cssText = '';
-        loadSettings(); loadContent();
+if(els.wordWrapBtn) els.wordWrapBtn.onclick=()=>toggleWordWrap();
+if(els.focusBtn) els.focusBtn.onclick=()=>toggleFocusMode();
+if(els.focusExitBtn) els.focusExitBtn.onclick=()=>toggleFocusMode(false);
+if(els.insertDateBtn) els.insertDateBtn.onclick=insertDateTime;
+if(els.pastePlainBtn) els.pastePlainBtn.onclick=pastePlainText;
+if(els.exportAllBtn) els.exportAllBtn.onclick=exportAllPages;
+if(els.importAllBtn) els.importAllBtn.onclick=()=>els.importAllFile.click();
+if(els.importAllFile) els.importAllFile.onchange=e=>{if(e.target.files[0]) importAllPages(e.target.files[0]); e.target.value='';};
+els.resetAll.onclick = ()=>{
+    if(confirm(tr().msgReset)){
+        settings={...DEFAULT_SETTINGS};
+        try{localStorage.setItem(STORAGE_KEYS.settings,JSON.stringify(settings));}catch(e){}
+        document.documentElement.style.cssText=''; loadSettings(); loadContent();
     }
 };
-els.copyBtn.onclick = async () => {
-    try {
-        await navigator.clipboard.writeText(buildExportText());
-        showToast(t().copied);
-    } catch { showToast(t().copyFail); }
+els.copyBtn.onclick = async ()=>{
+    try { await navigator.clipboard.writeText(buildExportText()); showToast(tr().copied); }
+    catch { showToast(tr().copyFail); }
 };
-els.clearBtn.onclick = () => {
-    if (activeEditor.innerText.trim() && confirm(t().msgClear)) {
-        activeEditor.innerHTML = ''; debouncedAutoSave(); activeEditor.focus();
+els.clearBtn.onclick = ()=>{
+    if(activeEditor.innerText.trim()&&confirm(tr().msgClear)){
+        activeEditor.innerHTML=''; debouncedAutoSave(); activeEditor.focus();
     }
 };
-els.interfaceLang.onchange = e => applyLanguage(e.target.value);
-els.toolbarToggle.onclick = () => els.toolbarGroups.classList.toggle('open');
-els.settingsToggleBtn.onclick = () => els.settingsPanelInner.classList.toggle('open');
-els.toolbarGroups.querySelectorAll('button, select').forEach(el => {
-    el.addEventListener('click', () => { if (window.innerWidth <= 768) setTimeout(() => els.toolbarGroups.classList.remove('open'), 150); });
+els.interfaceLang.onchange = e=>applyLanguage(e.target.value);
+els.toolbarToggle.onclick = ()=>els.toolbarGroups.classList.toggle('open');
+els.settingsToggleBtn.onclick = ()=>els.settingsPanelInner.classList.toggle('open');
+els.toolbarGroups.querySelectorAll('button, select').forEach(el=>{
+    el.addEventListener('click',()=>{ if(window.innerWidth<=768) setTimeout(()=>els.toolbarGroups.classList.remove('open'),150); });
 });
-els.undoBtn.onclick = () => { try { document.execCommand('undo'); } catch(e) {} updateCounters(); debouncedAutoSave(); };
-els.redoBtn.onclick = () => { try { document.execCommand('redo'); } catch(e) {} updateCounters(); debouncedAutoSave(); };
-els.tabSearchInput.oninput = e => filterTabs(e.target.value);
-els.tabSearchInput.onkeydown = e => { if (e.key === 'Escape') { els.tabSearchInput.value = ''; filterTabs(''); } };
+els.undoBtn.onclick = ()=>{ try{document.execCommand('undo');}catch(e){} updateCounters(); debouncedAutoSave(); };
+els.redoBtn.onclick = ()=>{ try{document.execCommand('redo');}catch(e){} updateCounters(); debouncedAutoSave(); };
+els.tabSearchInput.oninput = e=>filterTabs(e.target.value);
+els.tabSearchInput.onkeydown = e=>{ if(e.key==='Escape'){els.tabSearchInput.value=''; filterTabs('');} };
 els.shortcutsBtn.onclick = showShortcutsModal;
 els.modalCloseBtn.onclick = hideShortcutsModal;
-els.shortcutsModal.onclick = (e) => { if (e.target === els.shortcutsModal) hideShortcutsModal(); };
+els.shortcutsModal.onclick = e=>{ if(e.target===els.shortcutsModal) hideShortcutsModal(); };
 
-// Context Menu Listeners
-document.addEventListener('click', (e) => { if (!els.ctxMenu.contains(e.target)) els.ctxMenu.classList.remove('show'); });
-els.ctxRename.onclick = () => { els.ctxMenu.classList.remove('show'); renamePage(contextMenuPageId); };
-els.ctxDuplicate.onclick = () => { els.ctxMenu.classList.remove('show'); duplicatePage(contextMenuPageId); };
-els.ctxPin.onclick = () => { els.ctxMenu.classList.remove('show'); togglePinPage(contextMenuPageId); };
-els.ctxDelete.onclick = () => { els.ctxMenu.classList.remove('show'); deletePage(contextMenuPageId); };
-els.ctxCloseOthers.onclick = () => { els.ctxMenu.classList.remove('show'); closeOtherPages(contextMenuPageId); };
-els.ctxCloseRight.onclick = () => { els.ctxMenu.classList.remove('show'); closeRightPages(contextMenuPageId); };
-els.restoreTabBtn.onclick = () => restoreDeletedPage();
+// Context Menu
+document.addEventListener('click',e=>{ if(!els.ctxMenu.contains(e.target)) els.ctxMenu.classList.remove('show'); });
+els.ctxRename.onclick = ()=>{ els.ctxMenu.classList.remove('show'); renamePage(contextMenuPageId); };
+els.ctxDuplicate.onclick = ()=>{ els.ctxMenu.classList.remove('show'); duplicatePage(contextMenuPageId); };
+els.ctxPin.onclick = ()=>{ els.ctxMenu.classList.remove('show'); togglePinPage(contextMenuPageId); };
+els.ctxDelete.onclick = ()=>{ els.ctxMenu.classList.remove('show'); deletePage(contextMenuPageId); };
+els.ctxCloseOthers.onclick = ()=>{ els.ctxMenu.classList.remove('show'); closeOtherPages(contextMenuPageId); };
+els.ctxCloseRight.onclick = ()=>{ els.ctxMenu.classList.remove('show'); closeRightPages(contextMenuPageId); };
+els.restoreTabBtn.onclick = ()=>restoreDeletedPage();
 
 /* ============================================================
 KEYBOARD SHORTCUTS
 ============================================================ */
-document.addEventListener('keydown', e => {
-    const mod = e.ctrlKey || e.metaKey, target = e.target;
-    if (target.tagName === 'INPUT' && target.id !== 'findInput' && target.id !== 'replaceInput') return;
-    if (mod && e.key === 'f' && !e.shiftKey) { e.preventDefault(); els.findBar.classList.contains('visible') ? closeFind() : openFind(); return; }
-    if (mod && e.key === 's') { e.preventDefault(); saveFile(); return; }
-    if (mod && e.key === 'b') { e.preventDefault(); applyFormat('bold'); return; }
-    if (mod && e.key === 'i' && !e.shiftKey) { e.preventDefault(); applyFormat('italic'); return; }
-    if (mod && e.shiftKey && e.key === 'I') { e.preventDefault(); applyFormat('bold-italic'); return; }
-    if (mod && e.key === 'u') { e.preventDefault(); applyFormat('underline'); return; }
-    if (mod && e.key === 'k') { e.preventDefault(); applyFormat('link'); return; }
-    if (mod && e.key === 'z' && !e.shiftKey) { e.preventDefault(); try { document.execCommand('undo'); } catch(err){} updateCounters(); debouncedAutoSave(); return; }
-    if ((mod && e.key === 'y') || (mod && e.shiftKey && e.key === 'z')) { e.preventDefault(); try { document.execCommand('redo'); } catch(err){} updateCounters(); debouncedAutoSave(); return; }
-    if (mod && e.key === 't' && !e.shiftKey && (document.activeElement?.isContentEditable || target.id === 'findInput')) { e.preventDefault(); createNewPage(); return; }
-    if (mod && e.shiftKey && e.key === 'T') { e.preventDefault(); restoreDeletedPage(); return; }
-    if (mod && e.key === 'Tab' && !e.shiftKey) { e.preventDefault(); navigateTab(1); return; }
-    if (mod && e.shiftKey && e.key === 'Tab') { e.preventDefault(); navigateTab(-1); return; }
-    if (mod && e.shiftKey && e.key === 'F') { e.preventDefault(); toggleFocusMode(); return; }
-    if (mod && e.key === '/') { e.preventDefault(); showShortcutsModal(); return; }
-    if (e.key === 'Escape') {
-        if (els.shortcutsModal.classList.contains('show')) { hideShortcutsModal(); return; }
-        if (els.findBar.classList.contains('visible')) { closeFind(); return; }
-        if (els.ctxMenu.classList.contains('show')) { els.ctxMenu.classList.remove('show'); return; }
-        if (settings.focusMode) { toggleFocusMode(false); return; }
-        return;
-    }
-    if (mod && e.key === 'p') { e.preventDefault(); printDoc('all'); return; }
-});
-
-window.addEventListener('beforeunload', e => {
-    if (autoSaveTimer) clearTimeout(autoSaveTimer);
-    syncCurrentPage(); savePagesData();
-    if (isDirty && pages.some(p => (p.html1 && p.html1.replace(/<[^>]*>/g, '').trim().length > 0) || (p.html2 && p.html2.replace(/<[^>]*>/g, '').trim().length > 0))) {
-        e.preventDefault(); e.returnValue = '';
+document.addEventListener('keydown', e=>{
+    const mod=e.ctrlKey||e.metaKey, target=e.target;
+    if(target.tagName==='INPUT'&&target.id!=='findInput'&&target.id!=='replaceInput') return;
+    if(mod&&!e.shiftKey&&e.key==='f'){e.preventDefault(); els.findBar.classList.contains('visible')?closeFind():openFind(); return;}
+    if(mod&&e.key==='s'){e.preventDefault(); saveFile(); return;}
+    if(mod&&!e.shiftKey&&e.key==='b'){e.preventDefault(); applyFormat('bold'); return;}
+    if(mod&&!e.shiftKey&&e.key==='i'){e.preventDefault(); applyFormat('italic'); return;}
+    if(mod&&e.shiftKey&&e.key==='I'){e.preventDefault(); applyFormat('bold-italic'); return;}
+    if(mod&&e.key==='u'){e.preventDefault(); applyFormat('underline'); return;}
+    if(mod&&e.key==='k'){e.preventDefault(); applyFormat('link'); return;}
+    if(mod&&!e.shiftKey&&e.key==='z'){e.preventDefault(); try{document.execCommand('undo');}catch(err){} updateCounters(); debouncedAutoSave(); return;}
+    if((mod&&e.key==='y')||(mod&&e.shiftKey&&e.key==='z')){e.preventDefault(); try{document.execCommand('redo');}catch(err){} updateCounters(); debouncedAutoSave(); return;}
+    if(mod&&!e.shiftKey&&e.key==='t'&&(document.activeElement?.isContentEditable||target.id==='findInput')){e.preventDefault(); createNewPage(); return;}
+    if(mod&&e.shiftKey&&e.key==='T'){e.preventDefault(); restoreDeletedPage(); return;}
+    if(mod&&!e.shiftKey&&e.key==='Tab'){e.preventDefault(); navigateTab(1); return;}
+    if(mod&&e.shiftKey&&e.key==='Tab'){e.preventDefault(); navigateTab(-1); return;}
+    if(mod&&e.shiftKey&&e.key==='F'){e.preventDefault(); toggleFocusMode(); return;}
+    if(mod&&e.key==='/'){e.preventDefault(); showShortcutsModal(); return;}
+    if(mod&&e.key==='p'){e.preventDefault(); printDoc('all'); return;}
+    if(e.key==='Escape'){
+        if(els.shortcutsModal.classList.contains('show')){hideShortcutsModal();return;}
+        if(els.findBar.classList.contains('visible')){closeFind();return;}
+        if(els.ctxMenu.classList.contains('show')){els.ctxMenu.classList.remove('show');return;}
+        if(settings.focusMode){toggleFocusMode(false);return;}
     }
 });
 
-setInterval(updateLastSaved, 30000);
+/* ============================================================
+BEFOREUNLOAD — flush pending save
+============================================================ */
+window.addEventListener('beforeunload', e=>{
+    if(autoSaveTimer){clearTimeout(autoSaveTimer); autoSaveTimer=null;}
+    saveEditorState(); syncCurrentPage(); savePagesData();
+    if(isDirty&&pages.some(p=>(p.html1&&p.html1.replace(/<[^>]*>/g,'').trim().length>0)||(p.html2&&p.html2.replace(/<[^>]*>/g,'').trim().length>0))){
+        e.preventDefault(); e.returnValue='';
+    }
+});
 
-// Theme change listener (prevents memory leaks from duplication on reset)
-if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (settings.theme === 'auto') applyTheme('auto');
-    });
+/* ============================================================
+SERVICE WORKER (offline support)
+============================================================ */
+if('serviceWorker' in navigator && !location.protocol.startsWith('file')){
+    const swCode=`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>new Response('Offline',{status:503,headers:{'Content-Type':'text/plain'}}))));`;
+    const swBlob=new Blob([swCode],{type:'application/javascript'});
+    const swUrl=URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swUrl).catch(()=>{}).finally(()=>URL.revokeObjectURL(swUrl));
 }
 
+/* ============================================================
+INIT
+============================================================ */
 initMenus();
 loadSettings();
 loadContent();
 els.ed1.focus();
+startLastSavedInterval();
 els.saveIndicator.classList.add('saved');
-setTimeout(() => els.saveIndicator.classList.remove('saved'), REDUCED_MOTION ? 300 : 1000);
-
+setTimeout(()=>els.saveIndicator.classList.remove('saved'), REDUCED_MOTION?300:1000);
 </script>
 </body>
 </html>
